@@ -8,14 +8,30 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/eway_alert_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/eway_alert_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.EWayAlerts"
         >
         <activity
-            android:name=".activity.LoginActivity"
+            android:name=".activity.loginmodule.SetPinActivity"
+            android:exported="true"
+            />
+        <activity
+            android:name=".activity.loginmodule.OTPVerificationActivity"
+            android:exported="true"
+            />
+        <activity
+            android:name=".activity.loginmodule.ResetPinActivity"
+            android:exported="true"
+            />
+        <activity
+            android:name=".activity.loginmodule.SignupActivity"
+            android:exported="true"
+            />
+        <activity
+            android:name=".activity.loginmodule.LoginActivity"
             android:exported="true"
             />
         <activity

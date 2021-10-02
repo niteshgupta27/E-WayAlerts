@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.loginmodule.LoginActivity">
+    tools:context=".activity.loginmodule.ResetPinActivity">
 
 
     <RelativeLayout
@@ -75,7 +75,7 @@
                             android:layout_marginTop="@dimen/_20sdp"
                             android:fontFamily="@font/proxima_nova_alt_bold"
                             android:padding="@dimen/_10sdp"
-                            android:text="@string/sign_in"
+                            android:text="Reset PIN"
                             android:textColor="@color/green"
                             android:textSize="@dimen/_20sdp" />
 
@@ -86,9 +86,21 @@
                             android:layout_marginLeft="@dimen/_10sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_marginRight="@dimen/_10sdp"
-
                             android:background="@color/green" />
                     </LinearLayout>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/proxima_nova_alt_regular"
+                        android:text="There are many variations of passages of Lorem Ipsum\n available, but the mejority"
+                        android:textColor="@color/font_color"
+                        android:textSize="@dimen/_10sdp" />
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -101,8 +113,8 @@
                             android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginLeft="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:fontFamily="@font/proxima_nova_alt_regular"
-                            android:text="@string/mobile_number"
+                            android:fontFamily="@font/proxima_nova_alt_bold"
+                            android:text="Mobile Number"
                             android:textColor="@color/font_color"
                             android:textSize="@dimen/_12sdp" />
 
@@ -379,149 +391,8 @@
                     </LinearLayout>
 
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:fontFamily="@font/proxima_nova_alt_regular"
-                            android:text="@string/enter_pin"
-                            android:textColor="@color/font_color"
-                            android:textSize="@dimen/_12sdp" />
-
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="@dimen/_40sdp"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:orientation="horizontal"
-                            android:weightSum="4">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginEnd="@dimen/_10sdp"
-                                android:layout_marginRight="@dimen/_10sdp"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <EditText
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_gravity="center"
-                                    android:backgroundTint="@color/green"
-                                    android:fontFamily="@font/proxima_nova_alt_bold"
-                                    android:gravity="center"
-                                    android:hint="1"
-                                    android:imeOptions="actionNext"
-                                    android:inputType="number"
-                                    android:maxLength="1"
-                                    android:maxLines="1"
-                                    android:textColor="@color/font_color"
-                                    android:textSize="@dimen/_14sdp"
-
-                                    tools:targetApi="lollipop" />
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginEnd="@dimen/_10sdp"
-                                android:layout_marginRight="@dimen/_10sdp"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <EditText
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_gravity="center"
-                                    android:backgroundTint="@color/green"
-                                    android:fontFamily="@font/proxima_nova_alt_bold"
-                                    android:gravity="center"
-                                    android:hint="2"
-                                    android:imeOptions="actionNext"
-                                    android:inputType="number"
-                                    android:maxLength="1"
-                                    android:maxLines="1"
-                                    android:textColor="@color/font_color"
-                                    android:textSize="@dimen/_14sdp"
-
-                                    tools:targetApi="lollipop" />
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginEnd="@dimen/_10sdp"
-                                android:layout_marginRight="@dimen/_10sdp"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <EditText
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_gravity="center"
-                                    android:backgroundTint="@color/green"
-                                    android:fontFamily="@font/proxima_nova_alt_bold"
-                                    android:gravity="center"
-                                    android:hint="3"
-                                    android:imeOptions="actionNext"
-                                    android:inputType="number"
-                                    android:maxLength="1"
-                                    android:maxLines="1"
-                                    android:textColor="@color/font_color"
-                                    android:textSize="@dimen/_14sdp"
-
-                                    tools:targetApi="lollipop" />
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <EditText
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_gravity="center"
-                                    android:backgroundTint="@color/green"
-                                    android:fontFamily="@font/proxima_nova_alt_bold"
-                                    android:gravity="center"
-                                    android:hint="4"
-                                    android:imeOptions="actionDone"
-                                    android:inputType="number"
-                                    android:maxLength="1"
-                                    android:maxLines="1"
-                                    android:textColor="@color/font_color"
-                                    android:textSize="@dimen/_14sdp"
-
-                                    tools:targetApi="lollipop" />
-
-
-                            </LinearLayout>
-
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-
                     <TextView
-                        android:id="@+id/login_Btn"
+                        android:id="@+id/requestOtp_Btn"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_35sdp"
                         android:layout_gravity="center"
@@ -533,33 +404,13 @@
                         android:background="@drawable/green_round_bg"
                         android:fontFamily="@font/proxima_nova_alt_bold"
                         android:gravity="center"
-                        android:text="@string/login"
+                        android:text="@string/request_otp"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/_14sdp" />
 
 
-                    <RelativeLayout
-                        android:id="@+id/resetPin"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/_30sdp"
-                        android:layout_gravity="center">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/proxima_nova_alt_regular"
-                            android:text="@string/reset_pin"
-                            android:textColor="@color/font_color"
-                            android:textSize="@dimen/_10sdp" />
-
-
-                    </RelativeLayout>
-
-
                     <LinearLayout
-                        android:id="@+id/signup_linear"
+                        android:id="@+id/login_linear"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_30sdp"
                         android:layout_gravity="bottom"
@@ -573,7 +424,7 @@
                             android:layout_gravity="center"
                             android:fontFamily="@font/proxima_nova_alt_regular"
                             android:gravity="center"
-                            android:text="@string/don_t_have_an_account"
+                            android:text="@string/already_have_an_account"
                             android:textColor="@color/font_color"
                             android:textSize="@dimen/_10sdp" />
 
@@ -591,16 +442,11 @@
                                 android:layout_gravity="center"
                                 android:fontFamily="@font/proxima_nova_alt_bold"
                                 android:gravity="center"
-                                android:text="@string/sign_up"
+                                android:text="@string/log_in"
                                 android:textColor="@color/green"
                                 android:textSize="@dimen/_10sdp" />
 
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_1sdp"
-                                android:layout_marginTop="@dimen/_1sdp"
-                                android:background="@color/green" />
-                        </LinearLayout>
+                            </LinearLayout>
                     </LinearLayout>
 
                 </LinearLayout>

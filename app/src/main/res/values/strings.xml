@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">E-WayAlerts</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="first_name">First Name</string>
+    <string name="please_enter_first_name">Please enter first name</string>
+    <string name="last_name">Last Name</string>
+    <string name="please_enter_last_name">Please enter last name</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="please_enter_mobile_number">Please enter mobile number</string>
+    <string name="create_account">CREATE ACCOUNT</string>
+    <string name="already_have_an_account">Already Have an account?</string>
+    <string name="log_in">Log In</string>
+    <string name="request_otp">Request OTP</string>
+    <string name="reset_pin">Reset PIN?</string>
+    <string name="sign_in">Sign in</string>
+    <string name="enter_pin">Enter PIN</string>
+    <string name="login">LOGIN</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="resetpin">RESET PIN</string>
+    <string name="resepin">Reset PIN</string>
+    <string name="new_pin">New PIN</string>
+    <string name="confirm_pin">Confirm PIN</string>
+    <string name="submit">SUBMIT</string>
 </resources>

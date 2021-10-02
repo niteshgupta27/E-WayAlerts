@@ -3,10 +3,9 @@ package com.e_wayalerts.activity;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Bundle;
-import android.text.TextUtils;
 
-import com.e_wayalerts.MainActivity;
 import com.e_wayalerts.R;
+import com.e_wayalerts.activity.loginmodule.LoginActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
