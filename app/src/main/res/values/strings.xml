@@ -39,5 +39,16 @@
     <string name="Owner_Last_Name">Owner Last Name</string>
     <string name="Mobile_Number">Mobile Number</string>
     <string name="Email_Address">Email Address(Optional)</string>
-<!--    <string name="Business_Name">Business Name</string>-->
+    <string name="StepAddStaff">Step 2 - Add Staff</string>
+    <string name="BusinessAccess">Business Access</string>
+    <string name="NotificationType">Notification Type</string>
+    <string name="AddStaff">Add Staff</string>
+    <string name="In_App_push_notification">In App Push Notification</string>
+    <string name="Email_Notification">Email Notification</string>
+    <string name="SMS_Notification">SMS Notification</string>
+    <string name="Staff_First_Name">Staff First Name</string>
+    <string name="Staff_Last_Name">Staff Last Name</string>
+    <string name="push">Push</string>
+    <string name="email">Email</string>
+    <string name="sms">SMS</string>
 </resources>

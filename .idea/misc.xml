@@ -17,7 +17,10 @@
         <entry key="app/src/main/res/layout/businesslayout_item.xml" value="0.5" />
         <entry key="app/src/main/res/layout/custom_toast.xml" value="0.9193548387096774" />
         <entry key="app/src/main/res/layout/fragment_add_businessk.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_add_staff.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_business_list.xml" value="0.32061068702290074" />
+        <entry key="app/src/main/res/layout/fragment_staff_list.xml" value="0.15806159420289856" />
+        <entry key="app/src/main/res/layout/staff_ilem_layout.xml" value="0.15307971014492755" />
       </map>
     </option>
   </component>
