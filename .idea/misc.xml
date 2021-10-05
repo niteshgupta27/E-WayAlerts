@@ -20,12 +20,12 @@
         <entry key="app/src/main/res/layout/fragment_add_staff.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_business_list.xml" value="0.32061068702290074" />
         <entry key="app/src/main/res/layout/fragment_staff_list.xml" value="0.15806159420289856" />
-        <entry key="app/src/main/res/layout/staff_ilem_layout.xml" value="0.15307971014492755" />
+        <entry key="app/src/main/res/layout/staff_ilem_layout.xml" value="0.22" />
       </map>
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="openjdk-16" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="openjdk-16" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
