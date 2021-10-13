@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.e_wayalerts.MainActivity;
 import com.e_wayalerts.R;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -56,7 +57,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 				break;
 			
 			case R.id.login_Btn:
-				
+				Intent intent1 = new Intent(mContext, MainActivity.class);
+				startActivity(intent1);
+
 				break;
 			
 			case R.id.resetPin:

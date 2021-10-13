@@ -10,5 +10,6 @@
     <color name="blue">#01437f</color>
     <color name="font_color">#222</color>
     <color name="grey_color">#f1f2f4</color>
-
+    <color name="white_color">#ffffff</color>
+    <color name="light_white">#F3F3F3</color>
 </resources>
