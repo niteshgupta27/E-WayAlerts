@@ -15,7 +15,6 @@ import android.graphics.Matrix;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.media.ExifInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -65,6 +64,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import androidx.core.content.ContextCompat;
+import androidx.exifinterface.media.ExifInterface;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -826,18 +826,18 @@ public class Utility {
 		return byteArrayOutputStream.toByteArray();
 	}
 	
-	public static void loadFragment(FragmentActivity activty, Fragment fragment, boolean backstack,
-	                                String tagName) {
-		// load fragment0.....
-		
-		FragmentTransaction transaction = activty.getSupportFragmentManager().beginTransaction();
-		transaction.replace(R.id.fragment_container, fragment);
-		
-		if (backstack) {
-			transaction.addToBackStack(tagName);
-		}
-		transaction.commit();
-	}
+//	public static void loadFragment(FragmentActivity activty, Fragment fragment, boolean backstack,
+//	                                String tagName) {
+//		// load fragment0.....
+//
+//		FragmentTransaction transaction = activty.getSupportFragmentManager().beginTransaction();
+//		transaction.replace(R.id.fragment_container, fragment);
+//
+//		if (backstack) {
+//			transaction.addToBackStack(tagName);
+//		}
+//		transaction.commit();
+//	}
 	
 	public static void removeAllFragment(FragmentActivity activty, String tagName) {
 		FragmentManager fm = activty.getSupportFragmentManager();

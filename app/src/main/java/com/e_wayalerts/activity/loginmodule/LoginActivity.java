@@ -8,8 +8,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.e_wayalerts.MainActivity;
 import com.e_wayalerts.R;
+import com.e_wayalerts.activity.MainActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 

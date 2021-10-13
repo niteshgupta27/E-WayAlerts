@@ -124,13 +124,14 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <Spinner
-                    android:paddingBottom="10dp"
-                    android:background="#00000000"
-                    android:paddingTop="10dp"
                     android:id="@+id/mSpinnerTehsil"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp" />
                 <ImageView
                     android:layout_marginRight="10dp"
                     android:layout_alignParentRight="true"
