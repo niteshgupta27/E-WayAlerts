@@ -21,7 +21,8 @@
         android:layout_gravity="left|bottom"
         android:src="@drawable/ic_fab_add_24"
         android:contentDescription="@string/submit"
-        android:layout_margin="16dp" />
+        android:layout_margin="16dp"
+        android:visibility="gone"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview"

@@ -14,4 +14,13 @@
         <item name="colorControlActivated">@color/green</item>
         <item name="colorControlNormal">@android:color/darker_gray</item>
     </style>
+
+    <style name="Theme.EWayAlerts.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.EWayAlerts.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.EWayAlerts.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

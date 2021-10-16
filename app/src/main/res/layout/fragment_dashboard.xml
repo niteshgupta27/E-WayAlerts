@@ -1,0 +1,32 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_splash_screen"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/proxima_nova_alt_extrabold"
+        android:text="e-wayalerts"
+        android:textColor="@color/grey_color"
+        android:padding="@dimen/_10sdp"
+        android:textSize="@dimen/_25sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_40sdp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/proxima_nova_alt_regular"
+        android:text="There are many variations of passages of \nLoerm Ipsum available but the majority"
+        android:textColor="@color/grey_color"
+        android:padding="@dimen/_10sdp"
+        android:textSize="@dimen/_14sdp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_20sdp"/>
+
+
+</LinearLayout>

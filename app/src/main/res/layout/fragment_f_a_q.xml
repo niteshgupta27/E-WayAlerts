@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#fafafa"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_above="@+id/mLayoutSubmit"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/mLayoutTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/mTxer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/faq"
+                    android:textColor="@color/purple_500"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/mTxer"
+                    android:layout_marginLeft="5dp"
+
+                    android:text="@string/faq"
+                    android:textSize="@dimen/_5sdp" />
+
+
+            </RelativeLayout>
+
+            <EditText
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border_rectangle_shap"
+                android:textColor="#000000"
+                android:hint="@string/contact_first_name"
+                android:textSize="15dp"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border_rectangle_shap"
+                android:textColor="#000000"
+                android:hint="@string/contact_last_name"
+                android:textSize="15dp"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border_rectangle_shap"
+                android:textColor="#000000"
+                android:hint="@string/mobile_number"
+                android:textSize="15dp"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border_rectangle_shap"
+                android:textColor="#000000"
+                android:hint="@string/Email_Address"
+                android:textSize="15dp"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border_rectangle_shap"
+                android:hint="@string/subject"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border_rectangle_shap"
+                android:hint="@string/message"
+                android:minHeight="@dimen/_88sdp"
+                android:padding="10dp"
+                android:textColor="#000000"
+                android:inputType="textMultiLine"
+                android:textSize="15dp"
+                android:maxLines="10"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+    <RelativeLayout
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/mLayoutSubmit"
+        android:layout_above="@+id/noteme"
+        android:background="@drawable/background_rounded_but"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <TextView
+            android:textSize="18dp"
+            android:layout_centerInParent="true"
+            android:textColor="#ffffff"
+            android:text="SUBMIT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/noteme"
+        android:textSize="@dimen/_9sdp"
+        android:layout_centerInParent="true"
+        android:textColor="@color/black"
+        android:text="@string/noteme"
+        android:fontFamily="@font/proxima_nova_alt_thin"
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

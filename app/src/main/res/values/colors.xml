@@ -12,4 +12,7 @@
     <color name="grey_color">#f1f2f4</color>
     <color name="white_color">#ffffff</color>
     <color name="light_white">#F3F3F3</color>
+    <color name="White">#FFFFFF</color>
+    <color name="Black">#000000</color>
+    <color name="transparent_black_percent_60">#99000000</color>
 </resources>
