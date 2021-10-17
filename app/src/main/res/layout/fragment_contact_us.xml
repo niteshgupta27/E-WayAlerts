@@ -55,6 +55,9 @@
                 android:hint="@string/contact_first_name"
                 android:textSize="15dp"
                 android:padding="10dp"
+                android:inputType="textPersonName"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <EditText
@@ -64,6 +67,9 @@
                 android:hint="@string/contact_last_name"
                 android:textSize="15dp"
                 android:padding="10dp"
+                android:inputType="textPersonName"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <EditText
@@ -73,6 +79,9 @@
                 android:hint="@string/mobile_number"
                 android:textSize="15dp"
                 android:padding="10dp"
+                android:inputType="phone"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <EditText
@@ -82,6 +91,9 @@
                 android:hint="@string/Email_Address"
                 android:textSize="15dp"
                 android:padding="10dp"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -93,6 +105,9 @@
                 android:hint="@string/subject"
                 android:minHeight="48dp"
                 android:padding="10dp"
+                android:inputType="textEmailSubject"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
                 android:textColor="#000000"
                 android:textSize="15dp" />
             <EditText
@@ -106,6 +121,7 @@
                 android:textColor="#000000"
                 android:inputType="textMultiLine"
                 android:textSize="15dp"
+                android:imeOptions="actionDone"
                 android:maxLines="10"/>
 
 

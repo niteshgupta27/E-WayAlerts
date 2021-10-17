@@ -23,9 +23,9 @@
     <string name="confirm_pin">Confirm PIN</string>
     <string name="submit">SUBMIT</string>
     <string name="AddBusiness">Add Business</string>
-    <string name="StepAddBusiness">Step 1 - Add Business</string>
+    <string name="Step1">Step 1</string>
     <string name="yes_text">Yes</string>
-    <string name="AddBusinessheadline">There are many Variations of passages of loream</string>
+    <string name="AddBusinessheadline">There are many Variations of passages of loream\n ipsum available, but the majority</string>
     <string name="AddBusinessContain">There are many Variations of passages of loream\n ipsum available, but the majority have suffered\n alteration in some from</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -99,4 +99,7 @@
     <string name="Language">Language</string>
     <string name="SMS_Credit">SMS Credit</string>
     <string name="fleet">Fleet</string>
+    <string name="step2">Step2</string>
+    <string name="add_staff">- Add Staff</string>
+
 </resources>

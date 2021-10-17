@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp">
+    android:background="@drawable/bg_screen">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_storage_yards"
@@ -13,22 +13,11 @@
         android:visibility="gone"/>
 
 
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left|bottom"
-        android:src="@drawable/ic_fab_add_24"
-        android:contentDescription="@string/submit"
-        android:layout_margin="16dp" />
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
-        android:layout_margin="10dp"
         android:visibility="visible">
 
         <LinearLayout
@@ -69,7 +58,7 @@
                 android:textAlignment="center"
                 android:text="@string/AddEBillContain"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_20sdp" />
+                android:textSize="@dimen/_12sdp" />
             <LinearLayout
                 android:id="@+id/ll_continue"
                 android:layout_width="wrap_content"

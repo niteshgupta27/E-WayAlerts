@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
-    <com.e_wayalerts.activity.widget.SNavigationDrawer
+    <com.e_wayalerts.widget.SNavigationDrawer
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/navigationDrawer">
@@ -13,5 +13,5 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
-    </com.e_wayalerts.activity.widget.SNavigationDrawer>
+    </com.e_wayalerts.widget.SNavigationDrawer>
 </RelativeLayout>

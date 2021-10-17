@@ -1,4 +1,4 @@
-package com.e_wayalerts.fragment;
+package com.e_wayalerts.activity.add_business;
 
 import android.os.Bundle;
 
@@ -10,19 +10,9 @@ import android.view.ViewGroup;
 
 import com.e_wayalerts.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AddBusinesskFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class AddBusinesskFragment extends Fragment {
-
-
-    public AddBusinesskFragment() {
-        // Required empty public constructor
-    }
-
-
+    
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

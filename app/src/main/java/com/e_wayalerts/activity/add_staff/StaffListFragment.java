@@ -1,4 +1,4 @@
-package com.e_wayalerts.fragment;
+package com.e_wayalerts.activity.add_staff;
 
 import android.os.Bundle;
 
@@ -10,15 +10,11 @@ import android.view.ViewGroup;
 
 import com.e_wayalerts.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AddEwayBillFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class AddEwayBillFragment extends Fragment {
+
+public class StaffListFragment extends Fragment {
 
 
-    public AddEwayBillFragment() {
+    public StaffListFragment() {
         // Required empty public constructor
     }
 
@@ -27,7 +23,7 @@ public class AddEwayBillFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_eway_bill, container, false);
+        return inflater.inflate(R.layout.fragment_staff_list, container, false);
     }
 
 }

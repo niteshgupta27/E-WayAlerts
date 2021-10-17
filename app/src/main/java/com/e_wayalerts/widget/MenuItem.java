@@ -1,4 +1,4 @@
-package com.e_wayalerts.activity.widget;
+package com.e_wayalerts.widget;
 
 
 public class MenuItem {

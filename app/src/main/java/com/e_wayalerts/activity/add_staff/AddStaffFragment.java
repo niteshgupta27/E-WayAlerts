@@ -1,4 +1,4 @@
-package com.e_wayalerts.fragment;
+package com.e_wayalerts.activity.add_staff;
 
 import android.os.Bundle;
 
@@ -10,11 +10,7 @@ import android.view.ViewGroup;
 
 import com.e_wayalerts.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AddStaffFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class AddStaffFragment extends Fragment {
 
 

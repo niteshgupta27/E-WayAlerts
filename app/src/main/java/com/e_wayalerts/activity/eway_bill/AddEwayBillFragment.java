@@ -1,4 +1,4 @@
-package com.e_wayalerts.fragment;
+package com.e_wayalerts.activity.eway_bill;
 
 import android.os.Bundle;
 
@@ -10,15 +10,10 @@ import android.view.ViewGroup;
 
 import com.e_wayalerts.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ContactUsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class ContactUsFragment extends Fragment {
+public class AddEwayBillFragment extends Fragment {
 
 
-    public ContactUsFragment() {
+    public AddEwayBillFragment() {
         // Required empty public constructor
     }
 
@@ -27,7 +22,7 @@ public class ContactUsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_contact_us, container, false);
+        return inflater.inflate(R.layout.fragment_add_eway_bill, container, false);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.e_wayalerts.fragment;
+package com.e_wayalerts.activity.add_business;
 
 import android.os.Bundle;
 
@@ -10,14 +10,11 @@ import android.view.ViewGroup;
 
 import com.e_wayalerts.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FAQFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class FAQFragment extends Fragment {
 
-    public FAQFragment() {
+public class BusinessListFragment extends Fragment {
+
+
+    public BusinessListFragment() {
         // Required empty public constructor
     }
 
@@ -26,7 +23,7 @@ public class FAQFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_f_a_q, container, false);
+        return inflater.inflate(R.layout.fragment_business_list, container, false);
     }
 
 }

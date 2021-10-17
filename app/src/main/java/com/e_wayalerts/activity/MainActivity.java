@@ -1,25 +1,24 @@
 package com.e_wayalerts.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
-import com.e_wayalerts.activity.widget.MenuItem;
-import com.e_wayalerts.activity.widget.SNavigationDrawer;
-import com.e_wayalerts.databinding.ActivityMainBinding;
-import com.e_wayalerts.fragment.AboutUsFragment;
-import com.e_wayalerts.fragment.BusinessListFragment;
-import com.e_wayalerts.fragment.ContactUsFragment;
+import com.e_wayalerts.activity.loginmodule.LoginActivity;
+import com.e_wayalerts.widget.MenuItem;
+import com.e_wayalerts.widget.SNavigationDrawer;
+import com.e_wayalerts.activity.faq_contact.AboutUsFragment;
+import com.e_wayalerts.activity.add_business.BusinessListFragment;
+import com.e_wayalerts.activity.faq_contact.ContactUsFragment;
 import com.e_wayalerts.fragment.DashboardFragment;
-import com.e_wayalerts.fragment.FAQFragment;
-import com.e_wayalerts.fragment.FeedbackFragment;
+import com.e_wayalerts.activity.faq_contact.FAQFragment;
+import com.e_wayalerts.activity.faq_contact.FeedbackFragment;
 import com.e_wayalerts.fragment.PasswordFragment;
 import com.e_wayalerts.fragment.SettingFragment;
-import com.e_wayalerts.fragment.StaffListFragment;
-import com.e_wayalerts.fragment.TermsConditionFragment;
-import com.google.android.material.snackbar.Snackbar;
+import com.e_wayalerts.activity.add_staff.StaffListFragment;
+import com.e_wayalerts.activity.faq_contact.TermsConditionFragment;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.view.View;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -38,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     int color1=0;
     Class fragmentClass;
     public static Fragment fragment;
+    Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         if(getSupportActionBar()!=null) {
             getSupportActionBar().hide();
         }
-
+        mContext =  this;
         sNavigationDrawer = findViewById(R.id.navigationDrawer);
         List<MenuItem> menuItems = new ArrayList<>();
         menuItems.add(new MenuItem(getResources().getString(R.string.menu_dashboard),R.drawable.bg_building));
@@ -136,7 +136,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     }
                     case 11:{
-
+                        Intent intent = new Intent(mContext, LoginActivity.class);
+                        startActivity(intent);
+                        finish();
                         break;
                     }
 

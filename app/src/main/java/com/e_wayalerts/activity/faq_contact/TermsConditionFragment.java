@@ -1,4 +1,4 @@
-package com.e_wayalerts.fragment;
+package com.e_wayalerts.activity.faq_contact;
 
 import android.os.Bundle;
 
@@ -10,15 +10,10 @@ import android.view.ViewGroup;
 
 import com.e_wayalerts.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FeedbackFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class FeedbackFragment extends Fragment {
 
+public class TermsConditionFragment extends Fragment {
 
-    public FeedbackFragment() {
+    public TermsConditionFragment() {
         // Required empty public constructor
     }
 
@@ -27,7 +22,7 @@ public class FeedbackFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_feedback, container, false);
+        return inflater.inflate(R.layout.fragment_terms_condition, container, false);
     }
 
 }
