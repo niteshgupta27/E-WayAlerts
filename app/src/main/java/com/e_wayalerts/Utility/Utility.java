@@ -72,7 +72,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class Utility {
 	
-	private static final String PREFERENCE = "Soultab Caregiver";
+	private static final String PREFERENCE = "Ewayalerts";
 	
 	private static final int MAX_IMAGE_DIMENSION = 720;
 	
@@ -134,13 +134,7 @@ public class Utility {
 		editor.commit();
 	}
 	
-	public static void setSharedPreference2(Context context, String name, String value) {
-		mContext = context;
-		SharedPreferences settings = context.getSharedPreferences("Additional", 0);
-		SharedPreferences.Editor editor = settings.edit();
-		editor.putString(name, value);
-		editor.commit();
-	}
+	
 	
 	public static void clearSharedPreference(Context context) {
 		mContext = context;
@@ -173,10 +167,6 @@ public class Utility {
 		return settings.getString(name, null);
 	}
 	
-	public static String getSharedPreferences2(Context context, String name) {
-		SharedPreferences settings = context.getSharedPreferences("Additional", 0);
-		return settings.getString(name, null);
-	}
 	
 	public static int getIngerSharedPreferences(Context context, String name) {
 		SharedPreferences settings = context.getSharedPreferences(PREFERENCE, 0);
@@ -854,6 +844,7 @@ public class Utility {
 	public static void showSnackBar(View view, String message) {
 		Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show();
 	}
+	
 	
 	public static int dpToPixel(Context context, int dp) {
 		return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,

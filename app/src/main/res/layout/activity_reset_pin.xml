@@ -133,6 +133,7 @@
                                 android:orientation="vertical">
 
                                 <EditText
+                                    android:id="@+id/number1"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
@@ -158,6 +159,7 @@
                                 android:orientation="vertical">
 
                                 <EditText
+                                    android:id="@+id/number2"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
@@ -184,6 +186,7 @@
                                 android:orientation="vertical">
 
                                 <EditText
+                                    android:id="@+id/number3"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
@@ -204,12 +207,14 @@
                             </LinearLayout>
 
                             <LinearLayout
+
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:orientation="vertical">
 
                                 <EditText
+                                    android:id="@+id/number4"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
@@ -236,6 +241,7 @@
                                 android:orientation="vertical">
 
                                 <EditText
+                                    android:id="@+id/number5"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
@@ -262,6 +268,7 @@
                                 android:orientation="vertical">
 
                                 <EditText
+                                    android:id="@+id/number6"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
@@ -288,6 +295,7 @@
                                 android:orientation="vertical">
 
                                 <EditText
+                                    android:id="@+id/number7"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
@@ -314,6 +322,7 @@
                                 android:orientation="vertical">
 
                                 <EditText
+                                    android:id="@+id/number8"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
@@ -340,6 +349,7 @@
                                 android:orientation="vertical">
 
                                 <EditText
+                                    android:id="@+id/number9"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
@@ -366,6 +376,7 @@
                                 android:orientation="vertical">
 
                                 <EditText
+                                    android:id="@+id/number10"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"

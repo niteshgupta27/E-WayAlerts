@@ -118,6 +118,7 @@
 
 
                             <TextView
+                                android:id="@+id/mobile_number_txt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/proxima_nova_alt_regular"
@@ -154,6 +155,7 @@
                                 android:orientation="vertical">
 
                                 <EditText
+                                    android:id="@+id/Pin1"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
@@ -182,6 +184,7 @@
                                 android:orientation="vertical">
 
                                 <EditText
+                                    android:id="@+id/Pin2"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
@@ -210,6 +213,7 @@
                                 android:orientation="vertical">
 
                                 <EditText
+                                    android:id="@+id/Pin3"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
@@ -236,6 +240,7 @@
                                 android:orientation="vertical">
 
                                 <EditText
+                                    android:id="@+id/Pin4"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"

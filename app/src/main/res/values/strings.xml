@@ -101,5 +101,9 @@
     <string name="fleet">Fleet</string>
     <string name="step2">Step2</string>
     <string name="add_staff">- Add Staff</string>
+    <string name="enter_valid_mobile_number">Please enter a valid mobile number</string>
+    <string name="enter_pin_number">Please enter pin number</string>
+    <string name="enter_valid_pin_number">Please enter a valid pin number</string>
+    <string name="mobile_number_already_registerd">The mobile has already been taken.</string>
 
 </resources>

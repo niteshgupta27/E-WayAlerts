@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class SetPinActivity extends AppCompatActivity implements View.OnClickListener {
 	
 	Context mContext;
-	
+	String UserID;
 	TextView Submit;
 	
 	@Override
@@ -27,6 +27,11 @@ public class SetPinActivity extends AppCompatActivity implements View.OnClickLis
 	}
 	
 	private void Init() {
+		
+		if (getIntent().getExtras()!=null){
+			UserID = getIntent().getStringExtra("UserID");
+		}
+		
 		Submit = findViewById(R.id.submit_Btn);
 	}
 	
