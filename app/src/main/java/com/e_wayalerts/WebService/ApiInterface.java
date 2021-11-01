@@ -35,6 +35,14 @@ public interface ApiInterface {// For POST request
 	Call<VarifyOTPModel> OTPVerify(@Field("user_id") String user_id,
 	                               @Field("otp") String otp);
 	
+	
+	@POST("user/pin-set")
+	@FormUrlEncoded
+	Call<VarifyOTPModel> ChangePin(@Field("user_id") String user_id,
+	                               @Field("pin") String otp);
+	
+	
+	
 	//user_email and user_pass are the post parameters and SignUpResponse is a POJO class which receives the response of this API
 	
 	

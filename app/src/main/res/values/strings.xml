@@ -105,5 +105,6 @@
     <string name="enter_pin_number">Please enter pin number</string>
     <string name="enter_valid_pin_number">Please enter a valid pin number</string>
     <string name="mobile_number_already_registerd">The mobile has already been taken.</string>
+    <string name="confirmpin_notequal">Please check confirm pin is not same as set pin</string>
 
 </resources>
