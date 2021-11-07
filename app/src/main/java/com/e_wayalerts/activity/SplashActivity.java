@@ -3,8 +3,12 @@ package com.e_wayalerts.activity;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Bundle;
+import android.text.TextUtils;
 
 import com.e_wayalerts.R;
+import com.e_wayalerts.Utility.Utility;
+import com.e_wayalerts.WebService.Constant;
+import com.e_wayalerts.activity.loginmodule.LanguageActivity;
 import com.e_wayalerts.activity.loginmodule.LoginActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,12 +16,15 @@ import androidx.appcompat.app.AppCompatActivity;
 public class SplashActivity extends AppCompatActivity {
 	
 	private long back_pressed;
+	String languageSelected;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
 		
+		languageSelected = Utility.getSharedPreferences(SplashActivity.this,
+				Constant.LanguageSelected);
 		changeScreen();
 	}
 	
@@ -27,9 +34,16 @@ public class SplashActivity extends AppCompatActivity {
 			@Override
 			public void run() {
 				
-				Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-				startActivity(intent);
-				finish();
+				if (TextUtils.isEmpty(languageSelected)){
+					Intent intent = new Intent(SplashActivity.this, LanguageActivity.class);
+					startActivity(intent);
+					finish();
+					
+				}else {
+					Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+					startActivity(intent);
+					finish();
+				}
 			}
 			
 		}, 3000);
