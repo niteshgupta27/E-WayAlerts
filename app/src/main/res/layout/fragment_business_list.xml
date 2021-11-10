@@ -4,14 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_storage_yards"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/cardview"
+        android:visibility="gone"/>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
-            android:orientation="vertical"
-            android:background="@drawable/bg_screen">
+            android:background="@drawable/bg_screen"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -46,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/proxima_nova_alt_bold"
-                    android:text=" - Add Business"
+                    android:text="@string/add_Business"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_20sdp" />
 
@@ -99,6 +111,10 @@
 
 
         </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
 
 
 </RelativeLayout>

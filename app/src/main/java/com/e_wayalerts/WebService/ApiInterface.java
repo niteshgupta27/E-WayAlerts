@@ -1,5 +1,6 @@
 package com.e_wayalerts.WebService;
 
+import com.e_wayalerts.activity.add_business.businessModal.BusinessListResponse;
 import com.e_wayalerts.activity.loginmodule.Model.LoginResponse;
 import com.e_wayalerts.activity.loginmodule.Model.ResetPinModel;
 import com.e_wayalerts.activity.loginmodule.Model.VarifyOTPModel;
@@ -40,8 +41,10 @@ public interface ApiInterface {// For POST request
 	@FormUrlEncoded
 	Call<VarifyOTPModel> ChangePin(@Field("user_id") String user_id,
 	                               @Field("pin") String otp);
-	
-	
+
+	@POST("business/list")
+	@FormUrlEncoded
+	Call<BusinessListResponse> BusinessList(@Field("user_id") String user_id);
 	
 	//user_email and user_pass are the post parameters and SignUpResponse is a POJO class which receives the response of this API
 	
