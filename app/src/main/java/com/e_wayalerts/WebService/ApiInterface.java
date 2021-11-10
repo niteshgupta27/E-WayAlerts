@@ -9,12 +9,12 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public interface ApiInterface {// For POST request
 	
 
-	
 	@POST("user/login")//your api link
 	@FormUrlEncoded
 	Call<LoginResponse>Login(@Field("mobile") String mobile,
@@ -41,19 +41,10 @@ public interface ApiInterface {// For POST request
 	@FormUrlEncoded
 	Call<VarifyOTPModel> ChangePin(@Field("user_id") String user_id,
 	                               @Field("pin") String otp);
-
+	
+	@Headers ("token:EHGdXaxNPtDrUTmyAdbGV5EHgbSBLFXv")
 	@POST("business/list")
 	@FormUrlEncoded
 	Call<BusinessListResponse> BusinessList(@Field("user_id") String user_id);
 	
-	//user_email and user_pass are the post parameters and SignUpResponse is a POJO class which receives the response of this API
-	
-	
-	// for GET request
-	
-	/*@GET ("/retrofit/getuser.php")
-		// API's endpoints
-	Call<List<UserListResponse>> getUsersList();
-	*/
-	// UserListResponse is POJO class to get the data from API, we use List<UserListResponse> in callback because the data in our API is starting from JSONArray
 }

@@ -52,6 +52,7 @@ public class BusinessListResponse {
     public void setData(List<Datum> data) {
         this.data = data;
     }
+    
     public class Datum {
 
         @SerializedName("fld_bid")
