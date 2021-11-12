@@ -36,11 +36,8 @@ public class BusinessAdaptor extends RecyclerView.Adapter<BusinessAdaptor.ViewHo
 		return new ViewHolder(contactView);
 	}
 	
-	// Involves populating data into the item through holder
 	@Override
 	public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int position) {
-		// Get the data model based on position
-		
 		final BusinessListResponse.Datum maincat = arMediIn.get(position);
 		
 		viewHolder.bname.setText(maincat.getFldBusinessName());
@@ -55,18 +52,13 @@ public class BusinessAdaptor extends RecyclerView.Adapter<BusinessAdaptor.ViewHo
 	
 	public class ViewHolder extends RecyclerView.ViewHolder {
 		
-		public ImageView ivSelect;
-		
 		TextView bname, bcity, bdate;
-		
-		LinearLayout rlMain, medicine_linear;
 		
 		public ViewHolder(View itemView) {
 			super(itemView);
 			bname = itemView.findViewById(R.id.bname);
 			bcity = itemView.findViewById(R.id.bcity);
 			bdate = itemView.findViewById(R.id.bdate);
-			//medicine_linear = itemView.findViewById(R.id.medicine_linear);
 		}
 	}
 }
