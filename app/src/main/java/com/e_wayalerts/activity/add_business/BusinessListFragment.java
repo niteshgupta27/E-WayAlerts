@@ -59,7 +59,7 @@ public class BusinessListFragment extends Fragment {
 
     }
     private void BusinessList() {
-        String userid= Utility.getSharedPreferences(mContext,Constant.Usertoken);
+        String userid= Utility.getSharedPreferences(mContext,Constant.User_id);
         Call<BusinessListResponse> call = apiInterface.BusinessList(userid);
         call.enqueue(new Callback<BusinessListResponse>() {
             @Override
