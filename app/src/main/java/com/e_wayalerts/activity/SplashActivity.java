@@ -1,5 +1,6 @@
 package com.e_wayalerts.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Bundle;
@@ -17,12 +18,13 @@ public class SplashActivity extends AppCompatActivity {
 	
 	private long back_pressed;
 	String languageSelected;
-	
+	Context mContext;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
-		
+		mContext =  this;
 		languageSelected = Utility.getSharedPreferences(SplashActivity.this,
 				Constant.LanguageSelected);
 		changeScreen();
@@ -33,13 +35,19 @@ public class SplashActivity extends AppCompatActivity {
 			
 			@Override
 			public void run() {
-				
+				String userid= Utility.getSharedPreferences(mContext,Constant.User_id);
 				if (TextUtils.isEmpty(languageSelected)){
 					Intent intent = new Intent(SplashActivity.this, LanguageActivity.class);
 					startActivity(intent);
 					finish();
 					
-				}else {
+				}
+				else  if (!TextUtils.isEmpty(userid)){
+					Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+					startActivity(intent);
+					finish();
+				}
+				else {
 					Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
 					startActivity(intent);
 					finish();

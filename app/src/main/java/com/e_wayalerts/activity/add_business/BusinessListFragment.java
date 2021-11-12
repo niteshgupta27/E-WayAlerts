@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ import com.e_wayalerts.activity.add_business.businessModal.BusinessListResponse;
 import com.e_wayalerts.activity.loginmodule.LoginActivity;
 import com.e_wayalerts.activity.loginmodule.Model.LoginResponse;
 import com.e_wayalerts.adaptor.BusinessAdaptor;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -39,6 +41,8 @@ public class BusinessListFragment extends Fragment {
     RecyclerView mListView;
     CardView cardview;
     BusinessAdaptor adaptor;
+    FloatingActionButton mImgAddNew;
+    LinearLayout Addbutton;
     public BusinessListFragment() {
         // Required empty public constructor
     }
@@ -53,7 +57,28 @@ public class BusinessListFragment extends Fragment {
         cardview = view.findViewById(R.id.cardview);
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
         mContext = getContext();
+        mImgAddNew = view.findViewById(R.id.mImgAddNew);
+        Addbutton = view.findViewById(R.id.ll_continue);
+        mImgAddNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AddBusinesskFragment.class);
+                intent.putExtra("isUpdate","0");
+
+                startActivity(intent);
+            }
+        });
+        Addbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AddBusinesskFragment.class);
+                intent.putExtra("isUpdate","0");
+
+                startActivity(intent);
+            }
+        });
         BusinessList();
+
         // Inflate the layout for this fragment
         return view;
 

@@ -155,17 +155,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 					if (String.valueOf(response.body().getStatus()).equals("200")) {
 						
 						Utility.setSharedPreference(mContext,
-								String.valueOf(response.body().getData().getFldUid()),
-								Constant.User_id);
+								Constant.User_id,String.valueOf(response.body().getData().getFldUid()));
 						
 						Utility.setSharedPreference(mContext,
-								response.body().getData().getFldFname(), Constant.UserFirstName);
+								 Constant.UserFirstName,response.body().getData().getFldFname());
 						Utility.setSharedPreference(mContext,
-								response.body().getData().getFldLname(), Constant.UserLastName);
+								 Constant.UserLastName,response.body().getData().getFldLname());
 						Utility.setSharedPreference(mContext,
-								response.body().getData().getFldMobile(), Constant.UserMobile);
+								 Constant.UserMobile,response.body().getData().getFldMobile());
 						Utility.setSharedPreference(mContext,
-								"EHGdXaxNPtDrUTmyAdbGV5EHgbSBLFXv", Constant.Usertoken);
+								 Constant.Usertoken,"EHGdXaxNPtDrUTmyAdbGV5EHgbSBLFXv");
 						Utility.ShowToast(LoginActivity.this, response.body().getMessage());
 				
 				              Intent intent = new Intent(mContext, MainActivity.class);

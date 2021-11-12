@@ -116,5 +116,6 @@
     <string name="tamil">TAMIL</string>
     <string name="gujrati">GUJRATI</string>
     <string name="punjabi">PUNJABI</string>
+    <string name="add_Business">-Add Business</string>
 
 </resources>
