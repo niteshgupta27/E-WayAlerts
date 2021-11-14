@@ -97,13 +97,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 					Utility.ShowToast(SignupActivity.this,
 							getString(R.string.enter_valid_mobile_number));
 					
-				} else if (TextUtils.isEmpty(PinNumber)) {
-					Utility.ShowToast(SignupActivity.this, getString(R.string.enter_pin_number));
-				} else if (PinNumber.length() != 4) {
-					Utility.ShowToast(SignupActivity.this,
-							getString(R.string.enter_valid_pin_number));
-					
-				} else {
+				}  else {
 					Signup(FirstName_ext.getText().toString().trim(),
 							LastName_ext.getText().toString().trim(),
 							MobileNumber_ext.getText().toString().trim(),
@@ -117,7 +111,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 	}
 	
 	private void Signup(String firstname, String lastname, String mobilenumber, String pinNumber) {
-		Call<LoginResponse> call = apiInterface.Signup(firstname,lastname,mobilenumber, pinNumber);
+		Call<LoginResponse> call = apiInterface.Signup(firstname,lastname,mobilenumber);
 		call.enqueue(new Callback<LoginResponse>() {
 			@Override
 			public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
@@ -128,7 +122,11 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 					if (String.valueOf(response.body().getStatus()).equals("200")) {
 						
 						Utility.ShowToast(SignupActivity.this, response.body().getMessage());
-						onBackPressed();
+						
+						Intent intent = new Intent(mContext,OTPVerificationActivity.class);
+						startActivity(intent);
+						finish();
+						
 					}else {
 						Utility.ShowToast(mContext,getString(R.string.mobile_number_already_registerd));
 					}

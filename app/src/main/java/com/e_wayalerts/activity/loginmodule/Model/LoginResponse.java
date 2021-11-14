@@ -67,6 +67,18 @@ public class LoginResponse {
 		@Expose
 		private String fldMobile;
 		
+		@SerializedName("token")
+		@Expose
+		private String UserToken;
+		
+		public String getUserToken() {
+			return UserToken;
+		}
+		
+		public void setUserToken(String userToken) {
+			UserToken = userToken;
+		}
+		
 		public Integer getFldUid() {
 			return fldUid;
 		}

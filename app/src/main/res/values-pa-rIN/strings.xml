@@ -117,5 +117,13 @@
     <string name="tamil">TAMIL</string>
     <string name="gujrati">GUJRATI</string>
     <string name="punjabi">PUNJABI</string>
-
+    <string name="enter_valid_email_address">Please enter valid email address</string>
+    <string name="enter_email_Address">Please enter email address</string>
+    <string name="please_enter_pincode">Please enter pincode</string>
+    <string name="please_enter_city">Please enter city name</string>
+    <string name="please_enter_locality">Please enter Please enter near by locality</string>
+    <string name="please_enter_address">Please enter Address</string>
+    <string name="enter_gst_number">Please enter Gst number</string>
+    <string name="enter_business_name">Please enter business name</string>
+    <string name="please_enter_state">Please enter State</string>
 </resources>

@@ -164,7 +164,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 						Utility.setSharedPreference(mContext,
 								 Constant.UserMobile,response.body().getData().getFldMobile());
 						Utility.setSharedPreference(mContext,
-								 Constant.Usertoken,"EHGdXaxNPtDrUTmyAdbGV5EHgbSBLFXv");
+								 Constant.Usertoken,response.body().getData().getUserToken());
 						Utility.ShowToast(LoginActivity.this, response.body().getMessage());
 				
 				              Intent intent = new Intent(mContext, MainActivity.class);

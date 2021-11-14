@@ -26,6 +26,7 @@ import com.e_wayalerts.activity.add_business.businessModal.BusinessListResponse;
 import com.e_wayalerts.activity.loginmodule.LoginActivity;
 import com.e_wayalerts.activity.loginmodule.Model.LoginResponse;
 import com.e_wayalerts.adaptor.BusinessAdaptor;
+import com.e_wayalerts.fragment.SettingFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -43,9 +44,7 @@ public class BusinessListFragment extends Fragment {
     BusinessAdaptor adaptor;
     FloatingActionButton mImgAddNew;
     LinearLayout Addbutton;
-    public BusinessListFragment() {
-        // Required empty public constructor
-    }
+   
 
 
     @Override
@@ -62,19 +61,20 @@ public class BusinessListFragment extends Fragment {
         mImgAddNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), AddBusinesskFragment.class);
-                intent.putExtra("isUpdate","0");
-
-                startActivity(intent);
+                Utility.loadFragment(requireActivity(), new AddBusinesskFragment(),
+                        true,
+                        null);
             }
         });
         Addbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), AddBusinesskFragment.class);
-                intent.putExtra("isUpdate","0");
-
-                startActivity(intent);
+               /* Utility.loadFragment(getActivity(),
+                        AddBusinesskFragment.newInstance(groupChannel.getUrl(), true), true,
+                        ConversationFragment.class.getSimpleName());*/
+                Utility.loadFragment(requireActivity(), new AddBusinesskFragment(),
+                        true,
+                        null);
             }
         });
         BusinessList();
@@ -89,7 +89,7 @@ public class BusinessListFragment extends Fragment {
         call.enqueue(new Callback<BusinessListResponse>() {
             @Override
             public void onResponse(Call<BusinessListResponse> call, Response<BusinessListResponse> response) {
-                Log.e("TAG", "response 33: " + response.body().toString());
+                Log.e("TAG", "response 33: " + String.valueOf(response.body().getStatus()));
 
                 if (response.isSuccessful()) {
 
@@ -107,10 +107,6 @@ public class BusinessListFragment extends Fragment {
 
 
                     }
-					/*response.body(); // have your all data
-					int id =response.body().getStatus();
-					String userName = response.body().getUsername();
-					String level = response.body().getLevel();*/
                 } else {
                     Log.e("Error===>", response.errorBody().toString());
                 }
