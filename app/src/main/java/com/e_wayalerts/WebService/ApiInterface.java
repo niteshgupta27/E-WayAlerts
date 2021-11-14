@@ -1,6 +1,7 @@
 package com.e_wayalerts.WebService;
 
 import com.e_wayalerts.activity.add_business.businessModal.BusinessListResponse;
+import com.e_wayalerts.activity.dropdown.SateResponce;
 import com.e_wayalerts.activity.loginmodule.Model.LoginResponse;
 import com.e_wayalerts.activity.loginmodule.Model.ResetPinModel;
 import com.e_wayalerts.activity.loginmodule.Model.VarifyOTPModel;
@@ -45,8 +46,11 @@ public interface ApiInterface {// For POST request
 	@POST ("business/list")
 	@FormUrlEncoded
 	Call<BusinessListResponse> BusinessList(@Field ("user_id") String user_id);
-	
-	
+
+	@POST ("master/get-states")
+	@FormUrlEncoded
+	Call<SateResponce> StateList(@Field ("user_id") String user_id);
+
 	@POST ("business/add")
 	@FormUrlEncoded
 	Call<VarifyOTPModel> AddBusiness(@Field ("user_id") String user_id,

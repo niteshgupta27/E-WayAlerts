@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -25,8 +26,13 @@ import com.e_wayalerts.WebService.ApiClient;
 import com.e_wayalerts.WebService.ApiInterface;
 import com.e_wayalerts.WebService.Constant;
 import com.e_wayalerts.activity.add_business.businessModal.BusinessListResponse;
+import com.e_wayalerts.activity.dropdown.DropDownAdapter;
+import com.e_wayalerts.activity.dropdown.DropDownModal;
+import com.e_wayalerts.activity.dropdown.SateResponce;
 import com.e_wayalerts.activity.loginmodule.Model.VarifyOTPModel;
 import com.e_wayalerts.adaptor.BusinessAdaptor;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -39,7 +45,11 @@ public class AddBusinesskFragment extends Fragment implements View.OnClickListen
     
     RelativeLayout Submitbtn;
     ApiInterface apiInterface;
-   
+    Spinner mSpinnerState;
+    public  ArrayList<DropDownModal> arrayState = new ArrayList<DropDownModal>();
+    String selectedStateID = "0";
+    public   ArrayAdapter AdaptorState ;
+    DropDownAdapter customAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -64,14 +74,31 @@ public class AddBusinesskFragment extends Fragment implements View.OnClickListen
         extaddres2 = view.findViewById(R.id.address2);
         extcity = view.findViewById(R.id.bcity);
         extpincode = view.findViewById(R.id.pincode);
-        extstate = view.findViewById(R.id.state);
+        mSpinnerState = view.findViewById(R.id.mSpinnerState);
         extownerfirstname = view.findViewById(R.id.firstname);
         extownerlasstname = view.findViewById(R.id.lastname);
         extmobile = view.findViewById(R.id.mobile);
         extemail = view.findViewById(R.id.email);
         Submitbtn = view.findViewById(R.id.mLayoutSubmit);
-    
+        StateList();
         Submitbtn.setOnClickListener(this);
+        customAdapter=new DropDownAdapter(getContext(),arrayState);
+        mSpinnerState.setAdapter(customAdapter);
+        mSpinnerState.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                selectedStateID = arrayState.get(i).getmStrId();
+
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
     @Override
     public void onClick(View view) {
@@ -88,7 +115,7 @@ public class AddBusinesskFragment extends Fragment implements View.OnClickListen
                     Utility.ShowToast(mContext, getString(R.string.please_enter_city));
                 }else  if (extpincode.getText().toString().isEmpty()){
                     Utility.ShowToast(mContext, getString(R.string.please_enter_pincode));
-                }else  if (extstate.getText().toString().isEmpty()){
+                }else  if (selectedStateID.equals("0")){
                     Utility.ShowToast(mContext, getString(R.string.please_enter_state));
                 }else  if (extownerfirstname.getText().toString().isEmpty()){
                     Utility.ShowToast(mContext, getString(R.string.please_enter_first_name));
@@ -105,7 +132,7 @@ public class AddBusinesskFragment extends Fragment implements View.OnClickListen
                             extaddres2.getText().toString().trim(),
                             extcity.getText().toString().trim(),
                             extpincode.getText().toString().trim(),
-                            extstate.getText().toString().trim(),
+                            selectedStateID,
                             extownerfirstname.getText().toString().trim(),
                             extownerlasstname.getText().toString().trim(),
                             extmobile.getText().toString().trim(),
@@ -147,5 +174,42 @@ public class AddBusinesskFragment extends Fragment implements View.OnClickListen
             }
         });
     }
-    
+    private void StateList() {
+        String userid= Utility.getSharedPreferences(mContext,Constant.User_id);
+        Call<SateResponce> call = apiInterface.StateList(userid);
+        call.enqueue(new Callback<SateResponce>() {
+            @Override
+            public void onResponse(Call<SateResponce> call, Response<SateResponce> response) {
+                Log.e("TAG", "response 33: " + String.valueOf(response.body().getStatus()));
+
+                if (response.isSuccessful()) {
+
+                    if (String.valueOf(response.body().getStatus()).equals("200")) {
+
+                        for (int j = 0; j<response.body().getData().size();j++) {
+if(j== 0){
+    selectedStateID = response.body().getData().get(j).getFldStateId().toString();
+}
+                            DropDownModal ra = new DropDownModal();
+                            ra.setmStrId(response.body().getData().get(j).getFldStateId().toString());
+                            ra.setmStrValue(response.body().getData().get(j).getFldStateName());
+                            arrayState.add(ra);
+                        }
+customAdapter.notifyDataSetChanged();
+                    }
+                } else {
+                    Log.e("Error===>", response.errorBody().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SateResponce> call, Throwable t) {
+                Toast.makeText(mContext, t.toString(),
+                        Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
+
+            }
+        });
+
+
+    }
 }
