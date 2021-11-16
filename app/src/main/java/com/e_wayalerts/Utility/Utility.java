@@ -140,11 +140,16 @@ public class Utility {
 	public static String getToken() {
 		
 		String Token = MainActivity.token;
-		Log.e("Token",Token);
-		if (!Token.isEmpty()) {
-			return Token;
+	
+		if (Token!=null) {
+			if (!Token.isEmpty()) {
+				return Token;
+			} else {
+				Token = "";
+				return Token;
+			}
 		}else {
-			Token ="";
+			Token = "";
 			return Token;
 		}
 	}

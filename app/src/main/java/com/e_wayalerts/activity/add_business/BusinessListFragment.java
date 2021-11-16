@@ -79,6 +79,7 @@ public class BusinessListFragment extends Fragment {
                 Utility.loadFragment(requireActivity(), new AddBusinesskFragment(),
                         true,
                         null);
+                
             }
         });
         BusinessList();

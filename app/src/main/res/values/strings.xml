@@ -126,4 +126,13 @@
     <string name="enter_gst_number">Please enter Gst number</string>
     <string name="enter_business_name">Please enter business name</string>
     <string name="please_enter_state">Please enter State</string>
+    <string name="make_payment">Make Payment</string>
+    <string name="total">Total:</string>
+    <string name="gst_18">GST 18%:</string>
+    <string name="sub_total">Sub Total:</string>
+    <string name="affiliate_code">Affiliate Code:</string>
+    <string name="subscription_amount">Subscription Amount:</string>
+    <string name="service_end_date">Service End Date:</string>
+    <string name="service_start_date">Service Start Date:</string>
+    <string name="checkout">Checkout</string>
 </resources>
