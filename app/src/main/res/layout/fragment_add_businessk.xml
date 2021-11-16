@@ -43,9 +43,10 @@
                     android:layout_marginStart="@dimen/_5sdp"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginBottom="@dimen/_5sdp"
+                    android:fontFamily="@font/proxima_nova_alt_regular"
                     android:text="@string/AddBusinessheadline"
-                    android:textSize="@dimen/_10sdp"
-                    android:fontFamily="@font/proxima_nova_alt_regular"/>
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10sdp" />
 
 
             </RelativeLayout>

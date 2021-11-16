@@ -25,6 +25,7 @@ import com.e_wayalerts.WebService.ApiClient;
 import com.e_wayalerts.WebService.ApiInterface;
 import com.e_wayalerts.WebService.Constant;
 import com.e_wayalerts.activity.add_business.businessModal.BusinessListResponse;
+import com.e_wayalerts.activity.checkout.CheckoutFragment;
 import com.e_wayalerts.activity.loginmodule.Model.VarifyOTPModel;
 import com.e_wayalerts.adaptor.BusinessAdaptor;
 
@@ -132,7 +133,9 @@ public class AddBusinesskFragment extends Fragment implements View.OnClickListen
                 if (response.isSuccessful()) {
                 
                     if (String.valueOf(response.body().getStatus()).equals("200")) {
-                        getActivity().onBackPressed();
+                        Utility.loadFragment(requireActivity(), new CheckoutFragment(),
+                                false,
+                                null);
                     }
                 } else {
                     Log.e("Error===>", response.errorBody().toString());

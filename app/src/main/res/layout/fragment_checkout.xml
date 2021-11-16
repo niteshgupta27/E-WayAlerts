@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_screen"
+    tools:context=".activity.checkout.CheckoutFragment">
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:layout_marginBottom="@dimen/_20sdp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/mTxer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/proxima_nova_alt_bold"
+            android:text="Checkout"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_18sdp" />
+
+        <View
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/blue"
+            android:layout_marginStart="5dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mTxer"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:text="@string/AddBusinessheadline"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/proxima_nova_alt_regular"/>
+
+
+
+    </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
