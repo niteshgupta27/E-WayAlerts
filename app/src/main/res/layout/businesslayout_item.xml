@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     android:orientation="vertical">
 
     <LinearLayout
@@ -27,9 +28,10 @@
                 android:textStyle="bold" />
 
             <Switch
+                android:id="@+id/bactive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"/>
+                android:layout_alignParentEnd="true" />
 
         </RelativeLayout>
 
@@ -129,12 +131,14 @@
         </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/renewel"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_alignParentEnd="true">
 
                 <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Renew Now"

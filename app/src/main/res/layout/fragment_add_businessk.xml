@@ -147,20 +147,31 @@
             </LinearLayout>
 
 
-                <EditText
-                    android:id="@+id/state"
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mTextete"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/border_rectangle_shap">
+
+                <Spinner
+                    android:id="@+id/mSpinnerState"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:background="@drawable/border_rectangle_shap"
-                    android:fontFamily="@font/proxima_nova_alt_regular"
-                    android:hint="@string/State"
-                    android:inputType="textPersonName"
-                    android:padding="@dimen/_10sdp"
-                    android:textColor="@color/black"
-                    android:imeOptions="actionNext"
-                    android:textSize="@dimen/_12sdp" />
+                    android:background="#00000000"
+                    android:paddingTop="@dimen/_2ssp"
+                    android:paddingBottom="@dimen/_2sdp" />
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/ic_keyboard_arrow" />
+
+            </RelativeLayout>
 
 
             <TextView

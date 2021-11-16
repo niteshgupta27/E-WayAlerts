@@ -14,6 +14,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.e_wayalerts.Utility.Utility.getToken;
 
+import android.util.Log;
+
 
 public class ApiClient {
 	
@@ -29,6 +31,8 @@ public class ApiClient {
 			@Override
 			public Response intercept(Chain chain) throws IOException {
 				Request.Builder ongoing = chain.request().newBuilder();
+				Log.e("TAG", "token 33: " + String.valueOf(getToken()));
+
 				ongoing.addHeader("token", getToken());
 				return chain.proceed(ongoing.build());
 			}
