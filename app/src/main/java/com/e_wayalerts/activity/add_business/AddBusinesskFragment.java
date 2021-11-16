@@ -180,7 +180,7 @@ public class AddBusinesskFragment extends Fragment implements View.OnClickListen
         call.enqueue(new Callback<SateResponce>() {
             @Override
             public void onResponse(Call<SateResponce> call, Response<SateResponce> response) {
-                Log.e("TAG", "response 33: " + String.valueOf(response.body().getStatus()));
+                Log.e("TAG", "response satae 33: " + String.valueOf(response.body().getStatus()));
 
                 if (response.isSuccessful()) {
 

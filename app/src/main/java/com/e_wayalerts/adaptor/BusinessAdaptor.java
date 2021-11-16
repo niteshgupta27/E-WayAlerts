@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.e_wayalerts.R;
@@ -46,7 +47,16 @@ public class BusinessAdaptor extends RecyclerView.Adapter<BusinessAdaptor.ViewHo
 		viewHolder.bname.setText(maincat.getFldBusinessName());
 		viewHolder.bcity.setText(maincat.getFldCity());
 		viewHolder.bdate.setText(maincat.getFldEdate());
-		
+		if(maincat.getFldisactive() ==1){
+			viewHolder.bActive.setChecked(true);
+			viewHolder.renewel.setVisibility(View.GONE);
+		}
+		else {
+			viewHolder.bActive.setChecked(false);
+			viewHolder.renewel.setVisibility(View.VISIBLE);
+
+		}
+
 		
 	}
 	
@@ -58,12 +68,15 @@ public class BusinessAdaptor extends RecyclerView.Adapter<BusinessAdaptor.ViewHo
 	public class ViewHolder extends RecyclerView.ViewHolder {
 		
 		TextView bname, bcity, bdate;
-		
+		Switch bActive;
+		LinearLayout renewel;
 		public ViewHolder(View itemView) {
 			super(itemView);
 			bname = itemView.findViewById(R.id.bname);
 			bcity = itemView.findViewById(R.id.bcity);
 			bdate = itemView.findViewById(R.id.bdate);
+			bActive = itemView.findViewById(R.id.bactive);
+			renewel= itemView.findViewById(R.id.renewel);
 		}
 	}
 }

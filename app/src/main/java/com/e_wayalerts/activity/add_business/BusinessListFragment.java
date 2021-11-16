@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
@@ -58,6 +59,9 @@ public class BusinessListFragment extends Fragment {
         mContext = getContext();
         mImgAddNew = view.findViewById(R.id.mImgAddNew);
         Addbutton = view.findViewById(R.id.ll_continue);
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mListView.setLayoutManager(linearLayoutManager);
         mImgAddNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,6 +103,7 @@ public class BusinessListFragment extends Fragment {
                             mListView.setVisibility(View.VISIBLE);
                             adaptor = new BusinessAdaptor(mContext, (ArrayList<BusinessListResponse.Datum>) response.body().getData());
                             mListView.setAdapter(adaptor);
+                            adaptor.notifyDataSetChanged();
                         }
                         else{
                             cardview.setVisibility(View.VISIBLE);
