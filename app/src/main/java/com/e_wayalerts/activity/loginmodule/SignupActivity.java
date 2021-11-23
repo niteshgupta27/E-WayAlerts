@@ -80,8 +80,6 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 				break;
 			
 			case R.id.createAccount:
-				String PinNumber =
-						Pin1.getText().toString().trim() + Pin2.getText().toString().trim() + Pin3.getText().toString().trim() + Pin4.getText().toString().trim();
 				
 				if (FirstName_ext.getText().toString().isEmpty()) {
 					Utility.ShowToast(SignupActivity.this,
@@ -100,8 +98,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 				}  else {
 					Signup(FirstName_ext.getText().toString().trim(),
 							LastName_ext.getText().toString().trim(),
-							MobileNumber_ext.getText().toString().trim(),
-							PinNumber);
+							MobileNumber_ext.getText().toString().trim());
 				}
 				
 				
@@ -110,7 +107,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 		
 	}
 	
-	private void Signup(String firstname, String lastname, String mobilenumber, String pinNumber) {
+	private void Signup(String firstname, String lastname, String mobilenumber) {
 		Call<LoginResponse> call = apiInterface.Signup(firstname,lastname,mobilenumber);
 		call.enqueue(new Callback<LoginResponse>() {
 			@Override
@@ -124,6 +121,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 						Utility.ShowToast(SignupActivity.this, response.body().getMessage());
 						
 						Intent intent = new Intent(mContext,OTPVerificationActivity.class);
+						intent.putExtra("MobileNumber",mobilenumber);
 						startActivity(intent);
 						finish();
 						

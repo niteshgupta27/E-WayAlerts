@@ -80,7 +80,7 @@
                 android:textSize="@dimen/_12sdp" />
 
             <LinearLayout
-                android:id="@+id/ll_continue"
+                android:id="@+id/addStaffBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/background_rounded_but"

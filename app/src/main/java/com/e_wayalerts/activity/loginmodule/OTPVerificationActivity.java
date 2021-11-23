@@ -65,7 +65,7 @@ public class OTPVerificationActivity extends AppCompatActivity implements View.O
 			MobileNumber = getIntent().getStringExtra("MobileNumber");
 			UserID = getIntent().getStringExtra("UserID");
 			MobileNumberTxt.setText(MobileNumber);
-			Log.e("UserID",UserID);
+			
 		}
 	}
 	
