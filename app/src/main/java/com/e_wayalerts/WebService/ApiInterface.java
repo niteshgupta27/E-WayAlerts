@@ -45,7 +45,7 @@ public interface ApiInterface {// For POST request
 	
 	@POST ("business/list")
 	@FormUrlEncoded
-	Call<BusinessListResponse> BusinessList(@Field ("user_id") String user_id);
+	Call<BusinessListResponse> BusinessList(@Field ("user_id") String user_id,@Field("status") String status);
 
 	@POST ("master/get-states")
 	@FormUrlEncoded
