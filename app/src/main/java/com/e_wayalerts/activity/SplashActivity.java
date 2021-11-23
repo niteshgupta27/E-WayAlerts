@@ -14,6 +14,7 @@ import com.e_wayalerts.activity.loginmodule.LoginActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 public class SplashActivity extends AppCompatActivity {
 	
 	String languageSelected;
@@ -34,7 +35,6 @@ public class SplashActivity extends AppCompatActivity {
 	
 	private void changeScreen() {
 		new Handler().postDelayed(new Runnable() {
-			
 			@Override
 			public void run() {
 				String userid = Utility.getSharedPreferences(mContext, Constant.User_id);
@@ -67,9 +67,9 @@ public class SplashActivity extends AppCompatActivity {
 			super.onBackPressed();
 			finish();
 		} else {
-			
 			//      Support.ShowToast(this, getResources().getString(R.string.press_Again));
 		}
 		back_pressed = System.currentTimeMillis();
 	}
+	
 }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
@@ -26,6 +27,7 @@ import com.e_wayalerts.activity.add_business.businessModal.BusinessListResponse;
 import com.e_wayalerts.activity.loginmodule.LoginActivity;
 import com.e_wayalerts.activity.loginmodule.Model.LoginResponse;
 import com.e_wayalerts.adaptor.BusinessAdaptor;
+import com.e_wayalerts.fragment.SettingFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -43,9 +45,7 @@ public class BusinessListFragment extends Fragment {
     BusinessAdaptor adaptor;
     FloatingActionButton mImgAddNew;
     LinearLayout Addbutton;
-    public BusinessListFragment() {
-        // Required empty public constructor
-    }
+   
 
 
     @Override
@@ -59,22 +59,27 @@ public class BusinessListFragment extends Fragment {
         mContext = getContext();
         mImgAddNew = view.findViewById(R.id.mImgAddNew);
         Addbutton = view.findViewById(R.id.ll_continue);
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mListView.setLayoutManager(linearLayoutManager);
         mImgAddNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), AddBusinesskFragment.class);
-                intent.putExtra("isUpdate","0");
-
-                startActivity(intent);
+                Utility.loadFragment(requireActivity(), new AddBusinesskFragment(),
+                        true,
+                        null);
             }
         });
         Addbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), AddBusinesskFragment.class);
-                intent.putExtra("isUpdate","0");
-
-                startActivity(intent);
+               /* Utility.loadFragment(getActivity(),
+                        AddBusinesskFragment.newInstance(groupChannel.getUrl(), true), true,
+                        ConversationFragment.class.getSimpleName());*/
+                Utility.loadFragment(requireActivity(), new AddBusinesskFragment(),
+                        true,
+                        null);
+                
             }
         });
         BusinessList();
@@ -85,11 +90,11 @@ public class BusinessListFragment extends Fragment {
     }
     private void BusinessList() {
         String userid= Utility.getSharedPreferences(mContext,Constant.User_id);
-        Call<BusinessListResponse> call = apiInterface.BusinessList(userid);
+        Call<BusinessListResponse> call = apiInterface.BusinessList(userid,"");
         call.enqueue(new Callback<BusinessListResponse>() {
             @Override
             public void onResponse(Call<BusinessListResponse> call, Response<BusinessListResponse> response) {
-                Log.e("TAG", "response 33: " + response.body().toString());
+                Log.e("TAG", "response 33: " + String.valueOf(response.body().getStatus()));
 
                 if (response.isSuccessful()) {
 
@@ -99,6 +104,7 @@ public class BusinessListFragment extends Fragment {
                             mListView.setVisibility(View.VISIBLE);
                             adaptor = new BusinessAdaptor(mContext, (ArrayList<BusinessListResponse.Datum>) response.body().getData());
                             mListView.setAdapter(adaptor);
+                            adaptor.notifyDataSetChanged();
                         }
                         else{
                             cardview.setVisibility(View.VISIBLE);
@@ -107,10 +113,6 @@ public class BusinessListFragment extends Fragment {
 
 
                     }
-					/*response.body(); // have your all data
-					int id =response.body().getStatus();
-					String userName = response.body().getUsername();
-					String level = response.body().getLevel();*/
                 } else {
                     Log.e("Error===>", response.errorBody().toString());
                 }

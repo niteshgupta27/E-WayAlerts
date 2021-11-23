@@ -40,6 +40,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.e_wayalerts.R;
+import com.e_wayalerts.WebService.Constant;
+import com.e_wayalerts.activity.MainActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -63,6 +65,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.exifinterface.media.ExifInterface;
 import androidx.fragment.app.Fragment;
@@ -134,6 +137,22 @@ public class Utility {
 		editor.commit();
 	}
 	
+	public static String getToken() {
+		
+		String Token = MainActivity.token;
+	
+		if (Token!=null) {
+			if (!Token.isEmpty()) {
+				return Token;
+			} else {
+				Token = "";
+				return Token;
+			}
+		}else {
+			Token = "";
+			return Token;
+		}
+	}
 	
 	
 	public static void clearSharedPreference(Context context) {
@@ -788,18 +807,7 @@ public class Utility {
 		return sdf.format(c.getTime());
 	}
 	
-//	public static void SetAvailableDate(Context context, List<String> arrayList) {
-//		SharedPreferences sharedPreferences =
-//				context.getSharedPreferences(PREFERENCE, Context.MODE_PRIVATE);
-//		SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
-//		Gson gson = new Gson();
-//
-//		String json = gson.toJson(arrayList);
-//
-//		prefsEditor.putString("availableDate", json);
-//		prefsEditor.apply();
-//	}
-	
+
 	public static byte[] getFileDataFromDraw(Context context, int id) {
 		Drawable drawable = ContextCompat.getDrawable(context, id);
 		assert drawable != null;
@@ -816,18 +824,18 @@ public class Utility {
 		return byteArrayOutputStream.toByteArray();
 	}
 	
-//	public static void loadFragment(FragmentActivity activty, Fragment fragment, boolean backstack,
-//	                                String tagName) {
-//		// load fragment0.....
-//
-//		FragmentTransaction transaction = activty.getSupportFragmentManager().beginTransaction();
-//		transaction.replace(R.id.fragment_container, fragment);
-//
-//		if (backstack) {
-//			transaction.addToBackStack(tagName);
-//		}
-//		transaction.commit();
-//	}
+	public static void loadFragment(FragmentActivity activty, Fragment fragment, boolean backstack,
+	                                String tagName) {
+		// load fragment0.....
+		
+		FragmentTransaction transaction = activty.getSupportFragmentManager().beginTransaction();
+		transaction.replace(R.id.frameLayout, fragment);
+		
+		if (backstack) {
+			transaction.addToBackStack(tagName);
+		}
+		transaction.commit();
+	}
 	
 	public static void removeAllFragment(FragmentActivity activty, String tagName) {
 		FragmentManager fm = activty.getSupportFragmentManager();
@@ -840,6 +848,9 @@ public class Utility {
 			
 		}
 	}
+	
+	
+
 	
 	public static void showSnackBar(View view, String message) {
 		Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show();

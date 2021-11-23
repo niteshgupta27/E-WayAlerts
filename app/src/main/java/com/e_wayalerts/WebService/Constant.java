@@ -10,4 +10,5 @@ public class Constant {
 	public static final String UserMobile = "UserMobile";
 	public static final String  LanguageSelected = "LanguageSelected";
 	public static final String Usertoken = "Usertoken";
+	
 }

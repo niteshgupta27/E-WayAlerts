@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.e_wayalerts.Utility.Utility;
+import com.e_wayalerts.WebService.Constant;
 import com.e_wayalerts.activity.loginmodule.LoginActivity;
 import com.e_wayalerts.widget.MenuItem;
 import com.e_wayalerts.widget.SNavigationDrawer;
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     Class fragmentClass;
     public static Fragment fragment;
     Context mContext;
+    public static  String token = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
         mContext =  this;
+        token = Utility.getSharedPreferences(this, Constant.Usertoken);
         sNavigationDrawer = findViewById(R.id.navigationDrawer);
         List<MenuItem> menuItems = new ArrayList<>();
         menuItems.add(new MenuItem(getResources().getString(R.string.menu_dashboard),R.drawable.bg_building));

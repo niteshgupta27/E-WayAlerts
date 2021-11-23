@@ -73,6 +73,16 @@ public class BusinessListResponse {
         @SerializedName("fld_role_name")
         @Expose
         private Object fldRoleName;
+        @SerializedName("fld_is_active")
+        @Expose
+        private Integer fld_is_active;
+        public Integer getFldisactive() {
+            return fld_is_active;
+        }
+
+        public void setFldisactive(Integer fld_is_active) {
+            this.fld_is_active = fld_is_active;
+        }
 
         public Integer getFldBid() {
             return fldBid;

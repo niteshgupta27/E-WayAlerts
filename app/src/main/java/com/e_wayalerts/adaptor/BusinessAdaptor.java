@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.e_wayalerts.R;
@@ -27,13 +28,16 @@ public class BusinessAdaptor extends RecyclerView.Adapter<BusinessAdaptor.ViewHo
 		context = context_;
 	}
 	
-	@NonNull
+
 	@Override
-	public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-		Context context = parent.getContext();
-		LayoutInflater inflater = LayoutInflater.from(context);
-		View contactView = inflater.inflate(R.layout.businesslayout_item, parent, false);
-		return new ViewHolder(contactView);
+	public ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
+
+		View view = LayoutInflater.from(parent.getContext())
+				.inflate(R.layout.businesslayout_item, parent, false);
+
+		BusinessAdaptor.ViewHolder viewHolder =
+				new BusinessAdaptor.ViewHolder(view);
+		return viewHolder;
 	}
 	
 	@Override
@@ -41,7 +45,18 @@ public class BusinessAdaptor extends RecyclerView.Adapter<BusinessAdaptor.ViewHo
 		final BusinessListResponse.Datum maincat = arMediIn.get(position);
 		
 		viewHolder.bname.setText(maincat.getFldBusinessName());
-		
+		viewHolder.bcity.setText(maincat.getFldCity());
+		viewHolder.bdate.setText(maincat.getFldEdate());
+		if(maincat.getFldisactive() ==1){
+			viewHolder.bActive.setChecked(true);
+			viewHolder.renewel.setVisibility(View.GONE);
+		}
+		else {
+			viewHolder.bActive.setChecked(false);
+			viewHolder.renewel.setVisibility(View.VISIBLE);
+
+		}
+
 		
 	}
 	
@@ -53,12 +68,15 @@ public class BusinessAdaptor extends RecyclerView.Adapter<BusinessAdaptor.ViewHo
 	public class ViewHolder extends RecyclerView.ViewHolder {
 		
 		TextView bname, bcity, bdate;
-		
+		Switch bActive;
+		LinearLayout renewel;
 		public ViewHolder(View itemView) {
 			super(itemView);
 			bname = itemView.findViewById(R.id.bname);
 			bcity = itemView.findViewById(R.id.bcity);
 			bdate = itemView.findViewById(R.id.bdate);
+			bActive = itemView.findViewById(R.id.bactive);
+			renewel= itemView.findViewById(R.id.renewel);
 		}
 	}
 }
