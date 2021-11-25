@@ -1,6 +1,7 @@
 package com.e_wayalerts.WebService;
 
 import com.e_wayalerts.activity.add_business.businessModal.BusinessListResponse;
+import com.e_wayalerts.activity.add_staff.StaffModal.StaffRecponce;
 import com.e_wayalerts.activity.dropdown.SateResponce;
 import com.e_wayalerts.activity.loginmodule.Model.LoginResponse;
 import com.e_wayalerts.activity.loginmodule.Model.ResetPinModel;
@@ -65,7 +66,9 @@ public interface ApiInterface {// For POST request
 	                                 @Field ("owner_lname") String owner_lname,
 	                                 @Field ("owner_mobile") String owner_mobile,
 	                                 @Field ("owner_email") String owner_email);
-	
-	
 
+
+	@POST ("staff/list")
+	@FormUrlEncoded
+	Call<StaffRecponce> StaffList(@Field ("user_id") String user_id, @Field("role_id") String role_id,@Field("business_id") String business_id);
 }

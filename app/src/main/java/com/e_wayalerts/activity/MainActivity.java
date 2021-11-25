@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.e_wayalerts.Utility.Utility;
 import com.e_wayalerts.WebService.Constant;
+import com.e_wayalerts.activity.eway_bill.EBillListFragment;
 import com.e_wayalerts.activity.loginmodule.LoginActivity;
 import com.e_wayalerts.widget.MenuItem;
 import com.e_wayalerts.widget.SNavigationDrawer;
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         menuItems.add(new MenuItem(getResources().getString(R.string.menu_dashboard),R.drawable.bg_building));
         menuItems.add(new MenuItem(getString(R.string.menu_businesses),R.drawable.bg_building));
         menuItems.add(new MenuItem(getString(R.string.menu_staff),R.drawable.bg_building));
-        menuItems.add(new MenuItem(getString(R.string.menu_subscription),R.drawable.bg_building));
+        menuItems.add(new MenuItem(getString(R.string.menu_ewaybill),R.drawable.bg_building));
         menuItems.add(new MenuItem(getString(R.string.menu_contact_us),R.drawable.bg_building));
         menuItems.add(new MenuItem(getString(R.string.menu_feedback),R.drawable.bg_building));
         menuItems.add(new MenuItem(getString(R.string.menu_about_us),R.drawable.bg_building));
@@ -101,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     case 3:{
                         color1 = R.color.blue;
-                        fragmentClass = BusinessListFragment.class;
+                        fragmentClass = EBillListFragment.class;
                         break;
                     }
                     case 4:{
@@ -140,6 +141,17 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     }
                     case 11:{
+                        Utility.setSharedPreference(mContext,
+                                Constant.User_id,String.valueOf(""));
+
+                        Utility.setSharedPreference(mContext,
+                                Constant.UserFirstName,"");
+                        Utility.setSharedPreference(mContext,
+                                Constant.UserLastName,"");
+                        Utility.setSharedPreference(mContext,
+                                Constant.UserMobile,"");
+                        Utility.setSharedPreference(mContext,
+                                Constant.Usertoken,"");
                         Intent intent = new Intent(mContext, LoginActivity.class);
                         startActivity(intent);
                         finish();
