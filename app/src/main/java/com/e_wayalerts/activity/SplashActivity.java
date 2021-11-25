@@ -42,6 +42,7 @@ public class SplashActivity extends AppCompatActivity {
 					Intent intent = new Intent(SplashActivity.this, LanguageActivity.class);
 					startActivity(intent);
 					finish();
+					
 				} else {
 					if (!TextUtils.isEmpty(userid)) {
 						Intent intent = new Intent(SplashActivity.this, MainActivity.class);
@@ -54,6 +55,7 @@ public class SplashActivity extends AppCompatActivity {
 					}
 				}
 			}
+			
 		}, 3000);
 	}
 	
