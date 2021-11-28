@@ -147,11 +147,11 @@
             </LinearLayout>
         </LinearLayout>
 
-        <TextView
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_2sdp"
-            android:background="@color/grey_color"
-            android:text="--------------------------"
+            android:layout_height="5dp"
+            android:src="@drawable/dotted_line_gray"
+            android:layerType="software"
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_5sdp"/>
 
@@ -197,11 +197,11 @@
             </LinearLayout>
         </LinearLayout>
 
-        <TextView
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_2sdp"
-            android:background="@color/grey_color"
-            android:text="--------------------------"
+            android:layout_height="5dp"
+            android:src="@drawable/dotted_line_gray"
+            android:layerType="software"
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_5sdp"/>
 
@@ -270,11 +270,11 @@
         </LinearLayout>
 
 
-        <TextView
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_2sdp"
-            android:background="@color/grey_color"
-            android:text="--------------------------"
+            android:layout_height="5dp"
+            android:src="@drawable/dotted_line_gray"
+            android:layerType="software"
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_5sdp"/>
 
@@ -320,11 +320,11 @@
             </LinearLayout>
         </LinearLayout>
 
-        <TextView
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_2sdp"
-            android:background="@color/grey_color"
-            android:text="--------------------------"
+            android:layout_height="5dp"
+            android:src="@drawable/dotted_line_gray"
+            android:layerType="software"
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_5sdp"/>
 
@@ -370,11 +370,11 @@
             </LinearLayout>
         </LinearLayout>
 
-        <TextView
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_2sdp"
-            android:background="@color/grey_color"
-            android:text="--------------------------"
+            android:layout_height="5dp"
+            android:src="@drawable/dotted_line_gray"
+            android:layerType="software"
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_5sdp"/>
 

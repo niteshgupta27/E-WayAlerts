@@ -1,233 +1,249 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#fafafa"
-    android:fitsSystemWindows="true"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_screen"
+    android:fitsSystemWindows="true">
 
 
-
-    <ScrollView
-        android:scrollbars="none"
-
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/_10sdp">
+
 
         <LinearLayout
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+        <TextView
+            android:id="@+id/mTxer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/proxima_nova_alt_bold"
+            android:text="@string/account_ifo"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_20sdp" />
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <RelativeLayout
-                android:id="@+id/mLayoutTitle"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp">
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginStart="5dp"
+            android:background="@color/blue" />
 
-                <TextView
-                    android:id="@+id/mTxer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="15dp"
-                    android:text="@string/account_ifo"
-                    android:textColor="@color/purple_500"
-                    android:fontFamily="@font/proxima_nova_alt_bold"
-                    android:textSize="22dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/mTxer"
-                    android:layout_marginLeft="5dp"
-
-                    android:text="@string/profile"
-                    android:textColor="@color/green"
-                    android:textSize="@dimen/_10sdp" />
-
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_marginTop="10dp"
-                android:background="@drawable/border_rectangle_shap"
-                android:layout_marginStart="5dp"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="5dp"
-                    android:fontFamily="@font/proxima_nova_alt_bold"
-                    android:gravity="left|center"
-                    android:text="@string/profile"
-                    android:textColor="@color/green"
-                    android:textSize="@dimen/_10sdp" />
-                <com.e_wayalerts.Utility.FontAwesome
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:text="&#xf054;"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:layout_marginEnd="10dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/green"/>
-
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_marginTop="10dp"
-                android:background="@drawable/border_rectangle_shap"
-                android:layout_marginStart="5dp"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/proxima_nova_alt_bold"
-                    android:layout_marginStart="5dp"
-                    android:gravity="left|center"
-                    android:textColor="@color/green"
-                    android:text="@string/menu_settings"
-                    android:textSize="@dimen/_10sdp" />
-                <com.e_wayalerts.Utility.FontAwesome
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:text="&#xf054;"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:layout_marginEnd="10dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/green"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_marginTop="10dp"
-                android:background="@drawable/border_rectangle_shap"
-                android:layout_marginStart="5dp"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="5dp"
-                    android:gravity="left|center"
-                    android:fontFamily="@font/proxima_nova_alt_bold"
-                    android:text="@string/fleet"
-                    android:textColor="@color/green"
-                    android:textSize="@dimen/_10sdp" />
-                <com.e_wayalerts.Utility.FontAwesome
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:text="&#xf054;"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:layout_marginRight="10dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/green"/>
-
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_marginTop="10dp"
-                android:background="@drawable/border_rectangle_shap"
-                android:layout_marginStart="5dp"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="left|center"
-                    android:layout_marginStart="5dp"
-                    android:fontFamily="@font/proxima_nova_alt_bold"
-                    android:textColor="@color/green"
-                    android:text="@string/Language"
-                    android:textSize="@dimen/_10sdp" />
-                <com.e_wayalerts.Utility.FontAwesome
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:text="&#xf054;"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:layout_marginEnd="10dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/green"/>
-
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_marginTop="10dp"
-                android:background="@drawable/border_rectangle_shap"
-                android:layout_marginStart="5dp"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="left|center"
-                    android:layout_marginStart="5dp"
-                    android:fontFamily="@font/proxima_nova_alt_bold"
-                    android:textColor="@color/green"
-                    android:text="@string/menu_subscription"
-                    android:textSize="@dimen/_10sdp" />
-
-                <com.e_wayalerts.Utility.FontAwesome
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:text="&#xf054;"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:layout_marginEnd="10dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/green"/>
-
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_marginTop="10dp"
-                android:background="@drawable/border_rectangle_shap"
-                android:layout_marginStart="5dp"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="left|center"
-                    android:layout_marginStart="5dp"
-                    android:fontFamily="@font/proxima_nova_alt_bold"
-                    android:textColor="@color/green"
-                    android:text="@string/SMS_Credit"
-                    android:textSize="@dimen/_10sdp" />
-
-                <com.e_wayalerts.Utility.FontAwesome
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:text="&#xf054;"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:layout_marginEnd="10dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/green"/>
-
-            </RelativeLayout>
         </LinearLayout>
-    </ScrollView>
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:src="@drawable/dotted_line_gray"
+            android:layerType="software"
+            android:layout_marginTop="@dimen/_20sdp"/>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/proxima_nova_alt_bold"
+                android:gravity="center"
+                android:text="@string/profile"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_18sdp" />
+
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/arrow_right"
+                app:tint="@color/green"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:src="@drawable/dotted_line_gray"
+                android:layerType="software"
+                android:layout_alignParentBottom="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/proxima_nova_alt_bold"
+                android:gravity="center"
+                android:text="@string/menu_settings"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_18sdp" />
+
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/arrow_right"
+                app:tint="@color/green"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"/>
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:src="@drawable/dotted_line_gray"
+                android:layerType="software"
+                android:layout_alignParentBottom="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/proxima_nova_alt_bold"
+                android:text="@string/fleet"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_18sdp"
+                android:gravity="center"/>
+
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/arrow_right"
+                app:tint="@color/green"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"/>
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:src="@drawable/dotted_line_gray"
+                android:layerType="software"
+                android:layout_alignParentBottom="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/proxima_nova_alt_bold"
+                android:gravity="center"
+                android:text="@string/Language"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_18sdp" />
+
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/arrow_right"
+                app:tint="@color/green"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"/>
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:src="@drawable/dotted_line_gray"
+                android:layerType="software"
+                android:layout_alignParentBottom="true"/>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/proxima_nova_alt_bold"
+                android:gravity="center"
+                android:text="@string/alert_group"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_18sdp" />
+
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/arrow_right"
+                app:tint="@color/green"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"/>
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:src="@drawable/dotted_line_gray"
+                android:layerType="software"
+                android:layout_alignParentBottom="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/proxima_nova_alt_bold"
+                android:gravity="center"
+                android:text="@string/SMS_Credit"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_18sdp" />
+
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/arrow_right"
+                app:tint="@color/green"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"/>
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:src="@drawable/dotted_line_gray"
+                android:layerType="software"
+                android:layout_alignParentBottom="true"/>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
 
 
 

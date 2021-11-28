@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_40sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/white_color"
+    app:cardCornerRadius="@dimen/_5sdp"
+    app:cardElevation="@dimen/_5sdp"
+    android:layout_marginStart="@dimen/_10sdp"
+    android:layout_marginEnd="@dimen/_10sdp"
+    android:layout_marginBottom="@dimen/_10sdp">
+
+     <CheckBox
+         android:id="@+id/bussnessNameCheck"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_gravity="center|start"
+         android:layout_marginStart="@dimen/_10sdp"
+         android:text="@string/message"
+         android:textSize="@dimen/_14sdp"
+         android:textColor="@color/black"
+         android:fontFamily="@font/proxima_nova_alt_bold"/>
+
+</androidx.cardview.widget.CardView>

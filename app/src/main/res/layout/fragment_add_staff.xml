@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_screen"
     android:fitsSystemWindows="true">
 
@@ -61,7 +62,8 @@
                 android:hint="@string/Staff_First_Name"
                 android:padding="@dimen/_10sdp"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_12sdp"
+                android:inputType="textPersonName"/>
 
             <EditText
                 android:id="@+id/staffLastName"
@@ -73,7 +75,8 @@
                 android:hint="@string/Staff_Last_Name"
                 android:padding="@dimen/_10sdp"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_12sdp"
+                android:inputType="textPersonName"/>
 
             <EditText
                 android:id="@+id/staffMobileNumber"
@@ -85,7 +88,9 @@
                 android:hint="@string/mobile_number"
                 android:padding="@dimen/_10sdp"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_12sdp"
+                android:inputType="phone"
+                android:maxLength="10"/>
 
             <EditText
                 android:id="@+id/staffEmailAddress"
@@ -97,12 +102,12 @@
                 android:hint="@string/Email_Address"
                 android:padding="@dimen/_10sdp"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_12sdp"
+                android:inputType="textEmailAddress"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/border_rectangle_shap">
@@ -133,7 +138,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:text="@string/BusinessAccess"
                 android:textColor="@color/purple_500"
@@ -141,188 +145,56 @@
                 android:textStyle="bold" />
 
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/businessList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fadeScrollbars="true"
+                android:nestedScrollingEnabled="true"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/NotificationType"
+                android:textColor="@color/purple_500"
+                android:textSize="@dimen/_20sdp"
+                android:textStyle="bold" />
+
             <CheckBox
-                android:id="@+id/businessName1"
+                android:id="@+id/pushCheckboxB1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:fontFamily="@font/proxima_nova_alt_bold"
-                android:text="Busines Name1"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_16sdp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                 android:layout_marginTop="@dimen/_10sdp"
-                 android:text="Notification"
+                android:text="@string/In_App_push_notification"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:weightSum="3">
-
-                <CheckBox
-                    android:id="@+id/pushCheckboxB1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:fontFamily="@font/proxima_nova_alt_regular"
-                    android:text="Push"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_14sdp"
-                    android:layout_weight="1"/>
-
-                <CheckBox
-                    android:id="@+id/emailCheckboxB1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:fontFamily="@font/proxima_nova_alt_regular"
-                    android:text="Email"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_14sdp"
-                    android:layout_weight="1"/>
-
-                <CheckBox
-                    android:id="@+id/smsCheckboxB1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:fontFamily="@font/proxima_nova_alt_regular"
-                    android:text="Sms"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_14sdp"
-                    android:layout_weight="1"/>
-
-            </LinearLayout>
 
             <CheckBox
-                android:id="@+id/businessName2"
+                android:id="@+id/emailCheckboxB1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:fontFamily="@font/proxima_nova_alt_bold"
-                android:text="Busines Name2"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_16sdp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:text="Notification"
+                android:text="@string/Email_Notification"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp" />
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="3"
-                android:layout_marginTop="@dimen/_10sdp">
-
-                <CheckBox
-                    android:id="@+id/pushCheckboxB2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:fontFamily="@font/proxima_nova_alt_regular"
-                    android:text="Push"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_14sdp"
-                    android:layout_weight="1"/>
-
-                <CheckBox
-                    android:id="@+id/emailCheckboxB2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:fontFamily="@font/proxima_nova_alt_regular"
-                    android:text="Email"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_14sdp"
-                    android:layout_weight="1"/>
-
-                <CheckBox
-                    android:id="@+id/smsCheckboxB2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:fontFamily="@font/proxima_nova_alt_regular"
-                    android:text="Sms"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_14sdp"
-                    android:layout_weight="1"/>
-
-            </LinearLayout>
             <CheckBox
-                android:id="@+id/businessName3"
+                android:id="@+id/smsCheckboxB1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:fontFamily="@font/proxima_nova_alt_bold"
-                android:text="Busines Name3"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_16sdp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:text="Notification"
+                android:text="@string/SMS_Notification"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp" />
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="3"
-                android:layout_marginTop="@dimen/_10sdp">
-
-                <CheckBox
-                    android:id="@+id/pushCheckboxB3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:fontFamily="@font/proxima_nova_alt_regular"
-                    android:text="Push"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_14sdp"
-                    android:layout_weight="1"/>
-
-                <CheckBox
-                    android:id="@+id/emailCheckboxB3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:fontFamily="@font/proxima_nova_alt_regular"
-                    android:text="Email"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_14sdp"
-                    android:layout_weight="1"/>
-
-                <CheckBox
-                    android:id="@+id/smsCheckboxB3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:fontFamily="@font/proxima_nova_alt_regular"
-                    android:text="Sms"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_14sdp"
-                    android:layout_weight="1"/>
-
-            </LinearLayout>
-
-          </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 
 
@@ -333,6 +205,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="@dimen/_10sdp"
         android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
         android:background="@drawable/background_rounded_but">
 
         <TextView
