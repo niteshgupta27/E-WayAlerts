@@ -36,7 +36,7 @@ public class AddBusinesskFragment extends Fragment implements View.OnClickListen
 	
 	public ArrayList<DropDownModal> arrayState = new ArrayList<DropDownModal>();
 	
-	public ArrayAdapter AdaptorState;
+
 	
 	Context mContext;
 	
