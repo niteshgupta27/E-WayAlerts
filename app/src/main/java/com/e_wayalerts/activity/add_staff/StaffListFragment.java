@@ -48,7 +48,7 @@ public class StaffListFragment extends Fragment {
     StaffAdaptor adaptor;
     FloatingActionButton mImgAddNew;
     LinearLayout Addbutton;
-    String selectedStateID = "0";
+    String selectedbusinessID = "0";
     DropDownAdapter customAdapter;
     Spinner mSpinnerbusiness;
     public ArrayList<DropDownModal> arraybusiness = new ArrayList<DropDownModal>();
@@ -105,7 +105,7 @@ public class StaffListFragment extends Fragment {
         mSpinnerbusiness.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                selectedStateID = arraybusiness.get(i).getmStrId();
+                selectedbusinessID = arraybusiness.get(i).getmStrId();
                 StaffList();
             }
 
@@ -118,7 +118,8 @@ public class StaffListFragment extends Fragment {
     }
     private void StaffList() {
         String userid= Utility.getSharedPreferences(mContext, Constant.User_id);
-        Call<StaffRecponce> call = apiInterface.StaffList(userid,"","");
+        String role_ID= Utility.getSharedPreferences(mContext, Constant.role_ID);
+        Call<StaffRecponce> call = apiInterface.StaffList(userid,role_ID,selectedbusinessID);
         call.enqueue(new Callback<StaffRecponce>() {
             @Override
             public void onResponse(Call<StaffRecponce> call, Response<StaffRecponce> response) {

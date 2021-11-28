@@ -70,7 +70,16 @@ public class LoginResponse {
 		@SerializedName("token")
 		@Expose
 		private String UserToken;
-		
+		@SerializedName("role_id")
+		@Expose
+		private String rolid;
+		public String getrolid() {
+			return rolid;
+		}
+
+		public void setrolid(String userToken) {
+			rolid = userToken;
+		}
 		public String getUserToken() {
 			return UserToken;
 		}
