@@ -236,7 +236,7 @@ public class AddStaffFragment extends Fragment {
 			}
 		}
 		
-		Log.e("", "sPhotoId= " + businessID);
+		Log.e("", "businessID= " + businessID);
 		
 		if (staffFirstName.getText().toString().isEmpty()) {
 			Utility.ShowToast(requireActivity(),

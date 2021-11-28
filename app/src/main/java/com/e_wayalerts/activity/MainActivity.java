@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.e_wayalerts.Utility.Utility;
 import com.e_wayalerts.WebService.Constant;
+import com.e_wayalerts.activity.alert_group.AddAlertGroupFragment;
 import com.e_wayalerts.activity.eway_bill.EBillListFragment;
 import com.e_wayalerts.activity.loginmodule.LoginActivity;
 import com.e_wayalerts.widget.MenuItem;
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (position){
                     case 0:{
                         color1 = R.color.grey_color;
-                        fragmentClass = DashboardFragment.class;
+                        fragmentClass = AddAlertGroupFragment.class;
                         break;
                     }
                     case 1:{

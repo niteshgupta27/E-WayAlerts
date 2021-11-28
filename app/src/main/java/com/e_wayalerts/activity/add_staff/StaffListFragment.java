@@ -3,6 +3,7 @@ package com.e_wayalerts.activity.add_staff;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -122,9 +123,8 @@ public class StaffListFragment extends Fragment {
         Call<StaffRecponce> call = apiInterface.StaffList(userid,role_ID,selectedbusinessID);
         call.enqueue(new Callback<StaffRecponce>() {
             @Override
-            public void onResponse(Call<StaffRecponce> call, Response<StaffRecponce> response) {
-                Log.e("TAG", "response 33: " + String.valueOf(response.body().getStatus()));
-
+            public void onResponse(@NonNull Call<StaffRecponce> call, @NonNull
+                    Response<StaffRecponce> response) {
                 if (response.isSuccessful()) {
 
                     if (String.valueOf(response.body().getStatus()).equals("200")) {
@@ -148,7 +148,7 @@ public class StaffListFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<StaffRecponce> call, Throwable t) {
+            public void onFailure(@NonNull Call<StaffRecponce> call, @NonNull Throwable t) {
                 Toast.makeText(mContext, t.toString(),
                         Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
 
@@ -162,24 +162,16 @@ public class StaffListFragment extends Fragment {
         Call<BusinessListResponse> call = apiInterface.BusinessList(userid,"");
         call.enqueue(new Callback<BusinessListResponse>() {
             @Override
-            public void onResponse(Call<BusinessListResponse> call, Response<BusinessListResponse> response) {
-                Log.e("TAG", "response 33: " + String.valueOf(response.body().getStatus()));
-
+            public void onResponse(@NonNull Call<BusinessListResponse> call, @NonNull
+                    Response<BusinessListResponse> response) {
                 if (response.isSuccessful()) {
 
                     if (String.valueOf(response.body().getStatus()).equals("200")) {
                         if (response.body().getData().size()>0){
                             cardview.setVisibility(View.GONE);
                             mListView.setVisibility(View.VISIBLE);
-//                            adaptor = new BusinessAdaptor(mContext, (ArrayList<BusinessListResponse.Datum>) response.body().getData());
-//                            mListView.setAdapter(adaptor);
-//                            adaptor.notifyDataSetChanged();
                             for (int j = 0; j < response.body().getData().size(); j++) {
-//                                if (j == 0) {
-//                                    selectedStateID =
-//                                            response.body().getData().get(j).getFldBid().toString();
-//                                }
-                                DropDownModal ra = new DropDownModal();
+                               DropDownModal ra = new DropDownModal();
                                 ra.setmStrId(
                                         response.body().getData().get(j).getFldBid().toString());
                                 ra.setmStrValue(response.body().getData().get(j).getFldBusinessName());
@@ -200,7 +192,7 @@ public class StaffListFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<BusinessListResponse> call, Throwable t) {
+            public void onFailure( @NonNull Call<BusinessListResponse> call, @NonNull Throwable t) {
                 Toast.makeText(mContext, t.toString(),
                         Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
 
