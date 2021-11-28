@@ -68,7 +68,7 @@ public class StaffListFragment extends Fragment {
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
         mContext = getContext();
         mImgAddNew = view.findViewById(R.id.mImgAddNew);
-        Addbutton = view.findViewById(R.id.ll_continue);
+        Addbutton = view.findViewById(R.id.addStaffBtn);
         mSpinnerbusiness = view.findViewById(R.id.mSpinnerState);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);

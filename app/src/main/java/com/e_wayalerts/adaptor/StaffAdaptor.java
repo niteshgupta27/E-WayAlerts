@@ -49,17 +49,9 @@ public class StaffAdaptor extends RecyclerView.Adapter<StaffAdaptor.ViewHolder> 
         final StaffModal maincat = arMediIn.get(position);
 
         viewHolder.sname.setText(maincat.getFldFname() + "" +maincat.getFldLname());
-        viewHolder.bname.setText(maincat.getFldBusinessId());
+        viewHolder.bname.setText(maincat.getFldFname());
         viewHolder.mobile.setText(maincat.getFldMobile());
-//        if(maincat.getFldisactive() ==1){
-//            viewHolder.bActive.setChecked(true);
-//            viewHolder.renewel.setVisibility(View.GONE);
-//        }
-//        else {
-//            viewHolder.bActive.setChecked(false);
-//            viewHolder.renewel.setVisibility(View.VISIBLE);
-//
-//        }
+
 
 
     }
@@ -70,17 +62,12 @@ public class StaffAdaptor extends RecyclerView.Adapter<StaffAdaptor.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         TextView bname, sname, mobile;
-        Switch bActive;
-        LinearLayout renewel;
         public ViewHolder(View itemView) {
             super(itemView);
-            bname = itemView.findViewById(R.id.bname);
+            bname = itemView.findViewById(R.id.Bname);
             sname = itemView.findViewById(R.id.Sname);
-            mobile = itemView.findViewById(R.id.mobile);
-            bActive = itemView.findViewById(R.id.bactive);
-            renewel= itemView.findViewById(R.id.renewel);
+            mobile = itemView.findViewById(R.id.mobileno);
         }
     }
 }

@@ -1,161 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:id="@+id/Sname"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Business name"
-            android:layout_weight="0.8"/>
-        <com.e_wayalerts.Utility.FontAwesome
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:text="&#xf044;"
-            android:textSize="12sp"
-            android:gravity="center"
-            android:textColor="@color/grey_color"
-            android:layout_weight="0.1"/>
+            android:layout_weight="0.8"
+            android:text="Business name" />
 
         <com.e_wayalerts.Utility.FontAwesome
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="&#xf044;"
+            android:textColor="@color/grey_color"
+            android:textSize="12sp" />
+
+        <com.e_wayalerts.Utility.FontAwesome
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_weight="0.1"
             android:gravity="center"
             android:text="&#xf1f8;"
-            android:textSize="12sp"
             android:textColor="@color/grey_color"
-            android:layout_weight="0.1"
-            />
+            android:textSize="12sp" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <com.e_wayalerts.Utility.FontAwesome
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
-            android:text="&#xf1ad;"
-            android:textSize="12sp"
             android:gravity="center"
-            android:textColor="@color/green"/>
+            android:text="&#xf1ad;"
+            android:textColor="@color/green"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/Bname"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Business name,Business name"/>
+            android:text="Business name,Business name" />
 
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <com.e_wayalerts.Utility.FontAwesome
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
-            android:text="&#xf098;"
-            android:textSize="12sp"
             android:gravity="center"
-            android:textColor="@color/green"/>
+            android:text="&#xf098;"
+            android:textColor="@color/green"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/mobileno"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Business name"/>
-
-
-
+            android:text="Business name" />
 
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginEnd="@dimen/_35sdp"
-        android:weightSum="3"
-        android:layout_marginRight="@dimen/_75sdp">
+        android:layout_marginRight="@dimen/_75sdp"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
             <com.e_wayalerts.Utility.FontAwesome
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
-                android:text="&#xf0f3;"
-                android:textSize="12sp"
                 android:gravity="center"
-                android:textColor="@color/green"/>
+                android:text="&#xf0f3;"
+                android:textColor="@color/green"
+                android:textSize="12sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/push"/>
-
-
-
+                android:text="@string/push" />
 
 
         </LinearLayout>
+
         <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
 
-            android:layout_weight="1">
-        <com.e_wayalerts.Utility.FontAwesome
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:text="&#xf0e0;"
-            android:textSize="12sp"
-            android:gravity="center"
-            android:textColor="@color/green"/>
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@string/email"/>
+            <com.e_wayalerts.Utility.FontAwesome
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:gravity="center"
+                android:text="&#xf0e0;"
+                android:textColor="@color/green"
+                android:textSize="12sp" />
 
-
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/email" />
 
 
-    </LinearLayout>
+        </LinearLayout>
+
         <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-            android:layout_weight="1">
-        <com.e_wayalerts.Utility.FontAwesome
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:text="&#xf075;"
-            android:textSize="12sp"
-            android:gravity="center"
-            android:textColor="@color/green"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@string/sms"/>
+            <com.e_wayalerts.Utility.FontAwesome
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:gravity="center"
+                android:text="&#xf075;"
+                android:textColor="@color/green"
+                android:textSize="12sp" />
 
-
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/sms" />
 
 
-    </LinearLayout>
-
-
-
+        </LinearLayout>
 
 
     </LinearLayout>
