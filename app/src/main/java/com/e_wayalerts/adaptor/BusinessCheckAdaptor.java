@@ -5,28 +5,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.LinearLayout;
-import android.widget.Switch;
-import android.widget.TextView;
 
 import com.e_wayalerts.R;
 import com.e_wayalerts.activity.add_business.businessModal.BusinessListResponse;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class BusinessListAdaptor extends RecyclerView.Adapter<BusinessListAdaptor.ViewHolder> {
+public class BusinessCheckAdaptor extends RecyclerView.Adapter<BusinessCheckAdaptor.ViewHolder> {
 	
 	private final List<BusinessListResponse.Datum> businessList;
 	
-	private final Context context;
 	
-	public BusinessListAdaptor(Context context_, List<BusinessListResponse.Datum> arTestReport_) {
+	public BusinessCheckAdaptor(Context context_, List<BusinessListResponse.Datum> arTestReport_) {
 		businessList = arTestReport_;
-		context = context_;
 	}
 	
 
@@ -36,8 +30,8 @@ public class BusinessListAdaptor extends RecyclerView.Adapter<BusinessListAdapto
 		View view = LayoutInflater.from(parent.getContext())
 				.inflate(R.layout.businesslist_item, parent, false);
 
-		BusinessListAdaptor.ViewHolder viewHolder =
-				new BusinessListAdaptor.ViewHolder(view);
+		BusinessCheckAdaptor.ViewHolder viewHolder =
+				new BusinessCheckAdaptor.ViewHolder(view);
 		return viewHolder;
 	}
 	

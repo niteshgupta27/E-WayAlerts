@@ -63,19 +63,79 @@
             android:importantForAutofill="no" />
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/businessList"
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/BusinessAccess"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_18sdp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fadeScrollbars="true"
-            android:nestedScrollingEnabled="true"
-            android:orientation="vertical"
+            android:id="@+id/mdrop"
             android:layout_marginTop="@dimen/_10sdp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            android:background="@drawable/border_rectangle_shap">
 
+            <Spinner
+                android:id="@+id/mSpinnerState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:paddingTop="@dimen/_2ssp"
+                android:paddingBottom="@dimen/_2sdp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_keyboard_arrow" />
+
+        </RelativeLayout>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/staff_access"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_18sdp"
+            android:textStyle="bold" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_storage_yards"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
 
 
     </LinearLayout>
 
+    <RelativeLayout
+        android:id="@+id/addGroupBtn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@drawable/background_rounded_but">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/proxima_nova_alt_bold"
+            android:text="SUBMIT"
+            android:textColor="@color/White"
+            android:textSize="@dimen/_14sdp" />
+    </RelativeLayout>
 </RelativeLayout>

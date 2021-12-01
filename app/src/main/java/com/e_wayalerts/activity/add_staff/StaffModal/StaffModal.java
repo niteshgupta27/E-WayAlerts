@@ -34,9 +34,12 @@ public class StaffModal {
     @SerializedName("fld_role_id")
     @Expose
     private Integer fldRoleId;
+    
     @SerializedName("fld_business_id")
     @Expose
     private Integer fldBusinessId;
+    
+    boolean checked;
 
     public Integer getFldUid() {
         return fldUid;
@@ -117,5 +120,14 @@ public class StaffModal {
     public void setFldBusinessId(Integer fldBusinessId) {
         this.fldBusinessId = fldBusinessId;
     }
-
+    
+    public boolean isChecked() {
+        return checked;
+    }
+    
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
+    
+    
 }

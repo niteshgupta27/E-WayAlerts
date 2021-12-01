@@ -22,7 +22,7 @@ import com.e_wayalerts.WebService.Constant;
 import com.e_wayalerts.activity.add_business.businessModal.BusinessListResponse;
 import com.e_wayalerts.activity.add_staff.adapter.SpinAdapter;
 import com.e_wayalerts.activity.add_staff.model.UserRollListModel;
-import com.e_wayalerts.adaptor.BusinessListAdaptor;
+import com.e_wayalerts.adaptor.BusinessCheckAdaptor;
 import com.e_wayalerts.model.AddStaffModel;
 
 import java.util.ArrayList;
@@ -136,8 +136,49 @@ public class AddStaffFragment extends Fragment {
 					if (String.valueOf(response.body().getStatus()).equals("200")) {
 						if (response.body().getData().size() > 0) {
 							businessArrayList = response.body().getData();
-							BusinessListAdaptor adaptor =
-									new BusinessListAdaptor(requireActivity(), businessArrayList);
+							BusinessCheckAdaptor adaptor =
+									new BusinessCheckAdaptor(requireActivity(), businessArrayList);
+							businessList.setAdapter(adaptor);
+							adaptor.notifyDataSetChanged();
+						}
+						
+						
+					}
+				} else {
+					Log.e("Error===>", Objects.requireNonNull(response.errorBody()).toString());
+				}
+			}
+			
+			@Override
+			public void onFailure(@NonNull Call<BusinessListResponse> call, @NonNull Throwable t) {
+				Toast.makeText(requireActivity(), t.toString(),
+						Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
+				
+			}
+		});
+		
+		
+	}
+	
+	
+	private void staffList() {
+		String userid = Utility.getSharedPreferences(requireActivity(), Constant.User_id);
+		Call<BusinessListResponse> call = apiInterface.BusinessList(userid, "1");
+		call.enqueue(new Callback<BusinessListResponse>() {
+			@SuppressLint ("NotifyDataSetChanged")
+			@Override
+			public void onResponse(@NonNull Call<BusinessListResponse> call,
+			                       @NonNull Response<BusinessListResponse> response) {
+				Log.e("TAG", "response 33: " + String.valueOf(
+						Objects.requireNonNull(response.body()).getStatus()));
+				
+				if (response.isSuccessful()) {
+					
+					if (String.valueOf(response.body().getStatus()).equals("200")) {
+						if (response.body().getData().size() > 0) {
+							businessArrayList = response.body().getData();
+							BusinessCheckAdaptor adaptor =
+									new BusinessCheckAdaptor(requireActivity(), businessArrayList);
 							businessList.setAdapter(adaptor);
 							adaptor.notifyDataSetChanged();
 						}

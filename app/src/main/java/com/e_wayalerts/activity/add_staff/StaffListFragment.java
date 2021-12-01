@@ -98,7 +98,7 @@ public class StaffListFragment extends Fragment {
         DropDownModal ra = new DropDownModal();
         ra.setmStrId(
                 "0");
-        ra.setmStrValue("Select Business");
+        ra.setmStrValue(getString(R.string.select_business));
         arraybusiness.add(ra);
         BusinessList();
         customAdapter = new DropDownAdapter(getContext(), arraybusiness);

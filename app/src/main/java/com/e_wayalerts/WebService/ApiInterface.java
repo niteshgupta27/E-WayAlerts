@@ -7,6 +7,7 @@ import com.e_wayalerts.activity.dropdown.SateResponce;
 import com.e_wayalerts.activity.loginmodule.Model.LoginResponse;
 import com.e_wayalerts.activity.loginmodule.Model.ResetPinModel;
 import com.e_wayalerts.activity.loginmodule.Model.VarifyOTPModel;
+import com.e_wayalerts.model.AddGroupModel;
 import com.e_wayalerts.model.AddStaffModel;
 import com.e_wayalerts.model.AddVehicleModel;
 import com.e_wayalerts.model.VehicleListModel;
@@ -59,8 +60,7 @@ public interface ApiInterface {// For POST request
 	Call<AddStaffModel> addstaff(@Field ("user_id") String user_id,
 	                             @Field ("first_name") String first_name,
 	                             @Field ("last_name") String last_name,
-	                             @Field ("mobile") String mobile,
-	                             @Field ("email") String email,
+	                             @Field ("mobile") String mobile, @Field ("email") String email,
 	                             @Field ("job_role") String job_role,
 	                             @Field ("business_access") String business_access,
 	                             @Field ("in_app") String in_app,
@@ -81,12 +81,11 @@ public interface ApiInterface {// For POST request
 	                                 @Field ("owner_lname") String owner_lname,
 	                                 @Field ("owner_mobile") String owner_mobile,
 	                                 @Field ("owner_email") String owner_email);
-
+	
 	@POST ("master/get-make")
 	@FormUrlEncoded
 	Call<VehicleListModel> getVehicleList(@Field ("user_id") String user_id);
 	
-
 	@POST ("master/get-types")
 	@FormUrlEncoded
 	Call<VehicleTypeModel> getVehicleType(@Field ("user_id") String user_id);
@@ -98,9 +97,16 @@ public interface ApiInterface {// For POST request
 	                                 @Field ("fld_number") String fld_number,
 	                                 @Field ("fld_make") String fld_make,
 	                                 @Field ("fld_type") String fld_type);
-	@POST("staff/list")
+	@POST ("staff/list")
 	@FormUrlEncoded
 	Call<StaffRecponce> StaffList(@Field ("user_id") String userid,
 	                              @Field ("role_id") String role_id,
 	                              @Field ("business_id") String selectedbusinessID);
+	
+	@POST ("alert-group/store")
+	@FormUrlEncoded
+	Call<AddGroupModel> addGroup(@Field ("user_id") String userid,
+	                             @Field ("group_name") String role_id,
+	                             @Field ("business_id") String selectedbusinessID,
+	                             @Field ("u_ids") String UID);
 }
