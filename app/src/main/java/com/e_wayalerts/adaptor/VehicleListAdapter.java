@@ -36,7 +36,6 @@ public class VehicleListAdapter extends ArrayAdapter<VehicleListModel.Datum> {
     }
     @Override
     public VehicleListModel.Datum getItem(int position) {
-//		Log.v("", "items.get("+position+")= "+items.get(position));
         return items.get(position);
     }
     @Override
@@ -46,7 +45,7 @@ public class VehicleListAdapter extends ArrayAdapter<VehicleListModel.Datum> {
 
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
-//		final BloodGroupPojo mytempojo = getItem(position);
+
         LayoutInflater mInflater = (LayoutInflater) context
                 .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         if (convertView == null) {

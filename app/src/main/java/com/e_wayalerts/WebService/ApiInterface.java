@@ -10,6 +10,7 @@ import com.e_wayalerts.activity.loginmodule.Model.VarifyOTPModel;
 import com.e_wayalerts.model.AddGroupModel;
 import com.e_wayalerts.model.AddStaffModel;
 import com.e_wayalerts.model.AddVehicleModel;
+import com.e_wayalerts.model.FleetListModel;
 import com.e_wayalerts.model.VehicleListModel;
 import com.e_wayalerts.model.VehicleTypeModel;
 
@@ -109,4 +110,9 @@ public interface ApiInterface {// For POST request
 	                             @Field ("group_name") String role_id,
 	                             @Field ("business_id") String selectedbusinessID,
 	                             @Field ("u_ids") String UID);
+	
+	@POST ("fleet/list")
+	@FormUrlEncoded
+	Call<FleetListModel> getFleetList(@Field ("user_id") String user_id,
+	                                  @Field ("business_id") String business_id);
 }

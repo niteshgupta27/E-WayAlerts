@@ -9,6 +9,7 @@ import com.e_wayalerts.WebService.Constant;
 import com.e_wayalerts.activity.alert_group.AddAlertGroupFragment;
 import com.e_wayalerts.activity.eway_bill.EBillListFragment;
 import com.e_wayalerts.activity.loginmodule.LoginActivity;
+import com.e_wayalerts.fragment.Fleet_List_Fragment;
 import com.e_wayalerts.widget.MenuItem;
 import com.e_wayalerts.widget.SNavigationDrawer;
 import com.e_wayalerts.activity.faq_contact.AboutUsFragment;
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (position){
                     case 0:{
                         color1 = R.color.grey_color;
-                        fragmentClass = AddAlertGroupFragment.class;
+                        fragmentClass = Fleet_List_Fragment.class;
                         break;
                     }
                     case 1:{
