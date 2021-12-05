@@ -152,4 +152,5 @@
     <string name="consoildated_bill">Consoildated Bill</string>
     <string name="place_of_origin">Place of origin</string>
     <string name="driver_number">Driver Number</string>
+    <string name="edit_vehicle">Edit Vehicle</string>
 </resources>

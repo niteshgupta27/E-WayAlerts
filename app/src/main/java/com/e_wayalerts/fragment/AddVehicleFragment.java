@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.e_wayalerts.R;
@@ -38,11 +39,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
 public class AddVehicleFragment extends Fragment {
 	
 	AppCompatEditText vehicleNumber;
 	
 	Spinner makeVehicleSpinner, businessListSpinner, vehicleTypeSpinner;
+	
+	TextView mTxer;
 	
 	RelativeLayout addVehiclebtn;
 	
@@ -58,14 +62,13 @@ public class AddVehicleFragment extends Fragment {
 	
 	FleetListModel.Datum fleetModel;
 	
-	int position = 0,businessPosition=0,vehiclePositon=0;
+	int position = 0, businessPosition = 0, vehiclePositon = 0;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
 		View view = inflater.inflate(R.layout.fragment_add_vehicle, container, false);
-		
 		init(view);
 		listener();
 		getVehicleList();
@@ -81,13 +84,12 @@ public class AddVehicleFragment extends Fragment {
 		businessListSpinner = view.findViewById(R.id.businessList);
 		vehicleTypeSpinner = view.findViewById(R.id.vehicletype);
 		addVehiclebtn = view.findViewById(R.id.addVehiclebtn);
-		
+		mTxer = view.findViewById(R.id.mTxer);
 		vehicleNumber.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
 		if (getArguments() != null) {
 			fleetModel = (FleetListModel.Datum) getArguments().getSerializable("FleetModel");
-		
 			vehicleNumber.setText(fleetModel.getFldNumber());
-			
+			mTxer.setText(R.string.edit_vehicle);
 		}
 	}
 	
@@ -103,10 +105,8 @@ public class AddVehicleFragment extends Fragment {
 			
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {
-			
 			}
 		});
-		
 		businessListSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -118,10 +118,8 @@ public class AddVehicleFragment extends Fragment {
 			
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {
-			
 			}
 		});
-		
 		vehicleTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -133,10 +131,8 @@ public class AddVehicleFragment extends Fragment {
 			
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {
-			
 			}
 		});
-		
 		addVehiclebtn.setOnClickListener(v -> {
 			if (Utility.isNetworkConnected(requireActivity())) {
 				AddVehicle();
@@ -145,7 +141,6 @@ public class AddVehicleFragment extends Fragment {
 						requireActivity().getString(R.string.checkInternet));
 			}
 		});
-		
 	}
 	
 	private void getVehicleList() {
@@ -161,36 +156,26 @@ public class AddVehicleFragment extends Fragment {
 			                       @NonNull Response<VehicleListModel> response) {
 				assert response.body() != null;
 				Log.e("TAG", "response 33: " + String.valueOf(response.body().getStatus()));
-				
 				if (response.isSuccessful()) {
-					
 					if (String.valueOf(response.body().getStatus()).equals("200")) {
 						if (response.body().getData().size() > 0) {
-							
 							for (int i = 0; i < response.body().getData().size(); i++) {
 								VehicleListModel.Datum catbean = new VehicleListModel.Datum();
-								catbean.setFldMakeName(
-										response.body().getData().get(i).getFldMakeName());
-								catbean.setFldMakeId(
-										response.body().getData().get(i).getFldMakeId());
+								int id = response.body().getData().get(i).getFldMakeId();
+								String title = response.body().getData().get(i).getFldMakeName();
+								catbean.setFldMakeId(id);
+								catbean.setFldMakeName(title);
 								vehicleList.add(catbean);
-								
-								if (fleetModel != null && !TextUtils.isEmpty(fleetModel.getFldMake())
-										&&  response.body().getData().get(i).getFldMakeName().equals(fleetModel.getFldMake())){
+								if (fleetModel.getFldMake().equals(
+										vehicleList.get(i).getFldMakeName())) {
 									position = i;
 								}
 							}
-							
-							VehicleListAdapter aa = new VehicleListAdapter(requireActivity(),
-									android.R.layout.simple_spinner_item, vehicleList);
-							aa.setDropDownViewResource(
-									android.R.layout.simple_spinner_dropdown_item);
-							//Setting the ArrayAdapter data on the Spinner
-							makeVehicleSpinner.setAdapter(aa);
-							makeVehicleSpinner.setSelection(position);
+							VehicleListAdapter vehicleListAdapter =
+									new VehicleListAdapter(requireActivity(),
+											android.R.layout.simple_spinner_item, vehicleList);
+							makeVehicleSpinner.setAdapter(vehicleListAdapter);
 						}
-						
-						
 					}
 				} else {
 					Log.e("Error===>", Objects.requireNonNull(response.errorBody()).toString());
@@ -201,11 +186,8 @@ public class AddVehicleFragment extends Fragment {
 			public void onFailure(@NonNull Call<VehicleListModel> call, @NonNull Throwable t) {
 				Toast.makeText(requireActivity(), t.toString(),
 						Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
-				
 			}
 		});
-		
-		
 	}
 	
 	private void businessList() {
@@ -213,7 +195,6 @@ public class AddVehicleFragment extends Fragment {
 		catbean.setFldBusinessName(getString(R.string.select_business));
 		catbean.setFldBid(0);
 		businessArrayList.add(catbean);
-		
 		String userid = Utility.getSharedPreferences(requireActivity(), Constant.User_id);
 		Call<BusinessListResponse> call = apiInterface.BusinessList(userid, "1");
 		call.enqueue(new Callback<BusinessListResponse>() {
@@ -223,12 +204,9 @@ public class AddVehicleFragment extends Fragment {
 			                       @NonNull Response<BusinessListResponse> response) {
 				Log.e("TAG", "response 33: " + String.valueOf(
 						Objects.requireNonNull(response.body()).getStatus()));
-				
 				if (response.isSuccessful()) {
-					
 					if (String.valueOf(response.body().getStatus()).equals("200")) {
 						if (response.body().getData().size() > 0) {
-							
 							for (int i = 0; i < response.body().getData().size(); i++) {
 								BusinessListResponse.Datum catbean =
 										new BusinessListResponse.Datum();
@@ -236,27 +214,13 @@ public class AddVehicleFragment extends Fragment {
 										response.body().getData().get(i).getFldBusinessName());
 								catbean.setFldBid(response.body().getData().get(i).getFldBid());
 								businessArrayList.add(catbean);
-								
-								if (fleetModel != null && !TextUtils.isEmpty(String.valueOf(fleetModel.getFldBusinessId()))
-										&&  response.body().getData().get(i).getFldBid().equals(fleetModel.getFldBusinessId())){
-									businessPosition = i;
-								}
 							}
-							
 							BusibessListSpinnerAdapter aa =
 									new BusibessListSpinnerAdapter(requireActivity(),
 											android.R.layout.simple_spinner_item,
 											businessArrayList);
-							aa.setDropDownViewResource(
-									android.R.layout.simple_spinner_dropdown_item);
-							//Setting the ArrayAdapter data on the Spinner
 							businessListSpinner.setAdapter(aa);
-							businessListSpinner.setSelection(businessPosition);
 						}
-						
-						
-						
-						
 					}
 				} else {
 					Log.e("Error===>", Objects.requireNonNull(response.errorBody()).toString());
@@ -267,11 +231,8 @@ public class AddVehicleFragment extends Fragment {
 			public void onFailure(@NonNull Call<BusinessListResponse> call, @NonNull Throwable t) {
 				Toast.makeText(requireActivity(), t.toString(),
 						Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
-				
 			}
 		});
-		
-		
 	}
 	
 	private void getVehicleType() {
@@ -287,12 +248,9 @@ public class AddVehicleFragment extends Fragment {
 			                       @NonNull Response<VehicleTypeModel> response) {
 				assert response.body() != null;
 				Log.e("TAG", "response 33: " + String.valueOf(response.body().getStatus()));
-				
 				if (response.isSuccessful()) {
-					
 					if (String.valueOf(response.body().getStatus()).equals("200")) {
 						if (response.body().getData().size() > 0) {
-							
 							for (int i = 0; i < response.body().getData().size(); i++) {
 								VehicleTypeModel.Datum catbean = new VehicleTypeModel.Datum();
 								catbean.setFldTypeName(
@@ -300,24 +258,11 @@ public class AddVehicleFragment extends Fragment {
 								catbean.setFldTypeId(
 										response.body().getData().get(i).getFldTypeId());
 								vehicleTypeList.add(catbean);
-								
-								if (fleetModel != null && !TextUtils.isEmpty(fleetModel.getFldType())
-										&&  response.body().getData().get(i).getFldTypeName().equals(fleetModel.getFldType())){
-									vehiclePositon = i;
-								}
 							}
-							
-							Log.e("vehicleTypeList", String.valueOf(vehicleTypeList.size()));
 							VehicleTypeAdapter aa = new VehicleTypeAdapter(requireActivity(),
 									android.R.layout.simple_spinner_item, vehicleTypeList);
-							aa.setDropDownViewResource(
-									android.R.layout.simple_spinner_dropdown_item);
-							//Setting the ArrayAdapter data on the Spinner
 							vehicleTypeSpinner.setAdapter(aa);
-							vehicleTypeSpinner.setSelection(vehiclePositon);
 						}
-						
-						
 					}
 				} else {
 					Log.e("Error===>", Objects.requireNonNull(response.errorBody()).toString());
@@ -328,11 +273,8 @@ public class AddVehicleFragment extends Fragment {
 			public void onFailure(@NonNull Call<VehicleTypeModel> call, @NonNull Throwable t) {
 				Toast.makeText(requireActivity(), t.toString(),
 						Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
-				
 			}
 		});
-		
-		
 	}
 	
 	private void AddVehicle() {
@@ -358,13 +300,10 @@ public class AddVehicleFragment extends Fragment {
 				                       @NonNull Response<AddVehicleModel> response) {
 					assert response.body() != null;
 					Log.e("TAG", "response 33: " + String.valueOf(response.body().getStatus()));
-					
 					if (response.isSuccessful()) {
-						
 						if (String.valueOf(response.body().getStatus()).equals("200")) {
 							requireActivity().onBackPressed();
 							Utility.ShowToast(requireActivity(), response.body().getMessage());
-							
 						}
 					} else {
 						Log.e("Error===>",
@@ -376,12 +315,9 @@ public class AddVehicleFragment extends Fragment {
 				public void onFailure(@NonNull Call<AddVehicleModel> call, @NonNull Throwable t) {
 					Toast.makeText(requireActivity(), t.toString(),
 							Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
-					
 				}
 			});
-			
 		}
-		
 	}
 	
 }
