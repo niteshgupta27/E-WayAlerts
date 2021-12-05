@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -24,6 +23,7 @@ import com.e_wayalerts.adaptor.BusibessListSpinnerAdapter;
 import com.e_wayalerts.adaptor.VehicleListAdapter;
 import com.e_wayalerts.adaptor.VehicleTypeAdapter;
 import com.e_wayalerts.model.AddVehicleModel;
+import com.e_wayalerts.model.FleetListModel;
 import com.e_wayalerts.model.VehicleListModel;
 import com.e_wayalerts.model.VehicleTypeModel;
 
@@ -56,6 +56,8 @@ public class AddVehicleFragment extends Fragment {
 	
 	String vehicleName, vehicleType, businessID;
 	
+	FleetListModel.Datum fleetModel;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
@@ -79,6 +81,9 @@ public class AddVehicleFragment extends Fragment {
 		addVehiclebtn = view.findViewById(R.id.addVehiclebtn);
 		
 		vehicleNumber.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
+		if (getArguments() != null) {
+			fleetModel = (FleetListModel.Datum) getArguments().getSerializable("FleetModel");
+		}
 	}
 	
 	private void listener() {
@@ -320,8 +325,8 @@ public class AddVehicleFragment extends Fragment {
 					requireActivity().getString(R.string.select_vehicle_type));
 		} else {
 			String userid = Utility.getSharedPreferences(requireActivity(), Constant.User_id);
-			Call<AddVehicleModel> call = apiInterface.addVehicle(userid,businessID,
-					vehicleNumber.getText().toString().trim(),vehicleName,vehicleType);
+			Call<AddVehicleModel> call = apiInterface.addVehicle(userid, businessID,
+					vehicleNumber.getText().toString().trim(), vehicleName, vehicleType);
 			call.enqueue(new Callback<AddVehicleModel>() {
 				@Override
 				public void onResponse(@NonNull Call<AddVehicleModel> call,
@@ -333,7 +338,7 @@ public class AddVehicleFragment extends Fragment {
 						
 						if (String.valueOf(response.body().getStatus()).equals("200")) {
 							requireActivity().onBackPressed();
-							Utility.ShowToast(requireActivity(),response.body().getMessage());
+							Utility.ShowToast(requireActivity(), response.body().getMessage());
 							
 						}
 					} else {

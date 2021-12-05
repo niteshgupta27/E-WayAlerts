@@ -3,9 +3,10 @@ package com.e_wayalerts.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class FleetListModel {
+public class FleetListModel implements Serializable {
 	
 	@SerializedName ("status") @Expose private Integer status;
 	
@@ -47,7 +48,7 @@ public class FleetListModel {
 		this.data = data;
 	}
 	
-	public class Datum {
+	public static class Datum implements Serializable{
 		
 		@SerializedName ("fld_flt_id") @Expose private Integer fldFltId;
 		
