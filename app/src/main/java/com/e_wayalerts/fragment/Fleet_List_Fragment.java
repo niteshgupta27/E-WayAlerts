@@ -91,8 +91,7 @@ public class Fleet_List_Fragment extends Fragment {
 					if (String.valueOf(response.body().getStatus()).equals("200")) {
 						if (response.body().getData().size() > 0) {
 							
-							FleetListAdapter fleetListAdapter = new FleetListAdapter(getActivity(),
-									(ArrayList<FleetListModel.Datum>) response.body().getData());
+							FleetListAdapter fleetListAdapter = new FleetListAdapter((ArrayList<FleetListModel.Datum>) response.body().getData());
 							fleetList.setHasFixedSize(true);
 							fleetList.setAdapter(fleetListAdapter);
 						}

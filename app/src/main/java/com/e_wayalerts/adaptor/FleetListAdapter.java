@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.e_wayalerts.R;
@@ -14,55 +15,65 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 public class FleetListAdapter extends RecyclerView.Adapter<FleetListAdapter.ViewHolder> {
 	
-	private final ArrayList<FleetListModel.Datum> arMediIn;
+	private final ArrayList<FleetListModel.Datum> fleetList;
 	
-	private final Context context;
 	
-	public FleetListAdapter(Context context_, ArrayList<FleetListModel.Datum> arTestReport_) {
-		arMediIn = arTestReport_;
-		context = context_;
+	
+	public FleetListAdapter( ArrayList<FleetListModel.Datum> fleetList) {
+		this.fleetList = fleetList;
+	
 	}
 	
 	@Override
 	public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-		
 		View view =
 				LayoutInflater.from(parent.getContext()).inflate(R.layout.fleetlayout_item, parent,
 						false);
-		
 		FleetListAdapter.ViewHolder viewHolder = new FleetListAdapter.ViewHolder(view);
 		return viewHolder;
 	}
 	
 	@Override
 	public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int position) {
-		final FleetListModel.Datum maincat = arMediIn.get(position);
-		
-		viewHolder.vehicleNumber.setText(maincat.getFldNumber());
-		viewHolder.vehicleName.setText(maincat.getFldMake());
-		viewHolder.vehicleType.setText(maincat.getFldType());
-		
+		viewHolder.bind(fleetList.get(position));
 	}
 	
 	@Override
 	public int getItemCount() {
-		return arMediIn.size();
+		return fleetList.size();
 	}
 	
 	public class ViewHolder extends RecyclerView.ViewHolder {
 		
 		TextView vehicleNumber, vehicleName, vehicleType;
 		
+		LinearLayout fleetEdit, fleetDelete;
+		
 		public ViewHolder(View itemView) {
 			super(itemView);
 			vehicleNumber = itemView.findViewById(R.id.vehicleNumber);
 			vehicleName = itemView.findViewById(R.id.vehicleName);
 			vehicleType = itemView.findViewById(R.id.vehicleType);
-			
+			fleetEdit = itemView.findViewById(R.id.fleetEdit);
+			fleetDelete = itemView.findViewById(R.id.fleetDelete);
 		}
+		
+		public void bind(FleetListModel.Datum datum) {
+			vehicleNumber.setText(datum.getFldNumber());
+			vehicleName.setText(datum.getFldMake());
+			vehicleType.setText(datum.getFldType());
+			
+			fleetEdit.setOnClickListener(view -> {
+			
+			
+			});
+		}
+		
 	}
+	
 }
 
 
