@@ -1,7 +1,5 @@
 package com.e_wayalerts.adaptor;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,11 +24,8 @@ public class FleetListAdapter extends RecyclerView.Adapter<FleetListAdapter.View
 	
 	private final ArrayList<FleetListModel.Datum> fleetList;
 	
-	
-	
-	public FleetListAdapter( ArrayList<FleetListModel.Datum> fleetList) {
+	public FleetListAdapter(ArrayList<FleetListModel.Datum> fleetList) {
 		this.fleetList = fleetList;
-	
 	}
 	
 	@Override
@@ -55,7 +50,6 @@ public class FleetListAdapter extends RecyclerView.Adapter<FleetListAdapter.View
 	public class ViewHolder extends RecyclerView.ViewHolder {
 		
 		TextView vehicleNumber, vehicleName, vehicleType;
-		LinearLayout fleetEdit,fleetDelete;
 		
 		LinearLayout fleetEdit, fleetDelete;
 		
@@ -64,20 +58,23 @@ public class FleetListAdapter extends RecyclerView.Adapter<FleetListAdapter.View
 			vehicleNumber = itemView.findViewById(R.id.vehicleNumber);
 			vehicleName = itemView.findViewById(R.id.vehicleName);
 			vehicleType = itemView.findViewById(R.id.vehicleType);
-			
-			
+			fleetEdit = itemView.findViewById(R.id.fleetEdit);
+			fleetDelete = itemView.findViewById(R.id.fleetDelete);
+		}
+		
+		public void bind(FleetListModel.Datum datum) {
+			vehicleName.setText(datum.getFldMake());
+			vehicleNumber.setText(datum.getFldNumber());
+			vehicleType.setText(datum.getFldType());
 			fleetEdit.setOnClickListener(v -> {
 				Fragment fragment = new AddVehicleFragment();
 				Bundle bundle = new Bundle();
-				bundle.putSerializable("FleetModel", maincat);
+				bundle.putSerializable("FleetModel", datum);
 				fragment.setArguments(bundle);
-				Utility.loadFragment(
-						(FragmentActivity) itemView.getContext(), fragment, false, null);
-				
+				Utility.loadFragment((FragmentActivity) itemView.getContext(), fragment, false,
+						null);
 			});
-			
 			fleetDelete.setOnClickListener(v -> {
-			
 			});
 		}
 		

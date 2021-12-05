@@ -58,6 +58,8 @@ public class AddVehicleFragment extends Fragment {
 	
 	FleetListModel.Datum fleetModel;
 	
+	int position = 0,businessPosition=0,vehiclePositon=0;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
@@ -83,6 +85,9 @@ public class AddVehicleFragment extends Fragment {
 		vehicleNumber.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
 		if (getArguments() != null) {
 			fleetModel = (FleetListModel.Datum) getArguments().getSerializable("FleetModel");
+		
+			vehicleNumber.setText(fleetModel.getFldNumber());
+			
 		}
 	}
 	
@@ -169,6 +174,11 @@ public class AddVehicleFragment extends Fragment {
 								catbean.setFldMakeId(
 										response.body().getData().get(i).getFldMakeId());
 								vehicleList.add(catbean);
+								
+								if (fleetModel != null && !TextUtils.isEmpty(fleetModel.getFldMake())
+										&&  response.body().getData().get(i).getFldMakeName().equals(fleetModel.getFldMake())){
+									position = i;
+								}
 							}
 							
 							VehicleListAdapter aa = new VehicleListAdapter(requireActivity(),
@@ -177,6 +187,7 @@ public class AddVehicleFragment extends Fragment {
 									android.R.layout.simple_spinner_dropdown_item);
 							//Setting the ArrayAdapter data on the Spinner
 							makeVehicleSpinner.setAdapter(aa);
+							makeVehicleSpinner.setSelection(position);
 						}
 						
 						
@@ -225,6 +236,11 @@ public class AddVehicleFragment extends Fragment {
 										response.body().getData().get(i).getFldBusinessName());
 								catbean.setFldBid(response.body().getData().get(i).getFldBid());
 								businessArrayList.add(catbean);
+								
+								if (fleetModel != null && !TextUtils.isEmpty(String.valueOf(fleetModel.getFldBusinessId()))
+										&&  response.body().getData().get(i).getFldBid().equals(fleetModel.getFldBusinessId())){
+									businessPosition = i;
+								}
 							}
 							
 							BusibessListSpinnerAdapter aa =
@@ -235,7 +251,10 @@ public class AddVehicleFragment extends Fragment {
 									android.R.layout.simple_spinner_dropdown_item);
 							//Setting the ArrayAdapter data on the Spinner
 							businessListSpinner.setAdapter(aa);
+							businessListSpinner.setSelection(businessPosition);
 						}
+						
+						
 						
 						
 					}
@@ -281,6 +300,11 @@ public class AddVehicleFragment extends Fragment {
 								catbean.setFldTypeId(
 										response.body().getData().get(i).getFldTypeId());
 								vehicleTypeList.add(catbean);
+								
+								if (fleetModel != null && !TextUtils.isEmpty(fleetModel.getFldType())
+										&&  response.body().getData().get(i).getFldTypeName().equals(fleetModel.getFldType())){
+									vehiclePositon = i;
+								}
 							}
 							
 							Log.e("vehicleTypeList", String.valueOf(vehicleTypeList.size()));
@@ -290,6 +314,7 @@ public class AddVehicleFragment extends Fragment {
 									android.R.layout.simple_spinner_dropdown_item);
 							//Setting the ArrayAdapter data on the Spinner
 							vehicleTypeSpinner.setAdapter(aa);
+							vehicleTypeSpinner.setSelection(vehiclePositon);
 						}
 						
 						
