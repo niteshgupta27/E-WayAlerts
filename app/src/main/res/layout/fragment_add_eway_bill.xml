@@ -1,208 +1,243 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:fitsSystemWindows="true"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_screen">
+    android:background="@drawable/bg_screen"
+    android:fitsSystemWindows="true">
 
-
-
-    <ScrollView
-        android:scrollbars="none"
-        android:layout_above="@+id/mLayoutSubmit"
-
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:orientation="vertical"
+        <RelativeLayout
+            android:id="@+id/mLayoutTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <RelativeLayout
-                android:id="@+id/mLayoutTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/mTxer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="15dp"
-                    android:text="@string/add_staff"
-                    android:textColor="@color/purple_500"
-                    android:textSize="@dimen/_20sdp"
-                    android:fontFamily="@font/proxima_nova_alt_bold" />
+            <TextView
+                android:id="@+id/mTxer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/proxima_nova_alt_bold"
+                android:text="@string/AddEBill"
+                android:textColor="@color/purple_500"
+                android:textSize="@dimen/_20sdp" />
 
-                <TextView
-                    android:layout_below="@+id/mTxer"
-                    android:layout_marginStart="5dp"
-                    android:text="@string/AddBusinessheadline"
-                    android:textSize="@dimen/_5sdp"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-            </RelativeLayout>
-            <RadioGroup
-                android:layout_marginTop="10dp"
-                android:id="@+id/radioGrpFamilyMembers"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton
-                    android:checked="true"
-                    android:id="@+id/radioYes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="15dp"
-                    android:text="Single Bill"
-                    />
-                <RadioButton
-                    android:layout_marginLeft="5dp"
-                    android:id="@+id/radioNo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="15dp"
-                    android:text="Consolidated Bill"
-                    />
+                android:layout_below="@+id/mTxer"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:fontFamily="@font/proxima_nova_alt_regular"
+                android:text="@string/AddBusinessheadline"
+                android:textSize="@dimen/_10sdp" />
+        </RelativeLayout>
 
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-            </RadioGroup>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:fontFamily="@font/proxima_nova_alt_regular"
+                android:text="@string/single_bill"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
 
-            <EditText
-                android:layout_marginTop="10dp"
-                android:background="@drawable/border_rectangle_shap"
-                android:textColor="#000000"
-                android:hint="@string/e_way_bill_number"
-                android:textSize="15dp"
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <EditText
-                android:layout_marginTop="10dp"
-                android:background="@drawable/border_rectangle_shap"
-                android:textColor="#000000"
-                android:hint="@string/e_way_bill_date"
-                android:textSize="15dp"
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <EditText
-                android:layout_marginTop="10dp"
-                android:background="@drawable/border_rectangle_shap"
-                android:textColor="#000000"
-                android:hint="@string/Generated_By"
-                android:textSize="15dp"
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <EditText
-                android:layout_marginTop="10dp"
-                android:background="@drawable/border_rectangle_shap"
-                android:textColor="#000000"
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:fontFamily="@font/proxima_nova_alt_regular"
+                android:text="@string/consoildated_bill"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+        </RadioGroup>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/border_rectangle_shap"
+            android:fontFamily="@font/proxima_nova_alt_regular"
+            android:hint="@string/e_way_bill_number"
+            android:inputType="textPersonName"
+            android:padding="@dimen/_10sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/border_rectangle_shap"
+            android:fontFamily="@font/proxima_nova_alt_regular"
+            android:hint="@string/Generated_By"
+            android:inputType="textPersonName"
+            android:padding="@dimen/_10sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/border_rectangle_shap"
+            android:fontFamily="@font/proxima_nova_alt_regular"
+            android:hint="@string/place_of_origin"
+            android:inputType="textPersonName"
+            android:padding="@dimen/_10sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/border_rectangle_shap"
+            android:fontFamily="@font/proxima_nova_alt_regular"
+            android:hint="@string/Place_Of_Delivery"
+            android:inputType="textPersonName"
+            android:padding="@dimen/_10sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/border_rectangle_shap"
+            android:fontFamily="@font/proxima_nova_alt_regular"
+            android:hint="@string/e_way_bill_number"
+            android:inputType="textPersonName"
+            android:padding="@dimen/_10sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_rectangle_shap"
+            android:layout_marginTop="@dimen/_10sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
                 android:hint="@string/Valid_From"
-                android:textSize="15dp"
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <EditText
-                android:layout_marginTop="10dp"
-                android:background="@drawable/border_rectangle_shap"
-                android:textColor="#000000"
+                android:textSize="@dimen/_12sdp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/proxima_nova_alt_regular"/>
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/calender"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_10sdp"/>
+
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_rectangle_shap"
+            android:layout_marginTop="@dimen/_10sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/proxima_nova_alt_regular"
                 android:hint="@string/Valid_Until"
-                android:textSize="15dp"
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:padding="@dimen/_10sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
 
-            <RelativeLayout
-                android:layout_marginTop="10dp"
-                android:background="@drawable/border_rectangle_shap"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <Spinner
-                    android:id="@+id/mSpinnerTehsil"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#00000000"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp" />
-                <ImageView
-                    android:layout_marginRight="10dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_keyboard_arrow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_marginTop="10dp"
-                android:background="@drawable/border_rectangle_shap"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <Spinner
-                    android:paddingBottom="10dp"
-                    android:background="#00000000"
-                    android:paddingTop="10dp"
-                    android:id="@+id/mSpinnename"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <ImageView
-                    android:layout_marginRight="10dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_keyboard_arrow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            </RelativeLayout>
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/calender"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_10sdp"/>
 
 
 
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_rectangle_shap"
+            android:layout_marginTop="@dimen/_10sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/proxima_nova_alt_regular"
+                android:hint="@string/Vehicle_Number"
+                android:padding="@dimen/_10sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_keyboard_arrow"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_10sdp"/>
 
 
-            <EditText
-                android:layout_marginTop="10dp"
-                android:background="@drawable/border_rectangle_shap"
-                android:textColor="#000000"
-                android:hint="@string/Place_Of_Delivery"
-                android:textSize="15dp"
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_rectangle_shap"
+            android:layout_marginTop="@dimen/_10sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/proxima_nova_alt_regular"
+                android:hint="@string/driver_number"
+                android:padding="@dimen/_10sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_keyboard_arrow"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_10sdp"/>
 
 
 
-        </LinearLayout>
-    </ScrollView>
+        </RelativeLayout>
 
 
-
-    <RelativeLayout
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:id="@+id/mLayoutSubmit"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/background_rounded_but"
-        android:layout_width="match_parent"
-        android:layout_height="45dp">
-        <TextView
-            android:textSize="18dp"
-            android:layout_centerInParent="true"
-            android:textColor="#ffffff"
-            android:text="SUBMIT"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </RelativeLayout>
-
+    </LinearLayout>
 </RelativeLayout>

@@ -148,4 +148,9 @@
     <string name="select_business">Select Business</string>
     <string name="enter_group_name">Please enter group name</string>
     <string name="select_staff">Please select staff</string>
+    <string name="single_bill">Single Bill</string>
+    <string name="consoildated_bill">Consoildated Bill</string>
+    <string name="place_of_origin">Place of origin</string>
+    <string name="driver_number">Driver Number</string>
+    <string name="edit_vehicle">Edit Vehicle</string>
 </resources>
