@@ -247,8 +247,7 @@ public class AddEwayBillFragment extends Fragment {
 		catbean.setFldUid(0);
 		staffModalList.add(catbean);
 		String userid = Utility.getSharedPreferences(requireActivity(), Constant.User_id);
-		Call<StaffRecponce> call = apiInterface.StaffList(userid,
-				Utility.getSharedPreferences(requireActivity(), Constant.role_ID), businessID);
+		Call<StaffRecponce> call = apiInterface.StaffList(userid, "6", businessID);
 		call.enqueue(new Callback<StaffRecponce>() {
 			@Override
 			public void onResponse(@NonNull Call<StaffRecponce> call,
