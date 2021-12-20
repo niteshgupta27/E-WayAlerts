@@ -7,6 +7,7 @@ import com.e_wayalerts.activity.dropdown.SateResponce;
 import com.e_wayalerts.activity.loginmodule.Model.LoginResponse;
 import com.e_wayalerts.activity.loginmodule.Model.ResetPinModel;
 import com.e_wayalerts.activity.loginmodule.Model.VarifyOTPModel;
+import com.e_wayalerts.model.AddEwayBillModel;
 import com.e_wayalerts.model.AddGroupModel;
 import com.e_wayalerts.model.AddStaffModel;
 import com.e_wayalerts.model.AddVehicleModel;
@@ -115,4 +116,18 @@ public interface ApiInterface {// For POST request
 	@FormUrlEncoded
 	Call<FleetListModel> getFleetList(@Field ("user_id") String user_id,
 	                                  @Field ("business_id") String business_id);
+	
+	@POST ("fleet/list")
+	@FormUrlEncoded
+	Call<AddEwayBillModel> addEwayBill(@Field ("user_id") String userid,
+	                                   @Field ("fld_type") String billType,
+	                                   @Field ("user_id") String ewayBillNumber,
+	                                   @Field ("fld_generated_by") String generatedBy,
+	                                   @Field ("user_id") String origin,
+	                                   @Field ("user_id") String delivery,
+	                                   @Field ("user_id") String validFormDate,
+	                                   @Field ("user_id") String validUntilDate,
+	                                   @Field ("user_id") String businessID,
+	                                   @Field ("user_id") String vehicleNumberID,
+	                                   @Field ("user_id") String driverID);
 }
