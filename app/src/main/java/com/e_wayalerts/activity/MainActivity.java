@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         menuItems.add(new MenuItem(getString(R.string.menu_feedback),R.drawable.bg_building));
         menuItems.add(new MenuItem(getString(R.string.menu_about_us),R.drawable.bg_building));
         menuItems.add(new MenuItem(getString(R.string.menu_faq),R.drawable.bg_building));
-        menuItems.add(new MenuItem(getString(R.string.menu_settings),R.drawable.bg_building));
+        menuItems.add(new MenuItem(getString(R.string.account_ifo),R.drawable.bg_building));
         menuItems.add(new MenuItem(getString(R.string.menu_password),R.drawable.bg_building));
         menuItems.add(new MenuItem(getString(R.string.menu_terms_and_conditions),R.drawable.bg_building));
         menuItems.add(new MenuItem(getString(R.string.menu_logout),R.drawable.bg_building));

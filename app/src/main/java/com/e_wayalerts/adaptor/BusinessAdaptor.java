@@ -10,6 +10,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.e_wayalerts.R;
+import com.e_wayalerts.activity.add_business.BusinessListFragment;
 import com.e_wayalerts.activity.add_business.businessModal.BusinessListResponse;
 
 import java.util.ArrayList;
@@ -22,10 +23,11 @@ public class BusinessAdaptor extends RecyclerView.Adapter<BusinessAdaptor.ViewHo
 	private final ArrayList<BusinessListResponse.Datum> arMediIn;
 	
 	private final Context context;
-	
+	BusinessListFragment businessListFragment;
 	public BusinessAdaptor(Context context_, ArrayList<BusinessListResponse.Datum> arTestReport_) {
 		arMediIn = arTestReport_;
 		context = context_;
+		businessListFragment = BusinessListFragment.instance;
 	}
 	
 
@@ -56,7 +58,12 @@ public class BusinessAdaptor extends RecyclerView.Adapter<BusinessAdaptor.ViewHo
 			viewHolder.renewel.setVisibility(View.VISIBLE);
 
 		}
-
+		viewHolder.delete_but.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				businessListFragment.deleteBusiness(maincat.getFldBid().toString());
+			}
+		});
 		
 	}
 	
@@ -69,7 +76,7 @@ public class BusinessAdaptor extends RecyclerView.Adapter<BusinessAdaptor.ViewHo
 		
 		TextView bname, bcity, bdate;
 		Switch bActive;
-		LinearLayout renewel;
+		LinearLayout renewel,delete_but;
 		public ViewHolder(View itemView) {
 			super(itemView);
 			bname = itemView.findViewById(R.id.bname);
@@ -77,6 +84,7 @@ public class BusinessAdaptor extends RecyclerView.Adapter<BusinessAdaptor.ViewHo
 			bdate = itemView.findViewById(R.id.bdate);
 			bActive = itemView.findViewById(R.id.bactive);
 			renewel= itemView.findViewById(R.id.renewel);
+			delete_but = itemView.findViewById(R.id.delete_but);
 		}
 	}
 }

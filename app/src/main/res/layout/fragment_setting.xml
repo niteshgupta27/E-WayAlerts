@@ -51,8 +51,9 @@
 
 
         <RelativeLayout
+            android:id="@+id/profile"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp">
+            android:layout_height="@dimen/_40sdp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -61,7 +62,7 @@
                 android:gravity="center"
                 android:text="@string/profile"
                 android:textColor="@color/green"
-                android:textSize="@dimen/_18sdp" />
+                android:textSize="@dimen/_15sdp" />
 
 
             <ImageView
@@ -75,15 +76,16 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
-                android:src="@drawable/dotted_line_gray"
+                android:layout_alignParentBottom="true"
                 android:layerType="software"
-                android:layout_alignParentBottom="true"/>
+                android:src="@drawable/dotted_line_gray" />
 
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/setting"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp">
+            android:layout_height="@dimen/_40sdp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -92,7 +94,7 @@
                 android:gravity="center"
                 android:text="@string/menu_settings"
                 android:textColor="@color/green"
-                android:textSize="@dimen/_18sdp" />
+                android:textSize="@dimen/_15sdp" />
 
 
             <ImageView
@@ -114,17 +116,18 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/fleet"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp">
+            android:layout_height="@dimen/_40sdp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/proxima_nova_alt_bold"
+                android:gravity="center"
                 android:text="@string/fleet"
                 android:textColor="@color/green"
-                android:textSize="@dimen/_18sdp"
-                android:gravity="center"/>
+                android:textSize="@dimen/_15sdp" />
 
 
             <ImageView
@@ -146,8 +149,9 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/language"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp">
+            android:layout_height="@dimen/_40sdp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -156,7 +160,7 @@
                 android:gravity="center"
                 android:text="@string/Language"
                 android:textColor="@color/green"
-                android:textSize="@dimen/_18sdp" />
+                android:textSize="@dimen/_15sdp" />
 
 
             <ImageView
@@ -179,8 +183,9 @@
 
 
         <RelativeLayout
+            android:id="@+id/alert_group"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp">
+            android:layout_height="@dimen/_40sdp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -189,7 +194,7 @@
                 android:gravity="center"
                 android:text="@string/alert_group"
                 android:textColor="@color/green"
-                android:textSize="@dimen/_18sdp" />
+                android:textSize="@dimen/_15sdp" />
 
 
             <ImageView
@@ -211,8 +216,9 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/Sms_cradit"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp">
+            android:layout_height="@dimen/_40sdp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -221,7 +227,7 @@
                 android:gravity="center"
                 android:text="@string/SMS_Credit"
                 android:textColor="@color/green"
-                android:textSize="@dimen/_18sdp" />
+                android:textSize="@dimen/_15sdp" />
 
 
             <ImageView

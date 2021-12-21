@@ -32,14 +32,14 @@
     <string name="Business_Name">Business Name</string>
     <string name="GST_Number">GST Number</string>
     <string name="Adress_1">Address 1</string>
-    <string name="Adress_2">Address 2(Optional)</string>
+    <string name="Adress_2">Address 2 (Optional)</string>
     <string name="City">City</string>
     <string name="Pincode">Pincode</string>
     <string name="State">Sate</string>
     <string name="Owner_First_Name">Owner First Name</string>
     <string name="Owner_Last_Name">Owner Last Name</string>
     <string name="Mobile_Number">Mobile Number</string>
-    <string name="Email_Address">Email Address(Optional)</string>
+    <string name="Email_Address">Email Address (Optional)</string>
     <string name="StepAddStaff">Step 2 - Add Staff</string>
     <string name="BusinessAccess">Business Access</string>
     <string name="NotificationType">Notification Type</string>

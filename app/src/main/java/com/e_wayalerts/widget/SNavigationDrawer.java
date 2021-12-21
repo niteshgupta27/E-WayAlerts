@@ -368,10 +368,10 @@ public class SNavigationDrawer extends RelativeLayout{
         setNavigationDrawerBackgroundColor(attrs.getColor(R.styleable.SNavigationDrawer_navigationDrawerBackgroundColor,getResources().getColor(navigationDrawerBackgroundColor)));
         setPrimaryMenuItemTextColor(attrs.getColor(R.styleable.SNavigationDrawer_navigationDrawerBackgroundColor,getResources().getColor(primaryMenuItemTextColor)));
         setSecondaryMenuItemTextColor(attrs.getColor(R.styleable.SNavigationDrawer_secondaryMenuItemTextColor,getResources().getColor(secondaryMenuItemTextColor)));
-        setAppbarTitleTextSize(attrs.getDimension(R.styleable.SNavigationDrawer_appbarTitleTextSize,20));
-        setPrimaryMenuItemTextSize(attrs.getDimension(R.styleable.SNavigationDrawer_primaryMenuItemTextSize,20));
-        setSecondaryMenuItemTextSize(attrs.getDimension(R.styleable.SNavigationDrawer_secondaryMenuItemTextSize,20));
-        setMenuIconSize(attrs.getDimension(R.styleable.SNavigationDrawer_HamMenuIconSize,20));
+        setAppbarTitleTextSize(attrs.getDimension(R.styleable.SNavigationDrawer_appbarTitleTextSize,15));
+        setPrimaryMenuItemTextSize(attrs.getDimension(R.styleable.SNavigationDrawer_primaryMenuItemTextSize,15));
+        setSecondaryMenuItemTextSize(attrs.getDimension(R.styleable.SNavigationDrawer_secondaryMenuItemTextSize,15));
+        setMenuIconSize(attrs.getDimension(R.styleable.SNavigationDrawer_HamMenuIconSize,15));
 
     }
 

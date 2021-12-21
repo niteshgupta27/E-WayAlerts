@@ -45,7 +45,7 @@ public class BusinessListFragment extends Fragment {
     BusinessAdaptor adaptor;
     FloatingActionButton mImgAddNew;
     LinearLayout Addbutton;
-   
+    public static BusinessListFragment instance;
 
 
     @Override
@@ -57,6 +57,7 @@ public class BusinessListFragment extends Fragment {
         cardview = view.findViewById(R.id.cardview);
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
         mContext = getContext();
+        instance = BusinessListFragment.this;
         mImgAddNew = view.findViewById(R.id.mImgAddNew);
         Addbutton = view.findViewById(R.id.ll_continue);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity());
@@ -88,13 +89,16 @@ public class BusinessListFragment extends Fragment {
         return view;
 
     }
+    public void deleteBusiness(String b_id){
+
+    }
     private void BusinessList() {
         String userid= Utility.getSharedPreferences(mContext,Constant.User_id);
         Call<BusinessListResponse> call = apiInterface.BusinessList(userid,"1");
         call.enqueue(new Callback<BusinessListResponse>() {
             @Override
             public void onResponse(Call<BusinessListResponse> call, Response<BusinessListResponse> response) {
-                Log.e("TAG", "response 33: " + String.valueOf(response.body().getStatus()));
+                Log.e("TAG", "response 33: " + String.valueOf(response.body()));
 
                 if (response.isSuccessful()) {
 
