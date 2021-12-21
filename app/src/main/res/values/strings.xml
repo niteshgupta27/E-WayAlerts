@@ -155,4 +155,10 @@
     <string name="edit_vehicle">Edit Vehicle</string>
     <string name="select_driver_name">Select Driver Name</string>
     <string name="select_vehicle_number">Select Vehicle Number</string>
+    <string name="two_hour">Two Hour</string>
+    <string name="one_hour">One Hour</string>
+    <string name="select_bill_type">Please select bill type</string>
+    <string name="valid_from_date">Select valid from date</string>
+    <string name="valid_till_date">Select valid till date</string>
+
 </resources>

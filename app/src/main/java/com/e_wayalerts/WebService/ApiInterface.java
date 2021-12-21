@@ -115,10 +115,4 @@ public interface ApiInterface {// For POST request
 	@FormUrlEncoded
 	Call<FleetListModel> getFleetList(@Field ("user_id") String user_id,
 	                                  @Field ("business_id") String business_id);
-
-	@POST ("alert-group/list")
-	@FormUrlEncoded
-	Call<StaffRecponce> GroupList(@Field ("user_id") String userid,
-								  @Field ("status") String role_id,
-								  @Field ("business_id") String selectedbusinessID);
 }
