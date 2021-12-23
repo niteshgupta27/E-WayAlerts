@@ -12,6 +12,7 @@ import com.e_wayalerts.model.AddGroupModel;
 import com.e_wayalerts.model.AddStaffModel;
 import com.e_wayalerts.model.AddVehicleModel;
 import com.e_wayalerts.model.FleetListModel;
+import com.e_wayalerts.model.GroupListRecponce;
 import com.e_wayalerts.model.VehicleListModel;
 import com.e_wayalerts.model.VehicleTypeModel;
 
@@ -131,7 +132,7 @@ public interface ApiInterface {// For POST request
 									   @Field ("user_id") String driverID);
 	@POST ("alert-group/list")
 	@FormUrlEncoded
-	Call<StaffRecponce> GroupList(@Field ("user_id") String userid,
-								  @Field ("status") String role_id,
-								  @Field ("business_id") String selectedbusinessID);
+	Call<GroupListRecponce> GroupList(@Field ("user_id") String userid,
+									  @Field ("status") String role_id,
+									  @Field ("business_id") String selectedbusinessID);
 }

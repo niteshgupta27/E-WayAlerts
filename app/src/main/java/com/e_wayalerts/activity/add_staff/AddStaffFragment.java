@@ -266,11 +266,11 @@ public class AddStaffFragment extends Fragment {
 				if (businessArrayList.get(i).isIschecked()) {
 					if (TextUtils.isEmpty(businessID)) {
 						businessID =
-								"[" + String.valueOf(businessArrayList.get(i).getFldBid()) + "]";
+								 String.valueOf(businessArrayList.get(i).getFldBid()) ;
 						
 					} else {
-						businessID = businessID + "," + "[" + String.valueOf(
-								businessArrayList.get(i).getFldBid()) + "]";
+						businessID = businessID + ","  + String.valueOf(
+								businessArrayList.get(i).getFldBid()) ;
 					}
 				}
 				

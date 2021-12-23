@@ -95,11 +95,7 @@ public class StaffListFragment extends Fragment {
             }
         });
        // StaffList();
-        DropDownModal ra = new DropDownModal();
-        ra.setmStrId(
-                "0");
-        ra.setmStrValue(getString(R.string.select_business));
-        arraybusiness.add(ra);
+
         BusinessList();
         customAdapter = new DropDownAdapter(getContext(), arraybusiness);
         mSpinnerbusiness.setAdapter(customAdapter);
@@ -158,8 +154,14 @@ public class StaffListFragment extends Fragment {
 
     }
     private void BusinessList() {
+        arraybusiness.clear();
+        DropDownModal ra = new DropDownModal();
+        ra.setmStrId(
+                "0");
+        ra.setmStrValue(getString(R.string.select_business));
+        arraybusiness.add(ra);
         String userid= Utility.getSharedPreferences(mContext,Constant.User_id);
-        Call<BusinessListResponse> call = apiInterface.BusinessList(userid,"");
+        Call<BusinessListResponse> call = apiInterface.BusinessList(userid,"1");
         call.enqueue(new Callback<BusinessListResponse>() {
             @Override
             public void onResponse(@NonNull Call<BusinessListResponse> call, @NonNull

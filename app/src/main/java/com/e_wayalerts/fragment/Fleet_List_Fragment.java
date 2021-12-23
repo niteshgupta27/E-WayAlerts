@@ -113,6 +113,7 @@ public class Fleet_List_Fragment extends Fragment {
 	}
 	
 	private void businessList() {
+		businessArrayList.clear();
 		BusinessListResponse.Datum catbean = new BusinessListResponse.Datum();
 		catbean.setFldBusinessName(getString(R.string.select_business));
 		catbean.setFldBid(0);

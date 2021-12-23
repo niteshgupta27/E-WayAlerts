@@ -28,7 +28,10 @@ import com.e_wayalerts.activity.add_staff.StaffModal.StaffModal;
 import com.e_wayalerts.activity.add_staff.StaffModal.StaffRecponce;
 import com.e_wayalerts.activity.dropdown.DropDownAdapter;
 import com.e_wayalerts.activity.dropdown.DropDownModal;
+import com.e_wayalerts.adaptor.GroupAdapter;
 import com.e_wayalerts.adaptor.StaffAdaptor;
+import com.e_wayalerts.model.GroupListRecponce;
+import com.e_wayalerts.model.GroupModal;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -42,7 +45,7 @@ public class AlertGroupListFragment extends Fragment {
     ApiInterface apiInterface;
     RecyclerView mListView;
     CardView cardview;
-    StaffAdaptor adaptor;
+    GroupAdapter adaptor;
     FloatingActionButton mImgAddNew;
     LinearLayout Addbutton;
     String selectedbusinessID = "0";
@@ -73,7 +76,7 @@ public class AlertGroupListFragment extends Fragment {
         mImgAddNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utility.loadFragment(requireActivity(), new AddStaffFragment(),
+                Utility.loadFragment(requireActivity(), new AddAlertGroupFragment(),
                         true,
                         null);
             }
@@ -84,18 +87,14 @@ public class AlertGroupListFragment extends Fragment {
                /* Utility.loadFragment(getActivity(),
                         AddBusinesskFragment.newInstance(groupChannel.getUrl(), true), true,
                         ConversationFragment.class.getSimpleName());*/
-                Utility.loadFragment(requireActivity(), new AddStaffFragment(),
+                Utility.loadFragment(requireActivity(), new AddAlertGroupFragment(),
                         true,
                         null);
 
             }
         });
         // StaffList();
-        DropDownModal ra = new DropDownModal();
-        ra.setmStrId(
-                "0");
-        ra.setmStrValue(getString(R.string.select_business));
-        arraybusiness.add(ra);
+
         BusinessList();
         customAdapter = new DropDownAdapter(getContext(), arraybusiness);
         mSpinnerbusiness.setAdapter(customAdapter);
@@ -116,18 +115,18 @@ public class AlertGroupListFragment extends Fragment {
     private void GroupList() {
         String userid= Utility.getSharedPreferences(mContext, Constant.User_id);
 
-        Call<StaffRecponce> call = apiInterface.GroupList(userid,"00",selectedbusinessID);
-        call.enqueue(new Callback<StaffRecponce>() {
+        Call<GroupListRecponce> call = apiInterface.GroupList(userid,"00",selectedbusinessID);
+        call.enqueue(new Callback<GroupListRecponce>() {
             @Override
-            public void onResponse(@NonNull Call<StaffRecponce> call, @NonNull
-                    Response<StaffRecponce> response) {
+            public void onResponse(@NonNull Call<GroupListRecponce> call, @NonNull
+                    Response<GroupListRecponce> response) {
                 if (response.isSuccessful()) {
 
                     if (String.valueOf(response.body().getStatus()).equals("200")) {
                         if (response.body().getData().size()>0){
                             cardview.setVisibility(View.GONE);
                             mListView.setVisibility(View.VISIBLE);
-                            adaptor = new StaffAdaptor(mContext, (ArrayList<StaffModal>) response.body().getData());
+                            adaptor = new GroupAdapter(mContext, (ArrayList<GroupModal>) response.body().getData());
                             mListView.setAdapter(adaptor);
                             adaptor.notifyDataSetChanged();
                         }
@@ -145,7 +144,7 @@ public class AlertGroupListFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(@NonNull Call<StaffRecponce> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<GroupListRecponce> call, @NonNull Throwable t) {
                 Toast.makeText(mContext, t.toString(),
                         Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
 
@@ -155,8 +154,14 @@ public class AlertGroupListFragment extends Fragment {
 
     }
     private void BusinessList() {
+        arraybusiness.clear();
+        DropDownModal ra = new DropDownModal();
+        ra.setmStrId(
+                "0");
+        ra.setmStrValue(getString(R.string.select_business));
+        arraybusiness.add(ra);
         String userid= Utility.getSharedPreferences(mContext, Constant.User_id);
-        Call<BusinessListResponse> call = apiInterface.BusinessList(userid,"");
+        Call<BusinessListResponse> call = apiInterface.BusinessList(userid,"1");
         call.enqueue(new Callback<BusinessListResponse>() {
             @Override
             public void onResponse(@NonNull Call<BusinessListResponse> call, @NonNull

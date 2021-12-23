@@ -46,12 +46,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/_16sdp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:layout_marginBottom="@dimen/_16sdp"
+        android:contentDescription="TODO"
         android:src="@drawable/plus"
         app:backgroundTint="@color/green"
         app:elevation="@dimen/_5sdp"
         app:pressedTranslationZ="@dimen/_5sdp"
-        android:contentDescription="TODO"
         tools:ignore="RelativeOverlap" />
 
     <androidx.cardview.widget.CardView
@@ -60,7 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"

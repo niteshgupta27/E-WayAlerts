@@ -103,12 +103,11 @@ public class AddAlertGroupFragment extends Fragment {
 				for (int i = 0; i < staffModalList.size(); i++) {
 					if (staffModalList.get(i).isChecked()) {
 						if (TextUtils.isEmpty(staffID)) {
-							staffID =
-									"[" + String.valueOf(staffModalList.get(i).getFldUid()) + "]";
+							staffID = String.valueOf(staffModalList.get(i).getFldUid());
 							
 						} else {
-							staffID = staffID + "," + "[" + String.valueOf(
-									staffModalList.get(i).getFldUid()) + "]";
+							staffID = staffID + "," +  String.valueOf(
+									staffModalList.get(i).getFldUid()) ;
 						}
 					}
 					
@@ -174,7 +173,7 @@ public class AddAlertGroupFragment extends Fragment {
 	
 	private void BusinessList() {
 		String userid= Utility.getSharedPreferences(requireActivity(),Constant.User_id);
-		Call<BusinessListResponse> call = apiInterface.BusinessList(userid,"");
+		Call<BusinessListResponse> call = apiInterface.BusinessList(userid,"1");
 		call.enqueue(new Callback<BusinessListResponse>() {
 			@Override
 			public void onResponse(@NonNull Call<BusinessListResponse> call, @NonNull
