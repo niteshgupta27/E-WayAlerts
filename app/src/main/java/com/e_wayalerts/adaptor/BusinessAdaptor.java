@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
@@ -58,13 +59,29 @@ public class BusinessAdaptor extends RecyclerView.Adapter<BusinessAdaptor.ViewHo
 			viewHolder.renewel.setVisibility(View.VISIBLE);
 
 		}
+		viewHolder.edit_but.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+			}
+		});
 		viewHolder.delete_but.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				businessListFragment.deleteBusiness(maincat.getFldBid().toString());
 			}
 		});
-		
+		viewHolder.bActive.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if (isChecked) {
+					// The toggle is enabled
+					businessListFragment.ChangeStatusBusiness(maincat.getFldBid().toString(),"1");
+				} else {
+					// The toggle is disabled
+					businessListFragment.ChangeStatusBusiness(maincat.getFldBid().toString(),"0");
+				}
+			}
+		});
 	}
 	
 	@Override
@@ -76,7 +93,7 @@ public class BusinessAdaptor extends RecyclerView.Adapter<BusinessAdaptor.ViewHo
 		
 		TextView bname, bcity, bdate;
 		Switch bActive;
-		LinearLayout renewel,delete_but;
+		LinearLayout renewel,delete_but,edit_but;
 		public ViewHolder(View itemView) {
 			super(itemView);
 			bname = itemView.findViewById(R.id.bname);
@@ -85,6 +102,7 @@ public class BusinessAdaptor extends RecyclerView.Adapter<BusinessAdaptor.ViewHo
 			bActive = itemView.findViewById(R.id.bactive);
 			renewel= itemView.findViewById(R.id.renewel);
 			delete_but = itemView.findViewById(R.id.delete_but);
+			edit_but = itemView.findViewById(R.id.edit_but);
 		}
 	}
 }

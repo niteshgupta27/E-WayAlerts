@@ -49,6 +49,13 @@ public interface ApiInterface {// For POST request
 	@FormUrlEncoded
 	Call<BusinessListResponse> BusinessList(@Field ("user_id") String user_id,
 	                                        @Field ("status") String status);
+	@POST ("business/delete")
+	@FormUrlEncoded
+	Call<BusinessListResponse> Businessdelete(@Field ("business_id") String user_id);
+
+	@POST ("business/change-status")
+	@FormUrlEncoded
+	Call<BusinessListResponse> Businessstatus(@Field ("user_id") String user_id,@Field ("business_id") String business_id,@Field ("status") String status);
 	
 	@POST ("master/get-roles")
 	@FormUrlEncoded
@@ -69,7 +76,11 @@ public interface ApiInterface {// For POST request
 	                             @Field ("in_app") String in_app,
 	                             @Field ("in_email") String in_email,
 	                             @Field ("in_sms") String in_sms);
-	
+	@POST ("staff/delete")
+	@FormUrlEncoded
+	Call<BusinessListResponse> Staffdelete(@Field ("business_id") String user_id);
+
+
 	@POST ("business/add")
 	@FormUrlEncoded
 	Call<VarifyOTPModel> AddBusiness(@Field ("user_id") String user_id,

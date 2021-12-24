@@ -89,7 +89,58 @@ public class BusinessListFragment extends Fragment {
         return view;
 
     }
+    public void ChangeStatusBusiness(String b_id,String status){
+        String userid= Utility.getSharedPreferences(mContext,Constant.User_id);
+        Call<BusinessListResponse> call = apiInterface.Businessstatus(userid,b_id,status);
+        call.enqueue(new Callback<BusinessListResponse>() {
+            @Override
+            public void onResponse(Call<BusinessListResponse> call, Response<BusinessListResponse> response) {
+                Log.e("TAG", "response 33: " + String.valueOf(response.body()));
+
+                if (response.isSuccessful()) {
+
+                    if (String.valueOf(response.body().getStatus()).equals("200")) {
+                        BusinessList();
+                    }
+                } else {
+                    Log.e("Error===>", response.errorBody().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BusinessListResponse> call, Throwable t) {
+                Toast.makeText(mContext, t.toString(),
+                        Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
+
+            }
+        });
+
+    }
     public void deleteBusiness(String b_id){
+
+        Call<BusinessListResponse> call = apiInterface.Businessdelete(b_id);
+        call.enqueue(new Callback<BusinessListResponse>() {
+            @Override
+            public void onResponse(Call<BusinessListResponse> call, Response<BusinessListResponse> response) {
+                Log.e("TAG", "response 33: " + String.valueOf(response.body()));
+
+                if (response.isSuccessful()) {
+
+                    if (String.valueOf(response.body().getStatus()).equals("200")) {
+                       BusinessList();
+                    }
+                } else {
+                    Log.e("Error===>", response.errorBody().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BusinessListResponse> call, Throwable t) {
+                Toast.makeText(mContext, t.toString(),
+                        Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
+
+            }
+        });
 
     }
     private void BusinessList() {
