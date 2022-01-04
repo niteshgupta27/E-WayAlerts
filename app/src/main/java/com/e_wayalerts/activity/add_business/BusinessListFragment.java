@@ -30,6 +30,7 @@ import com.e_wayalerts.adaptor.BusinessAdaptor;
 import com.e_wayalerts.fragment.SettingFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -66,7 +67,11 @@ public class BusinessListFragment extends Fragment {
         mImgAddNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utility.loadFragment(requireActivity(), new AddBusinesskFragment(),
+                AddBusinesskFragment fragment = new AddBusinesskFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("b_id","0");
+                fragment.setArguments(bundle);
+                Utility.loadFragment(requireActivity(), fragment,
                         true,
                         null);
             }
@@ -74,10 +79,11 @@ public class BusinessListFragment extends Fragment {
         Addbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               /* Utility.loadFragment(getActivity(),
-                        AddBusinesskFragment.newInstance(groupChannel.getUrl(), true), true,
-                        ConversationFragment.class.getSimpleName());*/
-                Utility.loadFragment(requireActivity(), new AddBusinesskFragment(),
+                AddBusinesskFragment fragment = new AddBusinesskFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("b_id","0");
+                fragment.setArguments(bundle);
+                Utility.loadFragment(requireActivity(), fragment,
                         true,
                         null);
                 
@@ -115,6 +121,16 @@ public class BusinessListFragment extends Fragment {
             }
         });
 
+    }
+    public void editBusiness(BusinessListResponse.Datum maincat){
+        AddBusinesskFragment fragment = new AddBusinesskFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("b_id",maincat.getFldBid().toString());
+        bundle.putSerializable("data", (Serializable) maincat);
+        fragment.setArguments(bundle);
+        Utility.loadFragment(requireActivity(), fragment,
+                true,
+                null);
     }
     public void deleteBusiness(String b_id){
 

@@ -1,6 +1,7 @@
 package com.e_wayalerts.adaptor;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +12,12 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.e_wayalerts.R;
+import com.e_wayalerts.Utility.Utility;
+import com.e_wayalerts.activity.add_business.AddBusinesskFragment;
 import com.e_wayalerts.activity.add_business.BusinessListFragment;
 import com.e_wayalerts.activity.add_business.businessModal.BusinessListResponse;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
@@ -62,7 +66,7 @@ public class BusinessAdaptor extends RecyclerView.Adapter<BusinessAdaptor.ViewHo
 		viewHolder.edit_but.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
+				businessListFragment.editBusiness(maincat);
 			}
 		});
 		viewHolder.delete_but.setOnClickListener(new View.OnClickListener() {

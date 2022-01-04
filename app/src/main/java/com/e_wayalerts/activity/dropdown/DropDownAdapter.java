@@ -24,7 +24,9 @@ public class DropDownAdapter extends BaseAdapter {
         this.arrayState = dropitem;
         inflter = (LayoutInflater.from(applicationContext));
     }
-
+public int getpossion(String item){
+        return  arrayState.indexOf(item);
+}
     @Override
     public int getCount() {
         return arrayState.size();

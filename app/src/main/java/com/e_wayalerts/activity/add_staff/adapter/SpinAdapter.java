@@ -18,12 +18,12 @@ import java.util.List;
  * Created by cnvg on 9/3/17.
  */
 
-public class SpinAdapter extends ArrayAdapter<UserRollListModel.Datum> {
+public class SpinAdapter extends ArrayAdapter<UserRollListModel.UserRollListItem> {
     Context context;
-    private List<UserRollListModel.Datum> items;
+    private List<UserRollListModel.UserRollListItem> items;
 
     public SpinAdapter(Context context,
-                       int resourceId, List<UserRollListModel.Datum> aritems) {
+                       int resourceId, List<UserRollListModel.UserRollListItem> aritems) {
         super(context,resourceId,aritems);
 
 
@@ -34,13 +34,15 @@ public class SpinAdapter extends ArrayAdapter<UserRollListModel.Datum> {
         TextView itemName;
         TextView itemDropdown;
     }
-
+    public int getpossion(int item){
+        return  items.indexOf(item);
+    }
     @Override
     public int getCount() {
         return items.size();
     }
     @Override
-    public UserRollListModel.Datum getItem(int position) {
+    public UserRollListModel.UserRollListItem getItem(int position) {
 //		Log.v("", "items.get("+position+")= "+items.get(position));
         return items.get(position);
     }

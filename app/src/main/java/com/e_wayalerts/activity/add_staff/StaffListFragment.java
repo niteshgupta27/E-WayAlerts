@@ -25,6 +25,7 @@ import com.e_wayalerts.WebService.ApiClient;
 import com.e_wayalerts.WebService.ApiInterface;
 import com.e_wayalerts.WebService.Constant;
 import com.e_wayalerts.activity.add_business.AddBusinesskFragment;
+import com.e_wayalerts.activity.add_business.BusinessListFragment;
 import com.e_wayalerts.activity.add_business.businessModal.BusinessListResponse;
 import com.e_wayalerts.activity.add_staff.StaffModal.StaffModal;
 import com.e_wayalerts.activity.add_staff.StaffModal.StaffRecponce;
@@ -34,6 +35,7 @@ import com.e_wayalerts.adaptor.BusinessAdaptor;
 import com.e_wayalerts.adaptor.StaffAdaptor;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -52,6 +54,8 @@ public class StaffListFragment extends Fragment {
     String selectedbusinessID = "0";
     DropDownAdapter customAdapter;
     Spinner mSpinnerbusiness;
+    public static StaffListFragment instance;
+
     public ArrayList<DropDownModal> arraybusiness = new ArrayList<DropDownModal>();
     public StaffListFragment() {
         // Required empty public constructor
@@ -68,6 +72,7 @@ public class StaffListFragment extends Fragment {
         cardview = view.findViewById(R.id.cardview);
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
         mContext = getContext();
+        instance = StaffListFragment.this;
         mImgAddNew = view.findViewById(R.id.mImgAddNew);
         Addbutton = view.findViewById(R.id.addStaffBtn);
         mSpinnerbusiness = view.findViewById(R.id.mSpinnerState);
@@ -179,6 +184,16 @@ public class StaffListFragment extends Fragment {
             }
         });
 
+    }
+    public void editStaff(StaffModal maincat){
+        AddStaffFragment fragment = new AddStaffFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("b_id",maincat.getFldUid().toString());
+        bundle.putSerializable("data", (Serializable) maincat);
+        fragment.setArguments(bundle);
+        Utility.loadFragment(requireActivity(), fragment,
+                true,
+                null);
     }
     public void deletestaff(String s_id){
 

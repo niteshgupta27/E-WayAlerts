@@ -95,6 +95,21 @@ public interface ApiInterface {// For POST request
 	                                 @Field ("owner_lname") String owner_lname,
 	                                 @Field ("owner_mobile") String owner_mobile,
 	                                 @Field ("owner_email") String owner_email);
+	@POST ("business/update")
+	@FormUrlEncoded
+	Call<VarifyOTPModel> UpdateBusiness(@Field ("user_id") String user_id,
+									 @Field ("business_name") String business_name,
+									 @Field ("gst") String gst,
+									 @Field ("address1") String address1,
+									 @Field ("address2") String address2,
+									 @Field ("city") String city,
+									 @Field ("pincode") String pincode,
+									 @Field ("state_id") String state_id,
+									 @Field ("owner_fname") String owner_fname,
+									 @Field ("owner_lname") String owner_lname,
+									 @Field ("owner_mobile") String owner_mobile,
+									 @Field ("owner_email") String owner_email,
+										@Field("business_id") String business_id);
 	
 	@POST ("master/get-make")
 	@FormUrlEncoded

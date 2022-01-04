@@ -16,24 +16,14 @@
             android:layout_height="match_parent"
             android:layout_weight="0.8"
             android:text="Business name" />
+        <Switch
+            android:id="@+id/bactive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true" />
 
-        <com.e_wayalerts.Utility.FontAwesome
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:layout_weight="0.1"
-            android:gravity="center"
-            android:text="&#xf044;"
-            android:textColor="@color/grey_color"
-            android:textSize="12sp" />
 
-        <com.e_wayalerts.Utility.FontAwesome
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:layout_weight="0.1"
-            android:gravity="center"
-            android:text="&#xf1f8;"
-            android:textColor="@color/grey_color"
-            android:textSize="12sp" />
+
 
     </LinearLayout>
 
@@ -156,6 +146,44 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_alignParentEnd="true"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:id="@+id/edit_but"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:src="@drawable/edit_icon" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/delete_but"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:src="@drawable/ic_baseline_delete_24" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 </LinearLayout>
