@@ -18,6 +18,7 @@ import com.e_wayalerts.Utility.Utility;
 import com.e_wayalerts.WebService.ApiClient;
 import com.e_wayalerts.WebService.ApiInterface;
 import com.e_wayalerts.WebService.Constant;
+import com.e_wayalerts.activity.add_business.businessModal.BusinessListResponse;
 import com.e_wayalerts.activity.checkout.CheckoutFragment;
 import com.e_wayalerts.activity.dropdown.DropDownAdapter;
 import com.e_wayalerts.activity.dropdown.DropDownModal;
@@ -52,7 +53,7 @@ public class AddBusinesskFragment extends Fragment implements View.OnClickListen
 	String selectedStateID = "0";
 	
 	DropDownAdapter customAdapter;
-	
+	String b_id;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
@@ -61,6 +62,11 @@ public class AddBusinesskFragment extends Fragment implements View.OnClickListen
 		mContext = getActivity();
 		apiInterface = ApiClient.getClient().create(ApiInterface.class);
 		Init(view);
+		Bundle args = getArguments();
+		b_id = args.getString("b_id");
+		if(!b_id.equals("0")){
+			Setvalue((BusinessListResponse.Datum) args.getSerializable("data"));
+		}
 		return view;
 	}
 	
@@ -91,8 +97,21 @@ public class AddBusinesskFragment extends Fragment implements View.OnClickListen
 			public void onNothingSelected(AdapterView<?> adapterView) {
 			}
 		});
+
 	}
-	
+	public  void Setvalue(BusinessListResponse.Datum bundle){
+		extbname.setText(bundle.getFldBusinessName());
+		extgst.setText(bundle.getFld_owner_gst());
+		extaddress1.setText(bundle.getFld_owner_address1());
+		extaddres2.setText(bundle.getFld_owner_address2());
+		extcity.setText(bundle.getFldCity());
+		extpincode.setText(bundle.getfld_pincode().toString());
+		selectedStateID = bundle.getfld_state_id().toString();
+		extownerfirstname.setText(bundle.getFld_owner_fname());
+		extownerlasstname.setText(bundle.getFld_owner_lname());
+		extmobile.setText(bundle.getFld_owner_mobile());
+		extemail.setText(bundle.getfld_owner_email());
+	}
 	private void StateList() {
 		String userid = Utility.getSharedPreferences(mContext, Constant.User_id);
 		Call<SateResponce> call = apiInterface.StateList(userid);
@@ -114,6 +133,10 @@ public class AddBusinesskFragment extends Fragment implements View.OnClickListen
 							arrayState.add(ra);
 						}
 						customAdapter.notifyDataSetChanged();
+						if (!selectedStateID.equals("0")){
+							int possion = customAdapter.getpossion(selectedStateID);
+							mSpinnerState.setSelection(possion);
+						}
 					}
 				} else {
 					Log.e("Error===>", response.errorBody().toString());
@@ -153,21 +176,65 @@ public class AddBusinesskFragment extends Fragment implements View.OnClickListen
 				} else if (!Utility.isValidMobile(extmobile.getText().toString().toString())) {
 					Utility.ShowToast(mContext, getString(R.string.enter_valid_mobile_number));
 				} else {
-					AddBusiness(extbname.getText().toString().trim(),
-							extgst.getText().toString().trim(),
-							extaddress1.getText().toString().trim(),
-							extaddres2.getText().toString().trim(),
-							extcity.getText().toString().trim(),
-							extpincode.getText().toString().trim(), selectedStateID,
-							extownerfirstname.getText().toString().trim(),
-							extownerlasstname.getText().toString().trim(),
-							extmobile.getText().toString().trim(),
-							extemail.getText().toString().trim());
+					if(!b_id.equals("0")){
+						UpdateBusiness(extbname.getText().toString().trim(),
+								extgst.getText().toString().trim(),
+								extaddress1.getText().toString().trim(),
+								extaddres2.getText().toString().trim(),
+								extcity.getText().toString().trim(),
+								extpincode.getText().toString().trim(), selectedStateID,
+								extownerfirstname.getText().toString().trim(),
+								extownerlasstname.getText().toString().trim(),
+								extmobile.getText().toString().trim(),
+								extemail.getText().toString().trim());
+					}else {
+						AddBusiness(extbname.getText().toString().trim(),
+								extgst.getText().toString().trim(),
+								extaddress1.getText().toString().trim(),
+								extaddres2.getText().toString().trim(),
+								extcity.getText().toString().trim(),
+								extpincode.getText().toString().trim(), selectedStateID,
+								extownerfirstname.getText().toString().trim(),
+								extownerlasstname.getText().toString().trim(),
+								extmobile.getText().toString().trim(),
+								extemail.getText().toString().trim());
+					}
+
 				}
 				break;
 		}
 	}
-	
+	private void UpdateBusiness(String extbname, String extgst, String extaddress1, String extaddres2,
+							 String extcity, String extpincode, String extstate,
+							 String extownerfirstname, String extownerlasstname, String extmobile,
+							 String extemail) {
+		String userid = Utility.getSharedPreferences(mContext, Constant.User_id);
+		Call<VarifyOTPModel> call =
+				apiInterface.UpdateBusiness(userid, extbname, extgst, extaddress1, extaddres2,
+						extcity,
+						extpincode, extstate, extownerfirstname, extownerlasstname, extmobile,
+						extemail,b_id);
+		call.enqueue(new Callback<VarifyOTPModel>() {
+			@Override
+			public void onResponse(Call<VarifyOTPModel> call, Response<VarifyOTPModel> response) {
+				Log.e("TAG", "response 33: " + response.body().toString());
+				if (response.isSuccessful()) {
+					if (String.valueOf(response.body().getStatus()).equals("200")) {
+						Utility.loadFragment(requireActivity(), new CheckoutFragment(), false,
+								null);
+					}
+				} else {
+					Log.e("Error===>", response.errorBody().toString());
+				}
+			}
+
+			@Override
+			public void onFailure(Call<VarifyOTPModel> call, Throwable t) {
+				Toast.makeText(mContext, t.toString(),
+						Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
+			}
+		});
+	}
 	private void AddBusiness(String extbname, String extgst, String extaddress1, String extaddres2,
 	                         String extcity, String extpincode, String extstate,
 	                         String extownerfirstname, String extownerlasstname, String extmobile,

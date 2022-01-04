@@ -96,7 +96,7 @@ public class AddStaffFragment extends Fragment {
 		staffFirstName.setText(bundle.getFldFname());
 		staffLastName.setText(bundle.getFldLname());
 		staffMobileNumber.setText(bundle.getFldMobile());
-		staffEmailAddress.setText(bundle.getFldEmail());
+		staffEmailAddress.setText(bundle.getFldEmail().trim());
 		if (bundle.getFldNEmail() == 1){
 			emailCheckboxB1.setChecked(true);
 		}else {

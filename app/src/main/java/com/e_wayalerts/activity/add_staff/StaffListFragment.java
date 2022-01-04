@@ -186,7 +186,7 @@ public class StaffListFragment extends Fragment {
 
     }
     public void editStaff(StaffModal maincat){
-        AddBusinesskFragment fragment = new AddBusinesskFragment();
+        AddStaffFragment fragment = new AddStaffFragment();
         Bundle bundle = new Bundle();
         bundle.putString("b_id",maincat.getFldUid().toString());
         bundle.putSerializable("data", (Serializable) maincat);

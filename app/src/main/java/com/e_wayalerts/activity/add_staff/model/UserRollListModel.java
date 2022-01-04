@@ -18,7 +18,7 @@ public class UserRollListModel {
 		private String message;
 		@SerializedName("data")
 		@Expose
-		private List<Datum> data = null;
+		private List<UserRollListItem> data = null;
 		
 		public Integer getStatus() {
 			return status;
@@ -44,14 +44,14 @@ public class UserRollListModel {
 			this.message = message;
 		}
 		
-		public List<Datum> getData() {
+		public List<UserRollListItem> getData() {
 			return data;
 		}
 		
-		public void setData(List<Datum> data) {
+		public void setData(List<UserRollListItem> data) {
 			this.data = data;
 		}
-		public static class Datum {
+		public static class UserRollListItem {
 			
 			@SerializedName ("fld_role_id")
 			@Expose
