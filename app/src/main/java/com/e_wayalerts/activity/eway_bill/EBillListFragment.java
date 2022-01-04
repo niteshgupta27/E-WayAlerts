@@ -47,35 +47,20 @@ public class EBillListFragment extends Fragment {
         cardview = view.findViewById(R.id.cardview);
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
         mContext = getContext();
-        //instance = BusinessListFragment.this;
         mImgAddNew = view.findViewById(R.id.mImgAddNew);
         Addbutton = view.findViewById(R.id.ll_continue);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mListView.setLayoutManager(linearLayoutManager);
-        mImgAddNew.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Utility.loadFragment(requireActivity(), new AddEwayBillFragment(),
-                        true,
-                        null);
-            }
-        });
-        Addbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               /* Utility.loadFragment(getActivity(),
-                        AddBusinesskFragment.newInstance(groupChannel.getUrl(), true), true,
-                        ConversationFragment.class.getSimpleName());*/
-                Utility.loadFragment(requireActivity(), new AddEwayBillFragment(),
-                        true,
-                        null);
-
-            }
-        });
-        //BusinessList();
-
-        // Inflate the layout for this fragment
+   
+        mImgAddNew.setOnClickListener(view12 -> Utility.loadFragment(requireActivity(), new AddEwayBillFragment(),
+                true,
+                null));
+     
+        Addbutton.setOnClickListener(view1 -> Utility.loadFragment(requireActivity(), new AddEwayBillFragment(),
+                true,
+                null));
+       
         return view;
     }
 

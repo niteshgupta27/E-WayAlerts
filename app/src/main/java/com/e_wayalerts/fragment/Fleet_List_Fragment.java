@@ -57,6 +57,12 @@ public class Fleet_List_Fragment extends Fragment {
 		businessListSpinner = view.findViewById(R.id.businessListSpinner);
 		fleetList = view.findViewById(R.id.fleetList);
 		
+		view.findViewById(R.id.mImgAddNew).setOnClickListener(v -> {
+			Utility.loadFragment(requireActivity(), new AddVehicleFragment(),
+					true,
+					null);
+		});
+		
 		businessListSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -72,6 +78,12 @@ public class Fleet_List_Fragment extends Fragment {
 			
 			}
 		});
+	
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
 		businessList();
 	}
 	

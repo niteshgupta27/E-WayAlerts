@@ -160,5 +160,5 @@
     <string name="select_bill_type">Please select bill type</string>
     <string name="valid_from_date">Select valid from date</string>
     <string name="valid_till_date">Select valid till date</string>
-
+    <string name="todo">TODO</string>
 </resources>

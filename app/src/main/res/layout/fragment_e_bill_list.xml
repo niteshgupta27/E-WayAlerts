@@ -12,6 +12,8 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/cardview"
         android:visibility="gone"/>
+
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/mImgAddNew"
         android:layout_width="wrap_content"

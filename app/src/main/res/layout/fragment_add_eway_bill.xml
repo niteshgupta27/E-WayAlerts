@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_screen"
@@ -9,10 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_margin="@dimen/_10sdp"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -69,7 +67,8 @@
                         android:fontFamily="@font/proxima_nova_alt_regular"
                         android:text="@string/single_bill"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_14sdp" />
+                        android:textSize="@dimen/_14sdp"
+                        tools:ignore="TouchTargetSizeCheck" />
 
                     <RadioButton
                         android:id="@+id/consoilatedBillRadio"
@@ -93,7 +92,8 @@
                     android:inputType="text"
                     android:padding="@dimen/_10sdp"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="@dimen/_12sdp"
+                    android:importantForAutofill="no" />
 
                 <EditText
                     android:id="@+id/generatedBy"
@@ -106,7 +106,8 @@
                     android:inputType="text"
                     android:padding="@dimen/_10sdp"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="@dimen/_12sdp"
+                    android:importantForAutofill="no" />
 
                 <EditText
                     android:id="@+id/origin"
@@ -119,7 +120,8 @@
                     android:inputType="text"
                     android:padding="@dimen/_10sdp"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="@dimen/_12sdp"
+                    android:importantForAutofill="no" />
 
                 <EditText
                     android:id="@+id/delivery"
@@ -132,7 +134,8 @@
                     android:inputType="textPersonName"
                     android:padding="@dimen/_10sdp"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="@dimen/_12sdp"
+                    android:importantForAutofill="no" />
 
                 <RelativeLayout
                     android:id="@+id/validform_relative"
@@ -149,7 +152,8 @@
                         android:hint="@string/Valid_From"
                         android:padding="@dimen/_10sdp"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
+                        android:textSize="@dimen/_12sdp"
+                        tools:ignore="RelativeOverlap" />
 
                     <ImageView
                         android:layout_width="@dimen/_20sdp"
@@ -157,7 +161,8 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:layout_marginEnd="@dimen/_10sdp"
-                        android:src="@drawable/calender" />
+                        android:src="@drawable/calender"
+                        android:contentDescription="@string/todo" />
 
 
                 </RelativeLayout>
@@ -202,7 +207,8 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:paddingTop="10dp"
-                        android:paddingBottom="10dp" />
+                        android:paddingBottom="10dp"
+                        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
                     <ImageView
                         android:layout_width="@dimen/_20sdp"
@@ -316,7 +322,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:fontFamily="@font/proxima_nova_alt_bold"
-                        android:text="SUBMIT"
+                        android:text="@string/submit"
                         android:textColor="@color/White"
                         android:textSize="@dimen/_14sdp" />
                 </RelativeLayout>
@@ -327,4 +333,4 @@
     </LinearLayout>
 
 
-</RelativeLayout>
+</LinearLayout>
