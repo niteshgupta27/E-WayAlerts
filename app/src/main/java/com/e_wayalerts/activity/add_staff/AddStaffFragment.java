@@ -20,6 +20,7 @@ import com.e_wayalerts.WebService.ApiClient;
 import com.e_wayalerts.WebService.ApiInterface;
 import com.e_wayalerts.WebService.Constant;
 import com.e_wayalerts.activity.add_business.businessModal.BusinessListResponse;
+import com.e_wayalerts.activity.add_staff.StaffModal.StaffModal;
 import com.e_wayalerts.activity.add_staff.adapter.SpinAdapter;
 import com.e_wayalerts.activity.add_staff.model.UserRollListModel;
 import com.e_wayalerts.adaptor.BusinessCheckAdaptor;
@@ -50,11 +51,11 @@ public class AddStaffFragment extends Fragment {
 	
 	ApiInterface apiInterface;
 	
-	int selectedUserRoll;
+	int selectedUserRoll = 0;
 	
 	String businessID, inAPP, inSms, inEmail;
-	
-	List<UserRollListModel.Datum> UserRollList = new ArrayList<>();
+	String S_id;
+	List<UserRollListModel.UserRollListItem> UserRollList = new ArrayList<>();
 	
 	List<BusinessListResponse.Datum> businessArrayList = new ArrayList<>();
 	
@@ -66,6 +67,11 @@ public class AddStaffFragment extends Fragment {
 		
 		init(view);
 		listner();
+		Bundle args = getArguments();
+		S_id = args.getString("b_id");
+		if(!S_id.equals("0")){
+			Setvalue((StaffModal) args.getSerializable("data"));
+		}
 		return view;
 	}
 	
@@ -86,7 +92,29 @@ public class AddStaffFragment extends Fragment {
 		businessList();
 		userRoll();
 	}
-	
+	public  void Setvalue(StaffModal bundle){
+		staffFirstName.setText(bundle.getFldFname());
+		staffLastName.setText(bundle.getFldLname());
+		staffMobileNumber.setText(bundle.getFldMobile());
+		staffEmailAddress.setText(bundle.getFldEmail());
+		if (bundle.getFldNEmail() == 1){
+			emailCheckboxB1.setChecked(true);
+		}else {
+			emailCheckboxB1.setChecked(false);
+		}
+		if (bundle.getFldNInApp() == 1){
+			pushCheckboxB1.setChecked(true);
+		}else {
+			pushCheckboxB1.setChecked(false);
+		}
+		if (bundle.getFldNInSms() == 1){
+			smsCheckboxB1.setChecked(true);
+		}else {
+			smsCheckboxB1.setChecked(false);
+		}
+		businessID = bundle.getFldBusinessId().toString();
+		selectedUserRoll = bundle.getFldRoleId();
+	}
 	public void listner() {
 		
 		jobTitleSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -202,7 +230,7 @@ public class AddStaffFragment extends Fragment {
 	}
 	
 	private void userRoll() {
-		UserRollListModel.Datum catbean = new UserRollListModel.Datum();
+		UserRollListModel.UserRollListItem catbean = new UserRollListModel.UserRollListItem();
 		catbean.setFldRoleName(getString(R.string.selectUserRoll));
 		catbean.setFldRoleId(0);
 		catbean.setFldRoleCode("00");
@@ -222,7 +250,7 @@ public class AddStaffFragment extends Fragment {
 						if (response.body().getData().size() > 0) {
 							
 							for (int i = 0; i < response.body().getData().size(); i++) {
-								UserRollListModel.Datum catbean = new UserRollListModel.Datum();
+								UserRollListModel.UserRollListItem catbean = new UserRollListModel.UserRollListItem();
 								catbean.setFldRoleName(
 										response.body().getData().get(i).getFldRoleName());
 								catbean.setFldRoleId(
@@ -238,6 +266,10 @@ public class AddStaffFragment extends Fragment {
 									android.R.layout.simple_spinner_dropdown_item);
 							//Setting the ArrayAdapter data on the Spinner
 							jobTitleSpinner.setAdapter(aa);
+							if (selectedUserRoll != 0){
+								int possion = aa.getpossion(selectedUserRoll);
+								jobTitleSpinner.setSelection(possion);
+							}
 						}
 						
 						

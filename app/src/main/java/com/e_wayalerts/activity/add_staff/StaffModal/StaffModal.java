@@ -7,6 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class StaffModal {
 
+
     @SerializedName("fld_uid")
     @Expose
     private Integer fldUid;
@@ -38,8 +39,16 @@ public class StaffModal {
     @SerializedName("fld_business_id")
     @Expose
     private Integer fldBusinessId;
-    
+    @SerializedName ("fld_is_active") @Expose private Integer fld_is_active;
     boolean checked;
+
+    public Integer getFldisactive() {
+        return fld_is_active;
+    }
+
+    public void setFldisactive(Integer fld_is_active) {
+        this.fld_is_active = fld_is_active;
+    }
 
     public Integer getFldUid() {
         return fldUid;
