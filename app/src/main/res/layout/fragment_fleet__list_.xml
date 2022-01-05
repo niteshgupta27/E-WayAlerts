@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -53,21 +53,18 @@
 
     </LinearLayout>
 
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/mImgAddNew"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/_16sdp"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="@dimen/_16sdp"
-        android:layout_marginTop="@dimen/_16sdp"
-        android:layout_marginEnd="@dimen/_16sdp"
-        android:layout_marginBottom="@dimen/_16sdp"
-        android:contentDescription="TODO"
+        android:layout_alignParentEnd="true"
         android:src="@drawable/plus"
         app:backgroundTint="@color/green"
         app:elevation="@dimen/_5sdp"
         app:pressedTranslationZ="@dimen/_5sdp"
         tools:ignore="RelativeOverlap" />
 
-</LinearLayout>
+</RelativeLayout>
