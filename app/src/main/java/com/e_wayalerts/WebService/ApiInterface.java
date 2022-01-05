@@ -76,9 +76,22 @@ public interface ApiInterface {// For POST request
 	                             @Field ("in_app") String in_app,
 	                             @Field ("in_email") String in_email,
 	                             @Field ("in_sms") String in_sms);
+
+	@POST ("staff/update")
+	@FormUrlEncoded
+	Call<AddStaffModel> updatestaff(@Field ("user_id") String user_id,
+								 @Field ("first_name") String first_name,
+								 @Field ("last_name") String last_name,
+								 @Field ("mobile") String mobile, @Field ("email") String email,
+								 @Field ("job_role") String job_role,
+								 @Field ("business_access") String business_access,
+								 @Field ("in_app") String in_app,
+								 @Field ("in_email") String in_email,
+								 @Field ("in_sms") String in_sms,
+	@Field("staff_id") String staff_id);
 	@POST ("staff/delete")
 	@FormUrlEncoded
-	Call<BusinessListResponse> Staffdelete(@Field ("business_id") String user_id);
+	Call<AddStaffModel> Staffdelete(@Field ("user_id") String user_id,@Field("staff_id") String staff_id);
 
 
 	@POST ("business/add")
@@ -122,10 +135,18 @@ public interface ApiInterface {// For POST request
 	@POST ("fleet/store")
 	@FormUrlEncoded
 	Call<AddVehicleModel> addVehicle(@Field ("user_id") String user_id,
-	                                 @Field ("business_id") String business_id,
+	                                 @Field ("business_id") int business_id,
 	                                 @Field ("fld_number") String fld_number,
 	                                 @Field ("fld_make") String fld_make,
 	                                 @Field ("fld_type") String fld_type);
+	@POST ("fleet/update")
+	@FormUrlEncoded
+	Call<AddVehicleModel> updateVehicle(@Field ("user_id") String user_id,
+									 @Field ("business_id") int business_id,
+									 @Field ("fld_number") String fld_number,
+									 @Field ("fld_make") String fld_make,
+									 @Field ("fld_type") String fld_type,
+										@Field("fleet_id") int fleet_id);
 	@POST ("staff/list")
 	@FormUrlEncoded
 	Call<StaffRecponce> StaffList(@Field ("user_id") String userid,

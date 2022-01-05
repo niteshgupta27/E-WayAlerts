@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class BusinessCheckAdaptor extends RecyclerView.Adapter<BusinessCheckAdaptor.ViewHolder> {
 	
-	private final List<BusinessListResponse.Datum> businessList;
+	public final List<BusinessListResponse.Datum> businessList;
 	
 	
 	public BusinessCheckAdaptor(Context context_, List<BusinessListResponse.Datum> arTestReport_) {
@@ -40,7 +40,11 @@ public class BusinessCheckAdaptor extends RecyclerView.Adapter<BusinessCheckAdap
 		final BusinessListResponse.Datum datum = businessList.get(position);
 		
 		viewHolder.bussnessNameCheck.setText(datum.getFldBusinessName());
-		
+		if (datum.isIschecked()) {
+			viewHolder.bussnessNameCheck.setChecked(true);
+		} else {
+			viewHolder.bussnessNameCheck.setChecked(false);
+		}
 		
 		viewHolder.bussnessNameCheck.setOnClickListener(new View.OnClickListener() {
 			@Override

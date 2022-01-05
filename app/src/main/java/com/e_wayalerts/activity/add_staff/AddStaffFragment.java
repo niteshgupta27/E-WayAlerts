@@ -168,9 +168,25 @@ public class AddStaffFragment extends Fragment {
 									new BusinessCheckAdaptor(requireActivity(), businessArrayList);
 							businessList.setAdapter(adaptor);
 							adaptor.notifyDataSetChanged();
+							if(!businessID.equals("0")){
+								if (adaptor != null) {
+									String[] separated = businessID.split(",");
+
+									for (int j = 0; j < separated.length; j++) {
+										String businessid = separated[j];
+										for (int i = 0; i < adaptor.businessList.size(); i++) {
+
+Log.e("",businessid);
+//Log.e("",adaptor.businessList.get(i).getFldBid());
+											if(adaptor.businessList.get(i).getFldBid().toString().equals(businessid)){
+												adaptor.businessList.get(i).setIschecked(true);
+											}
+										}
+									}
+									adaptor.notifyDataSetChanged();
+								}
+							}
 						}
-						
-						
 					}
 				} else {
 					Log.e("Error===>", Objects.requireNonNull(response.errorBody()).toString());
@@ -358,18 +374,28 @@ public class AddStaffFragment extends Fragment {
 			} else {
 				inEmail = "0";
 			}
-			addingbusiness(userid, staffFirstName.getText().toString().trim(),
-					staffLastName.getText().toString().trim(),
-					staffMobileNumber.getText().toString().trim(),
-					staffEmailAddress.getText().toString().trim(),
-					String.valueOf(selectedUserRoll),
-					businessID, inAPP, inEmail, inSms);
+			if(S_id.isEmpty()){
+				addingStaff(userid, staffFirstName.getText().toString().trim(),
+						staffLastName.getText().toString().trim(),
+						staffMobileNumber.getText().toString().trim(),
+						staffEmailAddress.getText().toString().trim(),
+						String.valueOf(selectedUserRoll),
+						businessID, inAPP, inEmail, inSms);
+			}else {
+				updateStaff(userid, staffFirstName.getText().toString().trim(),
+						staffLastName.getText().toString().trim(),
+						staffMobileNumber.getText().toString().trim(),
+						staffEmailAddress.getText().toString().trim(),
+						String.valueOf(selectedUserRoll),
+						businessID, inAPP, inEmail, inSms);
+			}
+
 		}
 		
 		
 	}
 	
-	private void addingbusiness(String userid, String staffFirstName, String staffLastName,
+	private void addingStaff(String userid, String staffFirstName, String staffLastName,
 	                            String staffMobileNumber, String staffEmailAddress,
 	                            String selectedUserRoll, String businessID, String inAPP,
 	                            String inEmail, String inSms) {
@@ -404,5 +430,41 @@ public class AddStaffFragment extends Fragment {
 			}
 		});
 		
+	}
+	private void updateStaff(String userid, String staffFirstName, String staffLastName,
+							 String staffMobileNumber, String staffEmailAddress,
+							 String selectedUserRoll, String businessID, String inAPP,
+							 String inEmail, String inSms) {
+
+		Call<AddStaffModel> call =
+				apiInterface.updatestaff(userid, staffFirstName, staffLastName, staffMobileNumber,
+						staffEmailAddress, selectedUserRoll, businessID, inAPP, inEmail, inSms,S_id);
+		call.enqueue(new Callback<AddStaffModel>() {
+			@SuppressLint ("NotifyDataSetChanged")
+			@Override
+			public void onResponse(@NonNull Call<AddStaffModel> call,
+								   @NonNull Response<AddStaffModel> response) {
+				Log.e("response", response.body().toString());
+				if (response.isSuccessful()) {
+
+					assert response.body() != null;
+					if (String.valueOf(response.body().getStatus()).equals("200")) {
+
+						requireActivity().onBackPressed();
+
+					}
+				} else {
+					Log.e("Error===>", Objects.requireNonNull(response.errorBody()).toString());
+				}
+			}
+
+			@Override
+			public void onFailure(@NonNull Call<AddStaffModel> call, @NonNull Throwable t) {
+				Toast.makeText(requireActivity(), t.toString(),
+						Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
+
+			}
+		});
+
 	}
 }

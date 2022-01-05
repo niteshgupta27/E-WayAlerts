@@ -29,7 +29,9 @@ public class VehicleTypeAdapter extends ArrayAdapter<VehicleTypeModel.Datum> {
         TextView itemName;
         TextView itemDropdown;
     }
-
+    public int getpossion(String item){
+        return  items.indexOf(item);
+    }
     @Override
     public int getCount() {
         return items.size();

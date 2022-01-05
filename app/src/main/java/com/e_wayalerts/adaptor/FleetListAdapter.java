@@ -71,7 +71,7 @@ public class FleetListAdapter extends RecyclerView.Adapter<FleetListAdapter.View
 				Bundle bundle = new Bundle();
 				bundle.putSerializable("FleetModel", datum);
 				fragment.setArguments(bundle);
-				Utility.loadFragment((FragmentActivity) itemView.getContext(), fragment, false,
+				Utility.loadFragment((FragmentActivity) itemView.getContext(), fragment, true,
 						null);
 			});
 			fleetDelete.setOnClickListener(v -> {

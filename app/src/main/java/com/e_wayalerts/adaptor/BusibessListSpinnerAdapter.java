@@ -26,7 +26,9 @@ public class BusibessListSpinnerAdapter extends ArrayAdapter<BusinessListRespons
 		this.context = context;
 		this.items = aritems;
 	}
-	
+	public int getpossion(int item){
+		return  items.indexOf(item);
+	}
 	@Override
 	public int getCount() {
 		return items.size();

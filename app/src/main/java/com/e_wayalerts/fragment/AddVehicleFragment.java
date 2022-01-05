@@ -58,12 +58,11 @@ public class AddVehicleFragment extends Fragment {
 	
 	List<BusinessListResponse.Datum> businessArrayList = new ArrayList<>();
 	
-	String vehicleName, vehicleType, businessID;
-	
+	String vehicleName, vehicleType;
+	int businessID = 0;
 	FleetListModel.Datum fleetModel;
 	
-	int position = 0, businessPosition = 0, vehiclePositon = 0;
-	
+	int vhicaleID = 0;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
@@ -89,6 +88,10 @@ public class AddVehicleFragment extends Fragment {
 		if (getArguments() != null) {
 			fleetModel = (FleetListModel.Datum) getArguments().getSerializable("FleetModel");
 			vehicleNumber.setText(fleetModel.getFldNumber());
+			businessID = fleetModel.getFldBusinessId();
+			vehicleName = fleetModel.getFldMake();
+			vehicleType = fleetModel.getFldType();
+			vhicaleID = fleetModel.getFldFltId();
 			mTxer.setText(R.string.edit_vehicle);
 		}
 	}
@@ -111,7 +114,7 @@ public class AddVehicleFragment extends Fragment {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 				if (!String.valueOf(businessArrayList.get(position).getFldBid()).equals("0")) {
-					businessID = String.valueOf(businessArrayList.get(position).getFldBid());
+					businessID = businessArrayList.get(position).getFldBid();
 					Log.e("businessID", String.valueOf(businessID));
 				}
 			}
@@ -135,7 +138,12 @@ public class AddVehicleFragment extends Fragment {
 		});
 		addVehiclebtn.setOnClickListener(v -> {
 			if (Utility.isNetworkConnected(requireActivity())) {
-				AddVehicle();
+				if(vhicaleID != 0){
+					updateVehicle();
+				}else {
+					AddVehicle();
+				}
+
 			} else {
 				Utility.ShowToast(requireActivity(),
 						requireActivity().getString(R.string.checkInternet));
@@ -166,15 +174,17 @@ public class AddVehicleFragment extends Fragment {
 								catbean.setFldMakeId(id);
 								catbean.setFldMakeName(title);
 								vehicleList.add(catbean);
-								if (fleetModel.getFldMake().equals(
-										vehicleList.get(i).getFldMakeName())) {
-									position = i;
-								}
+
 							}
 							VehicleListAdapter vehicleListAdapter =
 									new VehicleListAdapter(requireActivity(),
 											android.R.layout.simple_spinner_item, vehicleList);
 							makeVehicleSpinner.setAdapter(vehicleListAdapter);
+							if (!vehicleName.isEmpty()){
+								int possion = vehicleListAdapter.getpossion(vehicleName);
+								makeVehicleSpinner.setSelection(possion);
+							}
+							vehicleListAdapter.notifyDataSetChanged();
 						}
 					}
 				} else {
@@ -221,6 +231,11 @@ public class AddVehicleFragment extends Fragment {
 											android.R.layout.simple_spinner_item,
 											businessArrayList);
 							businessListSpinner.setAdapter(aa);
+							if (businessID != 0){
+								int possion = aa.getpossion(businessID);
+								businessListSpinner.setSelection(possion);
+							}
+							aa.notifyDataSetChanged();
 						}
 					}
 				} else {
@@ -263,6 +278,11 @@ public class AddVehicleFragment extends Fragment {
 							VehicleTypeAdapter aa = new VehicleTypeAdapter(requireActivity(),
 									android.R.layout.simple_spinner_item, vehicleTypeList);
 							vehicleTypeSpinner.setAdapter(aa);
+							if (!vehicleType.isEmpty()){
+								int possion = aa.getpossion(vehicleType);
+								vehicleTypeSpinner.setSelection(possion);
+							}
+							aa.notifyDataSetChanged();
 						}
 					}
 				} else {
@@ -277,7 +297,48 @@ public class AddVehicleFragment extends Fragment {
 			}
 		});
 	}
-	
+	private void updateVehicle() {
+		if (vehicleNumber.getText().toString().trim().isEmpty()) {
+			Utility.ShowToast(requireActivity(),
+					requireActivity().getString(R.string.Vehicle_Number));
+		} else if (TextUtils.isEmpty(vehicleName)) {
+			Utility.ShowToast(requireActivity(),
+					requireActivity().getString(R.string.vehicleName));
+		} else if (businessID == 0) {
+			Utility.ShowToast(requireActivity(),
+					requireActivity().getString(R.string.select_business));
+		} else if (TextUtils.isEmpty(vehicleType)) {
+			Utility.ShowToast(requireActivity(),
+					requireActivity().getString(R.string.select_vehicle_type));
+		} else {
+			String userid = Utility.getSharedPreferences(requireActivity(), Constant.User_id);
+			Call<AddVehicleModel> call = apiInterface.updateVehicle(userid, businessID,
+					vehicleNumber.getText().toString().trim(), vehicleName, vehicleType,vhicaleID);
+			call.enqueue(new Callback<AddVehicleModel>() {
+				@Override
+				public void onResponse(@NonNull Call<AddVehicleModel> call,
+									   @NonNull Response<AddVehicleModel> response) {
+					assert response.body() != null;
+					Log.e("TAG", "response 33: " + String.valueOf(response.body().getStatus()));
+					if (response.isSuccessful()) {
+						if (String.valueOf(response.body().getStatus()).equals("200")) {
+							requireActivity().onBackPressed();
+							//Utility.ShowToast(requireActivity(), response.body().getMessage());
+						}
+					} else {
+						Log.e("Error===>",
+								Objects.requireNonNull(response.errorBody()).toString());
+					}
+				}
+
+				@Override
+				public void onFailure(@NonNull Call<AddVehicleModel> call, @NonNull Throwable t) {
+					Toast.makeText(requireActivity(), t.toString(),
+							Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
+				}
+			});
+		}
+	}
 	private void AddVehicle() {
 		if (vehicleNumber.getText().toString().trim().isEmpty()) {
 			Utility.ShowToast(requireActivity(),
@@ -285,7 +346,7 @@ public class AddVehicleFragment extends Fragment {
 		} else if (TextUtils.isEmpty(vehicleName)) {
 			Utility.ShowToast(requireActivity(),
 					requireActivity().getString(R.string.vehicleName));
-		} else if (TextUtils.isEmpty(businessID)) {
+		} else if (businessID == 0) {
 			Utility.ShowToast(requireActivity(),
 					requireActivity().getString(R.string.select_business));
 		} else if (TextUtils.isEmpty(vehicleType)) {
