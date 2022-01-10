@@ -1,6 +1,7 @@
 package com.e_wayalerts.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,8 +17,10 @@ import com.e_wayalerts.WebService.ApiClient;
 import com.e_wayalerts.WebService.ApiInterface;
 import com.e_wayalerts.WebService.Constant;
 import com.e_wayalerts.activity.add_business.businessModal.BusinessListResponse;
+import com.e_wayalerts.activity.add_staff.StaffListFragment;
 import com.e_wayalerts.adaptor.BusibessListSpinnerAdapter;
 import com.e_wayalerts.adaptor.FleetListAdapter;
+import com.e_wayalerts.model.AddStaffModel;
 import com.e_wayalerts.model.FleetListModel;
 
 import java.util.ArrayList;
@@ -34,19 +37,21 @@ import retrofit2.Response;
 public class Fleet_List_Fragment extends Fragment {
 	
 	ApiInterface apiInterface;
-	
+	Context mContext;
 	Spinner businessListSpinner;
 	
 	RecyclerView fleetList;
-	
+	Integer fldBid;
 	List<BusinessListResponse.Datum> businessArrayList = new ArrayList<>();
-	
+	public static Fleet_List_Fragment instance;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
 		View view = inflater.inflate(R.layout.fragment_fleet__list_, container, false);
-		
+		instance = Fleet_List_Fragment.this;
+		mContext = getContext();
 		init(view);
 		
 		return view;
@@ -68,8 +73,8 @@ public class Fleet_List_Fragment extends Fragment {
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 				
 				if (businessArrayList.get(position).getFldBid() != 0) {
-					
-					getFleetList(businessArrayList.get(position).getFldBid());
+					fldBid = businessArrayList.get(position).getFldBid();
+					getFleetList();
 				}
 			}
 			
@@ -87,7 +92,7 @@ public class Fleet_List_Fragment extends Fragment {
 		businessList();
 	}
 	
-	private void getFleetList(Integer fldBid) {
+	private void getFleetList() {
 		String userid = Utility.getSharedPreferences(requireActivity(), Constant.User_id);
 		Call<FleetListModel> call = apiInterface.getFleetList(userid, String.valueOf(fldBid));
 		call.enqueue(new Callback<FleetListModel>() {
@@ -123,7 +128,33 @@ public class Fleet_List_Fragment extends Fragment {
 			}
 		});
 	}
-	
+	public void deleteFleet(String s_id){
+		String userid= Utility.getSharedPreferences(mContext,Constant.User_id);
+		Call<AddStaffModel> call = apiInterface.Fleetdelete(userid,s_id);
+		call.enqueue(new Callback<AddStaffModel>() {
+			@Override
+			public void onResponse(Call<AddStaffModel> call, Response<AddStaffModel> response) {
+				Log.e("TAG", "response 33: " + String.valueOf(response.body()));
+
+				if (response.isSuccessful()) {
+
+					if (String.valueOf(response.body().getStatus()).equals("200")) {
+						getFleetList();
+					}
+				} else {
+					Log.e("Error===>", response.errorBody().toString());
+				}
+			}
+
+			@Override
+			public void onFailure(Call<AddStaffModel> call, Throwable t) {
+				Toast.makeText(mContext, t.toString(),
+						Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
+
+			}
+		});
+
+	}
 	private void businessList() {
 		businessArrayList.clear();
 		BusinessListResponse.Datum catbean = new BusinessListResponse.Datum();

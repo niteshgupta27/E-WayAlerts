@@ -9,7 +9,9 @@ import android.widget.TextView;
 
 import com.e_wayalerts.R;
 import com.e_wayalerts.Utility.Utility;
+import com.e_wayalerts.activity.add_staff.StaffListFragment;
 import com.e_wayalerts.fragment.AddVehicleFragment;
+import com.e_wayalerts.fragment.Fleet_List_Fragment;
 import com.e_wayalerts.model.FleetListModel;
 
 import java.util.ArrayList;
@@ -23,9 +25,10 @@ import androidx.recyclerview.widget.RecyclerView;
 public class FleetListAdapter extends RecyclerView.Adapter<FleetListAdapter.ViewHolder> {
 	
 	private final ArrayList<FleetListModel.Datum> fleetList;
-	
+	Fleet_List_Fragment ListFragment;
 	public FleetListAdapter(ArrayList<FleetListModel.Datum> fleetList) {
 		this.fleetList = fleetList;
+		ListFragment = Fleet_List_Fragment.instance;
 	}
 	
 	@Override
@@ -75,6 +78,7 @@ public class FleetListAdapter extends RecyclerView.Adapter<FleetListAdapter.View
 						null);
 			});
 			fleetDelete.setOnClickListener(v -> {
+				ListFragment.deleteFleet(datum.getFldFltId().toString());
 			});
 		}
 		

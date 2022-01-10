@@ -184,7 +184,7 @@ public class AddVehicleFragment extends Fragment {
 								int possion = vehicleListAdapter.getpossion(vehicleName);
 								makeVehicleSpinner.setSelection(possion);
 							}
-							vehicleListAdapter.notifyDataSetChanged();
+							//vehicleListAdapter.notifyDataSetChanged();
 						}
 					}
 				} else {

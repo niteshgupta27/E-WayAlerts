@@ -2,6 +2,7 @@ package com.e_wayalerts.adaptor;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +31,17 @@ public class VehicleTypeAdapter extends ArrayAdapter<VehicleTypeModel.Datum> {
         TextView itemDropdown;
     }
     public int getpossion(String item){
-        return  items.indexOf(item);
+        int possion = 0;
+        for (int i = 0; i < items.size(); i++) {
+
+
+            if(items.get(i).getFldTypeName().equals(item)){
+                possion = i;
+                break;
+            }
+        }
+        Log.e("indexof", String.valueOf(items.indexOf(item)));
+        return  possion;
     }
     @Override
     public int getCount() {

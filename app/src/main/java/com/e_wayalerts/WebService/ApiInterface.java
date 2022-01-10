@@ -164,7 +164,11 @@ public interface ApiInterface {// For POST request
 	@FormUrlEncoded
 	Call<FleetListModel> getFleetList(@Field ("user_id") String user_id,
 	                                  @Field ("business_id") String business_id);
-	@POST ("fleet/list")
+	@POST ("staff/delete")
+	@FormUrlEncoded
+	Call<AddStaffModel> Fleetdelete(@Field ("user_id") String user_id,@Field("fleet_id") String fleet_id);
+
+	@POST ("eway-bills/single/store")
 	@FormUrlEncoded
 	Call<AddEwayBillModel> addEwayBill(@Field ("user_id") String userid,
 									   @Field ("fld_type") String billType,

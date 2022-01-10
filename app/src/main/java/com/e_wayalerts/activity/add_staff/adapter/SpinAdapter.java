@@ -2,6 +2,7 @@ package com.e_wayalerts.activity.add_staff.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,15 @@ public class SpinAdapter extends ArrayAdapter<UserRollListModel.UserRollListItem
         TextView itemDropdown;
     }
     public int getpossion(int item){
-        return  items.indexOf(item);
+        int possion = 0;
+        for (int i = 0; i < items.size(); i++) {
+            if(items.get(i).getFldRoleId().toString().equals(item)){
+                possion = i;
+                break;
+            }
+        }
+        Log.e("indexof", String.valueOf(items.indexOf(item)));
+        return  possion;
     }
     @Override
     public int getCount() {

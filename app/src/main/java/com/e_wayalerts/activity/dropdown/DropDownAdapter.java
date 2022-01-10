@@ -1,6 +1,7 @@
 package com.e_wayalerts.activity.dropdown;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,17 @@ public class DropDownAdapter extends BaseAdapter {
         inflter = (LayoutInflater.from(applicationContext));
     }
 public int getpossion(String item){
-        return  arrayState.indexOf(item);
+        int possion = 0;
+    for (int i = 0; i < arrayState.size(); i++) {
+
+
+        if(arrayState.get(i).getmStrId().toString().equals(item)){
+           possion = i;
+           break;
+        }
+    }
+    Log.e("indexof", String.valueOf(arrayState.indexOf(item)));
+        return  possion;
 }
     @Override
     public int getCount() {
