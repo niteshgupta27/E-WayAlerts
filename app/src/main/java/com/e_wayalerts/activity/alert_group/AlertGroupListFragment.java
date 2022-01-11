@@ -22,18 +22,23 @@ import com.e_wayalerts.Utility.Utility;
 import com.e_wayalerts.WebService.ApiClient;
 import com.e_wayalerts.WebService.ApiInterface;
 import com.e_wayalerts.WebService.Constant;
+import com.e_wayalerts.activity.add_business.AddBusinesskFragment;
 import com.e_wayalerts.activity.add_business.businessModal.BusinessListResponse;
 import com.e_wayalerts.activity.add_staff.AddStaffFragment;
+import com.e_wayalerts.activity.add_staff.StaffListFragment;
 import com.e_wayalerts.activity.add_staff.StaffModal.StaffModal;
 import com.e_wayalerts.activity.add_staff.StaffModal.StaffRecponce;
 import com.e_wayalerts.activity.dropdown.DropDownAdapter;
 import com.e_wayalerts.activity.dropdown.DropDownModal;
 import com.e_wayalerts.adaptor.GroupAdapter;
 import com.e_wayalerts.adaptor.StaffAdaptor;
+import com.e_wayalerts.model.AddGroupModel;
+import com.e_wayalerts.model.AddStaffModel;
 import com.e_wayalerts.model.GroupListRecponce;
 import com.e_wayalerts.model.GroupModal;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -52,6 +57,8 @@ public class AlertGroupListFragment extends Fragment {
     DropDownAdapter customAdapter;
     Spinner mSpinnerbusiness;
     public ArrayList<DropDownModal> arraybusiness = new ArrayList<DropDownModal>();
+    public static AlertGroupListFragment instance;
+
     public AlertGroupListFragment() {
         // Required empty public constructor
     }
@@ -70,13 +77,18 @@ public class AlertGroupListFragment extends Fragment {
         mImgAddNew = view.findViewById(R.id.mImgAddNew);
         Addbutton = view.findViewById(R.id.addStaffBtn);
         mSpinnerbusiness = view.findViewById(R.id.mSpinnerState);
+        instance = AlertGroupListFragment.this;
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mListView.setLayoutManager(linearLayoutManager);
         mImgAddNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utility.loadFragment(requireActivity(), new AddAlertGroupFragment(),
+                AddAlertGroupFragment fragment = new AddAlertGroupFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("b_id","0");
+                fragment.setArguments(bundle);
+                Utility.loadFragment(requireActivity(), fragment,
                         true,
                         null);
             }
@@ -84,10 +96,11 @@ public class AlertGroupListFragment extends Fragment {
         Addbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               /* Utility.loadFragment(getActivity(),
-                        AddBusinesskFragment.newInstance(groupChannel.getUrl(), true), true,
-                        ConversationFragment.class.getSimpleName());*/
-                Utility.loadFragment(requireActivity(), new AddAlertGroupFragment(),
+                AddAlertGroupFragment fragment = new AddAlertGroupFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("b_id","0");
+                fragment.setArguments(bundle);
+                Utility.loadFragment(requireActivity(), fragment,
                         true,
                         null);
 
@@ -151,6 +164,43 @@ public class AlertGroupListFragment extends Fragment {
             }
         });
 
+
+    }
+    public void editgroup(GroupModal maincat){
+        AddAlertGroupFragment fragment = new AddAlertGroupFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("b_id",maincat.getFldUid().toString());
+        bundle.putSerializable("data", (Serializable) maincat);
+        fragment.setArguments(bundle);
+        Utility.loadFragment(requireActivity(), fragment,
+                true,
+                null);
+    }
+    public void deletegroup(String s_id){
+        String userid= Utility.getSharedPreferences(mContext,Constant.User_id);
+        Call<AddGroupModel> call = apiInterface.groupdelete(userid,s_id);
+        call.enqueue(new Callback<AddGroupModel>() {
+            @Override
+            public void onResponse(Call<AddGroupModel> call, Response<AddGroupModel> response) {
+                Log.e("TAG", "response 33: " + String.valueOf(response.body()));
+
+                if (response.isSuccessful()) {
+
+                    if (String.valueOf(response.body().getStatus()).equals("200")) {
+                        GroupList();
+                    }
+                } else {
+                    Log.e("Error===>", response.errorBody().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AddGroupModel> call, Throwable t) {
+                Toast.makeText(mContext, t.toString(),
+                        Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
+
+            }
+        });
 
     }
     private void BusinessList() {

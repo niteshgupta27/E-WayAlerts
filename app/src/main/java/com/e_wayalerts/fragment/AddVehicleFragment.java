@@ -180,7 +180,7 @@ public class AddVehicleFragment extends Fragment {
 									new VehicleListAdapter(requireActivity(),
 											android.R.layout.simple_spinner_item, vehicleList);
 							makeVehicleSpinner.setAdapter(vehicleListAdapter);
-							if (!vehicleName.isEmpty()){
+							if (!TextUtils.isEmpty(vehicleName)){
 								int possion = vehicleListAdapter.getpossion(vehicleName);
 								makeVehicleSpinner.setSelection(possion);
 							}
@@ -278,11 +278,12 @@ public class AddVehicleFragment extends Fragment {
 							VehicleTypeAdapter aa = new VehicleTypeAdapter(requireActivity(),
 									android.R.layout.simple_spinner_item, vehicleTypeList);
 							vehicleTypeSpinner.setAdapter(aa);
-							if (!vehicleType.isEmpty()){
+							aa.notifyDataSetChanged();
+							if (!TextUtils.isEmpty(vehicleType)){
 								int possion = aa.getpossion(vehicleType);
 								vehicleTypeSpinner.setSelection(possion);
 							}
-							aa.notifyDataSetChanged();
+
 						}
 					}
 				} else {

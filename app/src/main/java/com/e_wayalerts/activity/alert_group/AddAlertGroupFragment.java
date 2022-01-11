@@ -26,6 +26,7 @@ import com.e_wayalerts.activity.dropdown.DropDownModal;
 import com.e_wayalerts.adaptor.StaffAdaptor;
 import com.e_wayalerts.adaptor.StaffCheckAdaptor;
 import com.e_wayalerts.model.AddGroupModel;
+import com.e_wayalerts.model.GroupModal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +51,9 @@ public class AddAlertGroupFragment extends Fragment {
 	RelativeLayout addGroupBtn;
 	public ArrayList<DropDownModal> arraybusiness = new ArrayList<DropDownModal>();
 	List<StaffModal>staffModalList = new ArrayList<>();
-	
+	String groupID = "0";
+	//Integer businessID;
+	//String StaffIDs;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
@@ -59,6 +62,11 @@ public class AddAlertGroupFragment extends Fragment {
 		
 		init(view);
 		listner();
+		Bundle args = getArguments();
+		groupID = args.getString("b_id");
+		if(!groupID.equals("0")){
+			Setvalue((GroupModal) args.getSerializable("data"));
+		}
 		return view;
 	}
 	
@@ -75,7 +83,12 @@ public class AddAlertGroupFragment extends Fragment {
 		mListView.setLayoutManager(linearLayoutManager);
 		
 	}
-	
+	public  void Setvalue(GroupModal bundle){
+		groupName.setText(bundle.getFldGroupName());
+
+		selectedbusinessID = bundle.getFldBusinessId().toString();
+		staffID = bundle.getStaffId().toString();
+	}
 	private void listner() {
 		DropDownModal ra = new DropDownModal();
 		ra.setmStrId(
@@ -121,7 +134,11 @@ public class AddAlertGroupFragment extends Fragment {
 			}else if (staffID.isEmpty()){
 				Utility.ShowToast(requireActivity(),getString(R.string.select_staff));
 			}else {
-				AddGroup();
+				if (groupID.equals("0")) {
+					AddGroup();
+				}else {
+					UpdateGroup();
+				}
 			}
 		
 		});
@@ -147,6 +164,24 @@ public class AddAlertGroupFragment extends Fragment {
 							adaptor = new StaffCheckAdaptor(staffModalList);
 							mListView.setAdapter(adaptor);
 							adaptor.notifyDataSetChanged();
+							if(!staffID.equals("0")){
+								if (adaptor != null) {
+									String[] separated = staffID.split(",");
+
+									for (int j = 0; j < separated.length; j++) {
+										String staffid = separated[j];
+										for (int i = 0; i < adaptor.staffModalList.size(); i++) {
+
+											Log.e("",staffid);
+//Log.e("",adaptor.businessList.get(i).getFldBid());
+											if(adaptor.staffModalList.get(i).getFldUid().toString().equals(staffid)){
+												adaptor.staffModalList.get(i).setChecked(true);
+											}
+										}
+									}
+									adaptor.notifyDataSetChanged();
+								}
+							}
 						}
 						else{
 							mListView.setVisibility(View.GONE);
@@ -192,6 +227,10 @@ public class AddAlertGroupFragment extends Fragment {
 								arraybusiness.add(ra);
 							}
 							customAdapter.notifyDataSetChanged();
+							if (!selectedbusinessID.equals("0") ){
+								int possion = customAdapter.getpossion(selectedbusinessID);
+								mSpinnerbusiness.setSelection(possion);
+							}
 						}
 						else{
 							mListView.setVisibility(View.GONE);
@@ -215,7 +254,36 @@ public class AddAlertGroupFragment extends Fragment {
 		
 		
 	}
-	
+	private void UpdateGroup() {
+		String userid= Utility.getSharedPreferences(requireActivity(), Constant.User_id);
+		Call<AddGroupModel> call = apiInterface.updateGroup(userid,groupName.getText().toString().trim(),
+				selectedbusinessID,staffID,groupID);
+		call.enqueue(new Callback<AddGroupModel>() {
+			@SuppressLint ("NotifyDataSetChanged")
+			@Override
+			public void onResponse(@NonNull Call<AddGroupModel> call, @NonNull
+					Response<AddGroupModel> response) {
+				if (response.isSuccessful()) {
+
+					assert response.body() != null;
+					if (String.valueOf(response.body().getStatus()).equals("200")) {
+						requireActivity().onBackPressed();
+						Utility.ShowToast(requireActivity(),response.body().getMessage());
+					}
+				} else {
+					assert response.errorBody() != null;
+					Log.e("Error===>", response.errorBody().toString());
+				}
+			}
+
+			@Override
+			public void onFailure(@NonNull Call<AddGroupModel> call, @NonNull Throwable t) {
+				Toast.makeText(requireActivity(), t.toString(),
+						Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
+
+			}
+		});
+	}
 	private void AddGroup() {
 		String userid= Utility.getSharedPreferences(requireActivity(), Constant.User_id);
 		Call<AddGroupModel> call = apiInterface.addGroup(userid,groupName.getText().toString().trim(),

@@ -29,6 +29,7 @@ import com.e_wayalerts.activity.add_business.BusinessListFragment;
 import com.e_wayalerts.activity.add_business.businessModal.BusinessListResponse;
 import com.e_wayalerts.activity.add_staff.StaffModal.StaffModal;
 import com.e_wayalerts.activity.add_staff.StaffModal.StaffRecponce;
+import com.e_wayalerts.activity.alert_group.AddAlertGroupFragment;
 import com.e_wayalerts.activity.dropdown.DropDownAdapter;
 import com.e_wayalerts.activity.dropdown.DropDownModal;
 import com.e_wayalerts.adaptor.BusinessAdaptor;
@@ -83,7 +84,11 @@ public class StaffListFragment extends Fragment {
         mImgAddNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utility.loadFragment(requireActivity(), new AddStaffFragment(),
+                AddStaffFragment fragment = new AddStaffFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("b_id","0");
+                fragment.setArguments(bundle);
+                Utility.loadFragment(requireActivity(), fragment,
                         true,
                         null);
             }
@@ -91,16 +96,18 @@ public class StaffListFragment extends Fragment {
         Addbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               /* Utility.loadFragment(getActivity(),
-                        AddBusinesskFragment.newInstance(groupChannel.getUrl(), true), true,
-                        ConversationFragment.class.getSimpleName());*/
-                Utility.loadFragment(requireActivity(), new AddStaffFragment(),
+                AddStaffFragment fragment = new AddStaffFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("b_id","0");
+                fragment.setArguments(bundle);
+                Utility.loadFragment(requireActivity(), fragment,
                         true,
                         null);
 
+
             }
         });
-       // StaffList();
+
 
         BusinessList();
         customAdapter = new DropDownAdapter(getContext(), arraybusiness);

@@ -53,7 +53,7 @@ public class AddStaffFragment extends Fragment {
 	
 	int selectedUserRoll = 0;
 	
-	String businessID, inAPP, inSms, inEmail;
+	String businessID = "0", inAPP, inSms, inEmail;
 	String S_id;
 	List<UserRollListModel.UserRollListItem> UserRollList = new ArrayList<>();
 	
@@ -340,14 +340,7 @@ Log.e("",businessid);
 		} else if (!Utility.isValidMobile(staffMobileNumber.getText().toString())) {
 			Utility.ShowToast(requireActivity(),
 					requireActivity().getString(R.string.enter_valid_mobile_number));
-		} else if (staffEmailAddress.getText().toString().isEmpty()) {
-			Utility.ShowToast(requireActivity(),
-					Objects.requireNonNull(requireActivity()).getString(
-							R.string.enter_email_Address));
-		} else if (!Utility.isValidEmail(staffEmailAddress.getText().toString())) {
-			Utility.ShowToast(requireActivity(),
-					requireActivity().getString(R.string.enter_valid_email_address));
-		} else if (TextUtils.isEmpty(String.valueOf(selectedUserRoll))) {
+		}  else if (TextUtils.isEmpty(String.valueOf(selectedUserRoll))) {
 			Utility.ShowToast(requireActivity(),
 					requireActivity().getString(R.string.selectUserRoll));
 		} else if (TextUtils.isEmpty(businessID)) {

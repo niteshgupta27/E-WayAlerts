@@ -49,9 +49,9 @@ public class VehicleTypeModel {
 	
 	public static class Datum {
 		
-		@SerializedName ("fld_type_id") @Expose private Integer fldTypeId;
+		@SerializedName ("fld_make_id") @Expose private Integer fldTypeId;
 		
-		@SerializedName ("fld_type_name") @Expose private String fldTypeName;
+		@SerializedName ("fld_make_name") @Expose private String fldTypeName;
 		
 		public Integer getFldTypeId() {
 			return fldTypeId;

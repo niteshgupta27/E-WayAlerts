@@ -5,7 +5,9 @@ package com.e_wayalerts.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class GroupModal {
+import java.io.Serializable;
+
+public class GroupModal implements Serializable {
 
     @SerializedName("fld_uid")
     @Expose

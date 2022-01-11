@@ -89,6 +89,7 @@ public interface ApiInterface {// For POST request
 								 @Field ("in_email") String in_email,
 								 @Field ("in_sms") String in_sms,
 	@Field("staff_id") String staff_id);
+
 	@POST ("staff/delete")
 	@FormUrlEncoded
 	Call<AddStaffModel> Staffdelete(@Field ("user_id") String user_id,@Field("staff_id") String staff_id);
@@ -159,7 +160,14 @@ public interface ApiInterface {// For POST request
 	                             @Field ("group_name") String role_id,
 	                             @Field ("business_id") String selectedbusinessID,
 	                             @Field ("u_ids") String UID);
-	
+
+	@POST ("alert-group/update")
+	@FormUrlEncoded
+	Call<AddGroupModel> updateGroup(@Field ("user_id") String userid,
+								 @Field ("group_name") String role_id,
+								 @Field ("business_id") String selectedbusinessID,
+								 @Field ("u_ids") String UID,@Field("group_id") String group_id);
+
 	@POST ("fleet/list")
 	@FormUrlEncoded
 	Call<FleetListModel> getFleetList(@Field ("user_id") String user_id,
@@ -186,4 +194,9 @@ public interface ApiInterface {// For POST request
 	Call<GroupListRecponce> GroupList(@Field ("user_id") String userid,
 									  @Field ("status") String role_id,
 									  @Field ("business_id") String selectedbusinessID);
+
+	@POST ("staff/delete")
+	@FormUrlEncoded
+	Call<AddGroupModel> groupdelete(@Field ("user_id") String user_id,@Field("group_id") String group_id);
+
 }

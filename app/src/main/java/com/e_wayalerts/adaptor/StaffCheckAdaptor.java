@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class StaffCheckAdaptor extends RecyclerView.Adapter<StaffCheckAdaptor.ViewHolder> {
 	
-	private final List<StaffModal> staffModalList;
+	public final List<StaffModal> staffModalList;
 	
 	
 	public StaffCheckAdaptor( List<StaffModal> arTestReport_) {
@@ -44,7 +44,11 @@ public class StaffCheckAdaptor extends RecyclerView.Adapter<StaffCheckAdaptor.Vi
 		final StaffModal datum = staffModalList.get(position);
 		
 		viewHolder.staffNameCheck.setText(datum.getFldFname()+datum.getFldLname());
-		
+		if (datum.isChecked()) {
+			viewHolder.staffNameCheck.setChecked(true);
+		} else {
+			viewHolder.staffNameCheck.setChecked(false);
+		}
 		
 		viewHolder.staffNameCheck.setOnClickListener(new View.OnClickListener() {
 			@Override
