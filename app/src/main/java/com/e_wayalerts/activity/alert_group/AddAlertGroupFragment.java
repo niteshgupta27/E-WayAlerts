@@ -46,7 +46,7 @@ public class AddAlertGroupFragment extends Fragment {
 	RecyclerView mListView;
 	Spinner mSpinnerbusiness;
 	DropDownAdapter customAdapter;
-	String selectedbusinessID = "0",staffID;
+	String selectedbusinessID = "0",staffID = "0";
 	StaffCheckAdaptor adaptor;
 	RelativeLayout addGroupBtn;
 	public ArrayList<DropDownModal> arraybusiness = new ArrayList<DropDownModal>();
@@ -146,6 +146,7 @@ public class AddAlertGroupFragment extends Fragment {
 	
 	
 	private void StaffList() {
+		staffModalList = new ArrayList<>();
 		String userid= Utility.getSharedPreferences(requireActivity(), Constant.User_id);
 		String role_ID= Utility.getSharedPreferences(requireActivity(), Constant.role_ID);
 		Call<StaffRecponce> call = apiInterface.StaffList(userid,role_ID,selectedbusinessID);
@@ -188,6 +189,8 @@ public class AddAlertGroupFragment extends Fragment {
 						}
 						
 						
+					}else{
+						mListView.setVisibility(View.GONE);
 					}
 				} else {
 					assert response.errorBody() != null;
@@ -297,8 +300,9 @@ public class AddAlertGroupFragment extends Fragment {
 					
 					assert response.body() != null;
 					if (String.valueOf(response.body().getStatus()).equals("200")) {
-						requireActivity().onBackPressed();
 						Utility.ShowToast(requireActivity(),response.body().getMessage());
+						requireActivity().onBackPressed();
+
 					}
 				} else {
 					assert response.errorBody() != null;
