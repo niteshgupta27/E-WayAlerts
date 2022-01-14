@@ -22,6 +22,7 @@ import com.e_wayalerts.adaptor.BusibessListSpinnerAdapter;
 import com.e_wayalerts.adaptor.FleetListAdapter;
 import com.e_wayalerts.model.AddStaffModel;
 import com.e_wayalerts.model.FleetListModel;
+import com.e_wayalerts.model.StatusResponce;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -148,6 +149,33 @@ public class Fleet_List_Fragment extends Fragment {
 
 			@Override
 			public void onFailure(Call<AddStaffModel> call, Throwable t) {
+				Toast.makeText(mContext, t.toString(),
+						Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
+
+			}
+		});
+
+	}
+	public void ChangeStatusBusiness(String S_id,String status){
+		String userid= Utility.getSharedPreferences(mContext,Constant.User_id);
+		Call<StatusResponce> call = apiInterface.Fleetstatus(userid,S_id,status);
+		call.enqueue(new Callback<StatusResponce>() {
+			@Override
+			public void onResponse(Call<StatusResponce> call, Response<StatusResponce> response) {
+				Log.e("TAG", "response 33: " + String.valueOf(response.body()));
+
+				if (response.isSuccessful()) {
+
+					if (String.valueOf(response.body().getStatus()).equals("200")) {
+						getFleetList();
+					}
+				} else {
+					Log.e("Error===>", response.errorBody().toString());
+				}
+			}
+
+			@Override
+			public void onFailure(Call<StatusResponce> call, Throwable t) {
 				Toast.makeText(mContext, t.toString(),
 						Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
 

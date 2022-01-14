@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.e_wayalerts.R;
@@ -55,7 +57,7 @@ public class FleetListAdapter extends RecyclerView.Adapter<FleetListAdapter.View
 		TextView vehicleNumber, vehicleName, vehicleType;
 		
 		LinearLayout fleetEdit, fleetDelete;
-		
+		Switch bActive;
 		public ViewHolder(View itemView) {
 			super(itemView);
 			vehicleNumber = itemView.findViewById(R.id.vehicleNumber);
@@ -63,12 +65,21 @@ public class FleetListAdapter extends RecyclerView.Adapter<FleetListAdapter.View
 			vehicleType = itemView.findViewById(R.id.vehicleType);
 			fleetEdit = itemView.findViewById(R.id.fleetEdit);
 			fleetDelete = itemView.findViewById(R.id.fleetDelete);
+			bActive = itemView.findViewById(R.id.bactive);
 		}
 		
 		public void bind(FleetListModel.Datum datum) {
 			vehicleName.setText(datum.getFldMake());
 			vehicleNumber.setText(datum.getFldNumber());
 			vehicleType.setText(datum.getFldType());
+			if(datum.getFldisactive() ==1){
+				bActive.setChecked(true);
+
+			}
+			else {
+				bActive.setChecked(false);
+
+			}
 			fleetEdit.setOnClickListener(v -> {
 				Fragment fragment = new AddVehicleFragment();
 				Bundle bundle = new Bundle();
@@ -79,6 +90,17 @@ public class FleetListAdapter extends RecyclerView.Adapter<FleetListAdapter.View
 			});
 			fleetDelete.setOnClickListener(v -> {
 				ListFragment.deleteFleet(datum.getFldFltId().toString());
+			});
+			bActive.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+					if (isChecked) {
+						// The toggle is enabled
+						ListFragment.ChangeStatusBusiness(datum.getFldFltId().toString(),"1");
+					} else {
+						// The toggle is disabled
+						ListFragment.ChangeStatusBusiness(datum.getFldFltId().toString(),"0");
+					}
+				}
 			});
 		}
 		

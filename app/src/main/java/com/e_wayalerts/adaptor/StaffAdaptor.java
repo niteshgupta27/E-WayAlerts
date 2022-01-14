@@ -54,15 +54,14 @@ StaffListFragment ListFragment;
         viewHolder.sname.setText(maincat.getFldFname().trim() + " " +maincat.getFldLname().trim());
         viewHolder.bname.setText(maincat.getFldFname());
         viewHolder.mobile.setText(maincat.getFldMobile());
-//        if(maincat.getFldisactive() ==1){
-//            viewHolder.bActive.setChecked(true);
-//            viewHolder.renewel.setVisibility(View.GONE);
-//        }
-//        else {
-//            viewHolder.bActive.setChecked(false);
-//            viewHolder.renewel.setVisibility(View.VISIBLE);
-//
-//        }
+        if(maincat.getFldisactive() ==1){
+            viewHolder.bActive.setChecked(true);
+
+        }
+        else {
+            viewHolder.bActive.setChecked(false);
+
+        }
         viewHolder.edit_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

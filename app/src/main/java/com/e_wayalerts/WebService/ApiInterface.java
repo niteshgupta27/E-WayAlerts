@@ -13,6 +13,7 @@ import com.e_wayalerts.model.AddStaffModel;
 import com.e_wayalerts.model.AddVehicleModel;
 import com.e_wayalerts.model.FleetListModel;
 import com.e_wayalerts.model.GroupListRecponce;
+import com.e_wayalerts.model.StatusResponce;
 import com.e_wayalerts.model.VehicleListModel;
 import com.e_wayalerts.model.VehicleTypeModel;
 
@@ -55,8 +56,20 @@ public interface ApiInterface {// For POST request
 
 	@POST ("business/change-status")
 	@FormUrlEncoded
-	Call<BusinessListResponse> Businessstatus(@Field ("user_id") String user_id,@Field ("business_id") String business_id,@Field ("status") String status);
-	
+	Call<StatusResponce> Businessstatus(@Field ("user_id") String user_id,@Field ("business_id") String business_id,@Field ("status") String status);
+
+	@POST ("staff/change-status")
+	@FormUrlEncoded
+	Call<StatusResponce> Staffstatus(@Field ("user_id") String user_id, @Field ("staff_id") String business_id, @Field ("status") String status);
+
+	@POST ("fleet/change-status")
+	@FormUrlEncoded
+	Call<StatusResponce> Fleetstatus(@Field ("user_id") String user_id,@Field ("fleet_id") String business_id,@Field ("status") String status);
+
+	@POST ("alert-group/change-status")
+	@FormUrlEncoded
+	Call<StatusResponce> AlertGroupstatus(@Field ("user_id") String user_id,@Field ("alert_id") String business_id,@Field ("status") String status);
+
 	@POST ("master/get-roles")
 	@FormUrlEncoded
 	Call<UserRollListModel> getUserRoll(@Field ("user_id") String user_id);

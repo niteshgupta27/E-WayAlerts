@@ -35,6 +35,7 @@ import com.e_wayalerts.activity.dropdown.DropDownModal;
 import com.e_wayalerts.adaptor.BusinessAdaptor;
 import com.e_wayalerts.adaptor.StaffAdaptor;
 import com.e_wayalerts.model.AddStaffModel;
+import com.e_wayalerts.model.StatusResponce;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.Serializable;
@@ -168,10 +169,10 @@ public class StaffListFragment extends Fragment {
     }
     public void ChangeStatusBusiness(String S_id,String status){
         String userid= Utility.getSharedPreferences(mContext,Constant.User_id);
-        Call<BusinessListResponse> call = apiInterface.Businessstatus(userid,S_id,status);
-        call.enqueue(new Callback<BusinessListResponse>() {
+        Call<StatusResponce> call = apiInterface.Staffstatus(userid,S_id,status);
+        call.enqueue(new Callback<StatusResponce>() {
             @Override
-            public void onResponse(Call<BusinessListResponse> call, Response<BusinessListResponse> response) {
+            public void onResponse(Call<StatusResponce> call, Response<StatusResponce> response) {
                 Log.e("TAG", "response 33: " + String.valueOf(response.body()));
 
                 if (response.isSuccessful()) {
@@ -185,7 +186,7 @@ public class StaffListFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<BusinessListResponse> call, Throwable t) {
+            public void onFailure(Call<StatusResponce> call, Throwable t) {
                 Toast.makeText(mContext, t.toString(),
                         Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
 

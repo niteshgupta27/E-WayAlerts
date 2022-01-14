@@ -62,8 +62,16 @@ public class FleetListModel implements Serializable {
 		
 		@SerializedName ("fld_type") @Expose private String fldType;
 		
-		@SerializedName ("fld_status") @Expose private Integer fldStatus;
-		
+
+		@SerializedName ("fld_status") @Expose private Integer fld_is_active;
+		public Integer getFldisactive() {
+			return fld_is_active;
+		}
+
+		public void setFldisactive(Integer fld_is_active) {
+			this.fld_is_active = fld_is_active;
+		}
+
 		public Integer getFldFltId() {
 			return fldFltId;
 		}
@@ -112,13 +120,6 @@ public class FleetListModel implements Serializable {
 			this.fldType = fldType;
 		}
 		
-		public Integer getFldStatus() {
-			return fldStatus;
-		}
-		
-		public void setFldStatus(Integer fldStatus) {
-			this.fldStatus = fldStatus;
-		}
-		
+
 	}
 }

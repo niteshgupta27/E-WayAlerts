@@ -4,7 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,7 +49,14 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder> 
         final GroupModal maincat = arMediIn.get(position);
 
         viewHolder.Gname.setText(maincat.getFldGroupName());
+        if(maincat.getFldStatus() ==1){
+            viewHolder.bActive.setChecked(true);
 
+        }
+        else {
+            viewHolder.bActive.setChecked(false);
+
+        }
         viewHolder.edit_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,7 +69,17 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder> 
                 ListFragment.deletegroup(maincat.getFldGrpId().toString());
             }
         });
-
+        viewHolder.bActive.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // The toggle is enabled
+                    ListFragment.ChangeStatusBusiness(maincat.getFldUid().toString(),"1");
+                } else {
+                    // The toggle is disabled
+                    ListFragment.ChangeStatusBusiness(maincat.getFldUid().toString(),"0");
+                }
+            }
+        });
     }
 
     @Override
@@ -71,6 +90,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView Gname, memberno, mobile;
         LinearLayout renewel,delete_but,edit_but;
+        Switch bActive;
         public ViewHolder(View itemView) {
             super(itemView);
             Gname = itemView.findViewById(R.id.groupname);
@@ -78,6 +98,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder> 
             //mobile = itemView.findViewById(R.id.mobileno);
             delete_but = itemView.findViewById(R.id.fleetDelete);
             edit_but = itemView.findViewById(R.id.fleetEdit);
+            bActive = itemView.findViewById(R.id.bactive);
         }
     }
 }

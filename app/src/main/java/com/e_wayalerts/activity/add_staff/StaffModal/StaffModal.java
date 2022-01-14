@@ -41,7 +41,7 @@ public class StaffModal implements Serializable {
     @SerializedName("fld_business_id")
     @Expose
     private Integer fldBusinessId;
-    @SerializedName ("fld_is_active") @Expose private Integer fld_is_active;
+    @SerializedName ("fld_status") @Expose private Integer fld_is_active;
     boolean checked;
 
     public Integer getFldisactive() {

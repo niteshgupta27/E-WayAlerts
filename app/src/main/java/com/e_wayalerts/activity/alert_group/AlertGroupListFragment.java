@@ -36,6 +36,7 @@ import com.e_wayalerts.model.AddGroupModel;
 import com.e_wayalerts.model.AddStaffModel;
 import com.e_wayalerts.model.GroupListRecponce;
 import com.e_wayalerts.model.GroupModal;
+import com.e_wayalerts.model.StatusResponce;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.Serializable;
@@ -196,6 +197,33 @@ public class AlertGroupListFragment extends Fragment {
 
             @Override
             public void onFailure(Call<AddGroupModel> call, Throwable t) {
+                Toast.makeText(mContext, t.toString(),
+                        Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
+
+            }
+        });
+
+    }
+    public void ChangeStatusBusiness(String S_id,String status){
+        String userid= Utility.getSharedPreferences(mContext,Constant.User_id);
+        Call<StatusResponce> call = apiInterface.AlertGroupstatus(userid,S_id,status);
+        call.enqueue(new Callback<StatusResponce>() {
+            @Override
+            public void onResponse(Call<StatusResponce> call, Response<StatusResponce> response) {
+                Log.e("TAG", "response 33: " + String.valueOf(response.body()));
+
+                if (response.isSuccessful()) {
+
+                    if (String.valueOf(response.body().getStatus()).equals("200")) {
+                        GroupList();
+                    }
+                } else {
+                    Log.e("Error===>", response.errorBody().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<StatusResponce> call, Throwable t) {
                 Toast.makeText(mContext, t.toString(),
                         Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
 
