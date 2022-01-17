@@ -54,10 +54,11 @@
         <entry key="app/src/main/res/layout/content_main.xml" value="0.1015625" />
         <entry key="app/src/main/res/layout/content_main2.xml" value="0.11322188449848024" />
         <entry key="app/src/main/res/layout/custom_toast.xml" value="0.9193548387096774" />
-        <entry key="app/src/main/res/layout/eway_bill_item_layout.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/eway_bill_item_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fleet_item_layout.xml" value="0.21" />
         <entry key="app/src/main/res/layout/fleetlayout_item.xml" value="0.11322188449848024" />
         <entry key="app/src/main/res/layout/fragment_about_us.xml" value="0.11322188449848024" />
+        <entry key="app/src/main/res/layout/fragment_add_alert_group.xml" value="0.10739614994934144" />
         <entry key="app/src/main/res/layout/fragment_add_businessk.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_add_eway_bill.xml" value="0.13768115942028986" />
         <entry key="app/src/main/res/layout/fragment_add_staff.xml" value="0.22" />

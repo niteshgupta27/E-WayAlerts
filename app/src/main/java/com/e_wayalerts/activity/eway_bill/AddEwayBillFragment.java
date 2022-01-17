@@ -26,10 +26,15 @@ import com.e_wayalerts.activity.add_business.businessModal.BusinessListResponse;
 import com.e_wayalerts.activity.add_staff.StaffModal.StaffModal;
 import com.e_wayalerts.activity.add_staff.StaffModal.StaffRecponce;
 import com.e_wayalerts.adaptor.BusibessListSpinnerAdapter;
+import com.e_wayalerts.adaptor.BusinessCheckAdaptor;
 import com.e_wayalerts.adaptor.DriverNameSpinnerAdapter;
+import com.e_wayalerts.adaptor.GroupAdapter;
+import com.e_wayalerts.adaptor.GroupCheckAdaptor;
 import com.e_wayalerts.adaptor.VehicleNumberSpinnerAdapter;
 import com.e_wayalerts.model.AddEwayBillModel;
 import com.e_wayalerts.model.FleetListModel;
+import com.e_wayalerts.model.GroupListRecponce;
+import com.e_wayalerts.model.GroupModal;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -38,6 +43,9 @@ import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -52,7 +60,7 @@ public class AddEwayBillFragment extends Fragment {
 	
 	Spinner vehicleNumberSpinner, driverNameSpinner, businessIDSpinner;
 	
-	String businessID, vehicleNumberID, staffID, billType;
+	String businessID, vehicleNumberID, staffID, billType,groupids = "0";
 	
 	List<BusinessListResponse.Datum> businessArrayList = new ArrayList<>();
 	
@@ -63,7 +71,8 @@ public class AddEwayBillFragment extends Fragment {
 	ApiInterface apiInterface;
 	
 	RelativeLayout validFormRelative, validUntillRelative, submitBtn;
-	
+	List<GroupModal> GroupArrayList = new ArrayList<>();
+	RecyclerView GroupmListView;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
@@ -93,6 +102,10 @@ public class AddEwayBillFragment extends Fragment {
 		validUntillRelative = view.findViewById(R.id.valid_untill_relative);
 		intervalonehour = view.findViewById(R.id.intervalonehour);
 		intervaltwohour = view.findViewById(R.id.intervaltwohour);
+		GroupmListView = view.findViewById(R.id.rv_storage_yards);
+		LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity());
+		linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+		GroupmListView.setLayoutManager(linearLayoutManager);
 		submitBtn = view.findViewById(R.id.submitBtn);
 	}
 	
@@ -105,6 +118,7 @@ public class AddEwayBillFragment extends Fragment {
 					
 					getVehicleNumber(businessID);
 					getDriverName(businessID);
+					GroupList();
 				}
 			}
 			
@@ -272,8 +286,9 @@ public class AddEwayBillFragment extends Fragment {
 	}
 	
 	private void getVehicleNumber(String businessID) {
+		vehicleNumberList = new ArrayList<>();
 		FleetListModel.Datum catbean = new FleetListModel.Datum();
-		catbean.setFldNumber(getString(R.string.select_vehicle_number));
+		catbean.setFldNumber(requireActivity().getString(R.string.select_vehicle_number));
 		catbean.setFldFltId(0);
 		vehicleNumberList.add(catbean);
 		String userid = Utility.getSharedPreferences(requireActivity(), Constant.User_id);
@@ -314,8 +329,68 @@ public class AddEwayBillFragment extends Fragment {
 			}
 		});
 	}
-	
+	private void GroupList() {
+		GroupArrayList = new ArrayList<>();
+		String userid= Utility.getSharedPreferences(requireActivity(), Constant.User_id);
+
+		Call<GroupListRecponce> call = apiInterface.GroupList(userid,"1",businessID);
+		call.enqueue(new Callback<GroupListRecponce>() {
+			@Override
+			public void onResponse(@NonNull Call<GroupListRecponce> call, @NonNull
+					Response<GroupListRecponce> response) {
+				if (response.isSuccessful()) {
+
+					if (String.valueOf(response.body().getStatus()).equals("200")) {
+						if (response.body().getData().size()>0){
+							GroupArrayList = response.body().getData();
+							GroupCheckAdaptor adaptor =
+									new GroupCheckAdaptor(requireActivity(), GroupArrayList);
+							GroupmListView.setAdapter(adaptor);
+							adaptor.notifyDataSetChanged();
+							if(!groupids.equals("0")){
+								if (adaptor != null) {
+									String[] separated = groupids.split(",");
+
+									for (int j = 0; j < separated.length; j++) {
+										String businessid = separated[j];
+										for (int i = 0; i < adaptor.businessList.size(); i++) {
+
+											Log.e("",businessid);
+//Log.e("",adaptor.businessList.get(i).getFldBid());
+											if(adaptor.businessList.get(i).getFldGrpId().toString().equals(businessid)){
+												adaptor.businessList.get(i).setChecked(true);
+											}
+										}
+									}
+									adaptor.notifyDataSetChanged();
+								}
+							}
+						}
+						else{
+							//cardview.setVisibility(View.VISIBLE);
+							//GroupmListView.setVisibility(View.GONE);
+						}
+
+
+					}
+
+				} else {
+					Log.e("Error===>", response.errorBody().toString());
+				}
+			}
+
+			@Override
+			public void onFailure(@NonNull Call<GroupListRecponce> call, @NonNull Throwable t) {
+				Toast.makeText(requireActivity(), t.toString(),
+						Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
+
+			}
+		});
+
+
+	}
 	private void getDriverName(String businessID) {
+		staffModalList = new ArrayList<>();
 		StaffModal catbean = new StaffModal();
 		catbean.setFldFname(getString(R.string.select_driver_name));
 		catbean.setFldLname("");

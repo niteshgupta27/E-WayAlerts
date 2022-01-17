@@ -307,7 +307,11 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/_14sdp" />
                 </RadioGroup>
-
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_storage_yards"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"/>
                 <RelativeLayout
                     android:id="@+id/submitBtn"
                     android:layout_width="match_parent"

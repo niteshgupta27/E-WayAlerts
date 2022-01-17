@@ -6,30 +6,75 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Business name"
-            android:layout_weight="0.8"/>
-        <com.e_wayalerts.Utility.FontAwesome
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:text="&#xf044;"
-            android:textSize="12sp"
-            android:gravity="center"
-            android:textColor="@color/grey_color"
-            android:layout_weight="0.1"/>
+        android:layout_marginTop="@dimen/_5sdp"
+        android:weightSum="2">
 
-        <com.e_wayalerts.Utility.FontAwesome
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:gravity="center"
-            android:text="&#xf1f8;"
-            android:textSize="12sp"
-            android:textColor="@color/grey_color"
-            android:layout_weight="0.1"
-            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:layout_gravity="start|center"
+            android:layout_weight="1"
+            android:gravity="start|center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/vehicle" />
+
+            <TextView
+                android:id="@+id/memberno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:fontFamily="@font/proxima_nova_alt_bold"
+                android:text="Tata"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_12sdp" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_gravity="start|center"
+            android:layout_weight="1"
+            android:gravity="start|center"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:id="@+id/fleetEdit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/edit_icon" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fleetDelete"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:src="@drawable/ic_baseline_delete_24" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
     <LinearLayout
@@ -78,7 +123,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginEnd="@dimen/_35sdp"
-
+        android:weightSum="2"
         android:layout_marginRight="@dimen/_75sdp">
         <LinearLayout
             android:layout_width="match_parent"
@@ -110,12 +155,14 @@
                 />
             </LinearLayout>
             <com.e_wayalerts.Utility.FontAwesome
+                android:id="@+id/call"
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:text="&#xf098;"
                 android:textSize="12sp"
                 android:gravity="center"
                 android:layout_weight="0.1"
+                android:layout_alignParentEnd="true"
                 android:textColor="@color/grey_color"/>
 
         </LinearLayout>

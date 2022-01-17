@@ -27,6 +27,7 @@ public class GroupModal implements Serializable {
     @SerializedName("fld_status")
     @Expose
     private Integer fldStatus;
+    boolean checked;
 
     public Integer getFldUid() {
         return fldUid;
@@ -75,5 +76,13 @@ public class GroupModal implements Serializable {
     public void setFldStatus(Integer fldStatus) {
         this.fldStatus = fldStatus;
     }
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
+
 
 }

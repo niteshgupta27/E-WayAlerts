@@ -11,6 +11,7 @@ import com.e_wayalerts.model.AddEwayBillModel;
 import com.e_wayalerts.model.AddGroupModel;
 import com.e_wayalerts.model.AddStaffModel;
 import com.e_wayalerts.model.AddVehicleModel;
+import com.e_wayalerts.model.EwayBillRecponce;
 import com.e_wayalerts.model.FleetListModel;
 import com.e_wayalerts.model.GroupListRecponce;
 import com.e_wayalerts.model.StatusResponce;
@@ -202,6 +203,17 @@ public interface ApiInterface {// For POST request
 									   @Field ("user_id") String businessID,
 									   @Field ("user_id") String vehicleNumberID,
 									   @Field ("user_id") String driverID);
+
+	@POST ("eway-bills/single/list")
+	@FormUrlEncoded
+	Call<EwayBillRecponce> ListEwayBill(@Field ("user_id") String userid
+									   );
+	@POST ("eway-bills/single/delete")
+	@FormUrlEncoded
+	Call<AddEwayBillModel> ewaydelete(@Field ("user_id") String user_id,@Field("eway_bill_id") String group_id);
+	@POST ("eway-bills/single/change-status")
+	@FormUrlEncoded
+	Call<StatusResponce> Ewaystatus(@Field ("user_id") String user_id,@Field ("eway_bill_id") String business_id,@Field ("status") String status);
 	@POST ("alert-group/list")
 	@FormUrlEncoded
 	Call<GroupListRecponce> GroupList(@Field ("user_id") String userid,
