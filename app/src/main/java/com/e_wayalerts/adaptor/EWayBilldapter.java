@@ -48,7 +48,7 @@ public class EWayBilldapter extends RecyclerView.Adapter<EWayBilldapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int position) {
         final EwaybillModal maincat = arMediIn.get(position);
-
+/*
         viewHolder.bname.setText(maincat.getFldBusinessName());
         viewHolder.bcity.setText(maincat.getFldCity());
         viewHolder.bdate.setText(maincat.getFldEdate());
@@ -64,7 +64,7 @@ public class EWayBilldapter extends RecyclerView.Adapter<EWayBilldapter.ViewHold
             public void onClick(View v) {
                 ListFragment.deleteBusiness(maincat.getFldBid().toString());
             }
-        });
+        });*/
 
     }
 
