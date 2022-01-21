@@ -75,18 +75,10 @@ public class EWayBilldapter extends RecyclerView.Adapter<EWayBilldapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView bname, bcity, bdate;
-        Switch bActive;
-        LinearLayout renewel,delete_but,edit_but;
+       
         public ViewHolder(View itemView) {
             super(itemView);
-            bname = itemView.findViewById(R.id.bname);
-            bcity = itemView.findViewById(R.id.bcity);
-            bdate = itemView.findViewById(R.id.bdate);
-            bActive = itemView.findViewById(R.id.bactive);
-            renewel= itemView.findViewById(R.id.renewel);
-            delete_but = itemView.findViewById(R.id.delete_but);
-            edit_but = itemView.findViewById(R.id.edit_but);
+          
         }
     }
 }
