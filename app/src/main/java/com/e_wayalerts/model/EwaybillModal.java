@@ -6,112 +6,172 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class EwaybillModal implements  Serializable{
-
-
+    
+    
     @SerializedName("fld_eb_id")
     @Expose
-    private Integer fld_eb_id;
-    @SerializedName("fld_user_id")
-    @Expose
-    private Integer staffId;
-    @SerializedName("fld_type")
-    @Expose
-    private Integer fld_type;
+    private Integer fldEbId;
     @SerializedName("fld_business_id")
     @Expose
     private Integer fldBusinessId;
+    @SerializedName("fld_user_id")
+    @Expose
+    private Integer fldUserId;
+    @SerializedName("fld_type")
+    @Expose
+    private Integer fldType;
     @SerializedName("fld_interval")
     @Expose
-    private Integer fld_interval;
+    private Integer fldInterval;
+    @SerializedName("fld_generated_by")
+    @Expose
+    private String fldGeneratedBy;
+    @SerializedName("fld_valid_from")
+    @Expose
+    private String fldValidFrom;
+    @SerializedName("fld_valid_until")
+    @Expose
+    private String fldValidUntil;
+    @SerializedName("fld_vehicle_id")
+    @Expose
+    private Integer fldVehicleId;
+    @SerializedName("fld_driver_name")
+    @Expose
+    private Integer fldDriverName;
+    @SerializedName("fld_place_of_delivery")
+    @Expose
+    private String fldPlaceOfDelivery;
+    @SerializedName("fld_alert_groups")
+    @Expose
+    private String fldAlertGroups;
+    @SerializedName("fld_bill_number")
+    @Expose
+    private String fldBillNumber;
+    @SerializedName("fld_place_of_origin")
+    @Expose
+    private String fldPlaceOfOrigin;
     @SerializedName("fld_status")
     @Expose
     private Integer fldStatus;
-    @SerializedName("fld_generated_by")
-    @Expose
-    private String fld_generated_by;
-
-    @SerializedName("fld_valid_from")
-    @Expose
-    private String fld_valid_from;
-    @SerializedName("fld_valid_until")
-    @Expose
-    private String fld_valid_until;
-    @SerializedName("fld_vehicle_id")
-    @Expose
-    private Integer fld_vehicle_id;
-
-    @SerializedName("fld_driver_name")
-    @Expose
-    private Integer fld_driver_name;
-    @SerializedName("fld_place_of_delivery")
-    @Expose
-    private String fld_place_of_delivery;
-    @SerializedName("fld_alert_groups")
-    @Expose
-    private String fld_alert_groups;
-    @SerializedName("fld_bill_number")
-    @Expose
-    private String fld_bill_number;
-    @SerializedName("fld_place_of_origin")
-    @Expose
-    private String fld_place_of_origin;
-
-    boolean checked;
-
-    public Integer getfld_eb_id() {
-        return fld_eb_id;
+    
+    public Integer getFldEbId() {
+        return fldEbId;
     }
-
-    public void setfld_eb_id(Integer fldUid) {
-        this.fld_eb_id = fldUid;
+    
+    public void setFldEbId(Integer fldEbId) {
+        this.fldEbId = fldEbId;
     }
-
-    public Integer getStaffId() {
-        return staffId;
-    }
-
-    public void setStaffId(Integer staffId) {
-        this.staffId = staffId;
-    }
-
-    public Integer getfld_type() {
-        return fld_type;
-    }
-
-    public void setfld_type(Integer fldGrpId) {
-        this.fld_type = fldGrpId;
-    }
-
+    
     public Integer getFldBusinessId() {
         return fldBusinessId;
     }
-
+    
     public void setFldBusinessId(Integer fldBusinessId) {
         this.fldBusinessId = fldBusinessId;
     }
-
-    public Integer getfld_interval() {
-        return fld_interval;
+    
+    public Integer getFldUserId() {
+        return fldUserId;
     }
-
-    public void setfld_interval(Integer fldGroupName) {
-        this.fld_interval = fldGroupName;
+    
+    public void setFldUserId(Integer fldUserId) {
+        this.fldUserId = fldUserId;
     }
-
+    
+    public Integer getFldType() {
+        return fldType;
+    }
+    
+    public void setFldType(Integer fldType) {
+        this.fldType = fldType;
+    }
+    
+    public Integer getFldInterval() {
+        return fldInterval;
+    }
+    
+    public void setFldInterval(Integer fldInterval) {
+        this.fldInterval = fldInterval;
+    }
+    
+    public String getFldGeneratedBy() {
+        return fldGeneratedBy;
+    }
+    
+    public void setFldGeneratedBy(String fldGeneratedBy) {
+        this.fldGeneratedBy = fldGeneratedBy;
+    }
+    
+    public String getFldValidFrom() {
+        return fldValidFrom;
+    }
+    
+    public void setFldValidFrom(String fldValidFrom) {
+        this.fldValidFrom = fldValidFrom;
+    }
+    
+    public String getFldValidUntil() {
+        return fldValidUntil;
+    }
+    
+    public void setFldValidUntil(String fldValidUntil) {
+        this.fldValidUntil = fldValidUntil;
+    }
+    
+    public Integer getFldVehicleId() {
+        return fldVehicleId;
+    }
+    
+    public void setFldVehicleId(Integer fldVehicleId) {
+        this.fldVehicleId = fldVehicleId;
+    }
+    
+    public Integer getFldDriverName() {
+        return fldDriverName;
+    }
+    
+    public void setFldDriverName(Integer fldDriverName) {
+        this.fldDriverName = fldDriverName;
+    }
+    
+    public String getFldPlaceOfDelivery() {
+        return fldPlaceOfDelivery;
+    }
+    
+    public void setFldPlaceOfDelivery(String fldPlaceOfDelivery) {
+        this.fldPlaceOfDelivery = fldPlaceOfDelivery;
+    }
+    
+    public String getFldAlertGroups() {
+        return fldAlertGroups;
+    }
+    
+    public void setFldAlertGroups(String fldAlertGroups) {
+        this.fldAlertGroups = fldAlertGroups;
+    }
+    
+    public String getFldBillNumber() {
+        return fldBillNumber;
+    }
+    
+    public void setFldBillNumber(String fldBillNumber) {
+        this.fldBillNumber = fldBillNumber;
+    }
+    
+    public String getFldPlaceOfOrigin() {
+        return fldPlaceOfOrigin;
+    }
+    
+    public void setFldPlaceOfOrigin(String fldPlaceOfOrigin) {
+        this.fldPlaceOfOrigin = fldPlaceOfOrigin;
+    }
+    
     public Integer getFldStatus() {
         return fldStatus;
     }
-
+    
     public void setFldStatus(Integer fldStatus) {
         this.fldStatus = fldStatus;
     }
-    public boolean isChecked() {
-        return checked;
-    }
-
-    public void setChecked(boolean checked) {
-        this.checked = checked;
-    }
-
 
 }

@@ -28,6 +28,7 @@
                 android:layout_weight="0.3">
 
                 <TextView
+                    android:id="@+id/billnumber"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center|start"
@@ -45,6 +46,7 @@
                 android:weightSum="2">
 
                 <LinearLayout
+                    android:id="@+id/editBtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -60,6 +62,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/deleteBtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -97,6 +100,7 @@
                     android:tint="@color/grey"/>
 
                 <TextView
+                    android:id="@+id/billdate"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center|start"
@@ -121,6 +125,7 @@
                     android:tint="@color/grey"/>
 
                 <TextView
+                    android:id="@+id/destinationname"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center|start"
@@ -152,6 +157,7 @@
                     android:tint="@color/grey"/>
 
                 <TextView
+                    android:id="@+id/carnumber"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center|start"
@@ -175,6 +181,7 @@
                     android:tint="@color/grey"/>
 
                 <TextView
+                    android:id="@+id/drivername"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center|start"
@@ -203,6 +210,7 @@
                 android:text="Status"/>
 
             <TextView
+                android:id="@+id/statusTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center|start"
@@ -213,6 +221,7 @@
                 android:text="In - progress"/>
 
               <LinearLayout
+                  android:id="@+id/updateBtn"
                   android:layout_width="wrap_content"
                   android:layout_height="match_parent"
                   android:orientation="vertical"

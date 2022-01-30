@@ -162,4 +162,7 @@
     <string name="valid_from_date">Select valid from date</string>
     <string name="valid_till_date">Select valid till date</string>
     <string name="todo">TODO</string>
+    <string name="inprogress">Inprogress</string>
+    <string name="completed">Completed</string>
+    <string name="extended">Extended</string>
 </resources>
