@@ -11,7 +11,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
         android:orientation="vertical">
 
         <TextView
@@ -71,6 +74,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/creaditRemainingTxt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -99,12 +103,14 @@
             android:weightSum="3">
 
             <LinearLayout
+                android:id="@+id/onethousandSMS"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:layout_weight="1">
 
                 <TextView
+                    android:id="@+id/onethousandSMSTxt"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/light_nanbg"
@@ -116,6 +122,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/twothousandSMS"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/_5sdp"
@@ -123,6 +130,7 @@
                 android:layout_weight="1">
 
                 <TextView
+                    android:id="@+id/twothousandSMSTXT"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/light_nanbg"
@@ -134,12 +142,14 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/threethousandSMS"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_weight="1">
 
                 <TextView
+                    android:id="@+id/threethousandSMSTXT"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/light_nanbg"
@@ -158,12 +168,14 @@
             android:weightSum="3">
 
             <LinearLayout
+                android:id="@+id/fourthousandSMS"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:layout_weight="1">
 
                 <TextView
+                    android:id="@+id/fourthousandSMSTXT"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/light_nanbg"
@@ -175,6 +187,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/fivethousandSMS"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/_5sdp"
@@ -182,6 +195,7 @@
                 android:layout_weight="1">
 
                 <TextView
+                    android:id="@+id/fivethousandSMSTXT"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/light_nanbg"
