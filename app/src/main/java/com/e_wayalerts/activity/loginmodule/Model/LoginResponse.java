@@ -73,6 +73,26 @@ public class LoginResponse {
 		@SerializedName("role_id")
 		@Expose
 		private String rolid;
+		@SerializedName("user_id")
+		@Expose
+		private String user_id;
+		@SerializedName("otp")
+		@Expose
+		private String otp;
+		public String getotp() {
+			return otp;
+		}
+
+		public void setotp(String userToken) {
+			otp = userToken;
+		}
+		public String getuser_id() {
+			return user_id;
+		}
+
+		public void setuser_id(String userToken) {
+			user_id = userToken;
+		}
 		public String getrolid() {
 			return rolid;
 		}

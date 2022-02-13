@@ -27,26 +27,33 @@ public interface ApiInterface {// For POST request
 	
 	@POST ("user/login")//your api link
 	@FormUrlEncoded
-	Call<LoginResponse> Login(@Field ("mobile") String mobile, @Field ("pin") String pin);
+	Call<LoginResponse> Login(@Field ("mobile") String mobile, @Field ("pin") String pin, @Field ("language_id") String lang, @Field("os") String os, @Field("version") int version, @Field("model") String model, @Field("fcm_token") String fcm_token);
 	
 	@POST ("user/register")//your api link
 	@FormUrlEncoded
 	Call<LoginResponse> Signup(@Field ("first_name") String firstname,
 	                           @Field ("last_name") String last_name,
-	                           @Field ("mobile") String mobile);
+	                           @Field ("mobile") String mobile,@Field ("language_id") String lang, @Field("os") String os, @Field("version") int version, @Field("model") String model, @Field("fcm_token") String fcm_token,@Field("email") String email);
 	
 	@POST ("user/reset-pin")//your api link
 	@FormUrlEncoded
 	Call<ResetPinModel> ResetPin(@Field ("mobile") String mobile);
-	
+
+	@POST ("user/otp-send")
+	@FormUrlEncoded
+	Call<VarifyOTPModel> OTPresend(@Field ("mobile") String user_id);
+
 	@POST ("user/reset/otp-verify")
 	@FormUrlEncoded
 	Call<VarifyOTPModel> OTPVerify(@Field ("user_id") String user_id, @Field ("otp") String otp);
 	
 	@POST ("user/pin-set")
 	@FormUrlEncoded
-	Call<VarifyOTPModel> ChangePin(@Field ("user_id") String user_id, @Field ("pin") String otp);
-	
+	Call<LoginResponse> ChangePin(@Field ("user_id") String user_id, @Field ("pin") String otp, @Field ("language_id") String lang, @Field("os") String os, @Field("version") int version, @Field("model") String model, @Field("fcm_token") String fcm_token);
+	@POST ("user/check")
+	@FormUrlEncoded
+	Call<BusinessListResponse> ChechkUser(@Field ("user_id") String user_id,
+											@Field ("status") String status);
 	@POST ("business/list")
 	@FormUrlEncoded
 	Call<BusinessListResponse> BusinessList(@Field ("user_id") String user_id,

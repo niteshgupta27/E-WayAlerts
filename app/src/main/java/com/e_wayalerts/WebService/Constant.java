@@ -11,5 +11,6 @@ public class Constant {
 	public static final String  LanguageSelected = "LanguageSelected";
 	public static final String Usertoken = "Usertoken";
 	public static final String role_ID = "role_id";
-	
+	public static final String Language = "Language";
+	public static final String FCmtoken = "FCmtoken";
 }

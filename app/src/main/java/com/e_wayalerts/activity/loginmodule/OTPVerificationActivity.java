@@ -31,7 +31,7 @@ public class OTPVerificationActivity extends AppCompatActivity implements View.O
 	
 	TextView ResetPinBtn;
 	
-	LinearLayout login_linear;
+	LinearLayout login_linear,resend_linear;
 	
 	String MobileNumber,UserID;
 	
@@ -40,7 +40,7 @@ public class OTPVerificationActivity extends AppCompatActivity implements View.O
 	EditText Pin1, Pin2, Pin3, Pin4;
 	
 	ApiInterface apiInterface;
-	
+	String reciveOtp;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -48,6 +48,7 @@ public class OTPVerificationActivity extends AppCompatActivity implements View.O
 		
 		mContext = this;
 		apiInterface = ApiClient.getClient().create(ApiInterface.class);
+
 		Init();
 		lintner();
 	}
@@ -56,6 +57,7 @@ public class OTPVerificationActivity extends AppCompatActivity implements View.O
 		ResetPinBtn = findViewById(R.id.resetpin_Btn);
 		login_linear = findViewById(R.id.login_linear);
 		MobileNumberTxt = findViewById(R.id.mobile_number_txt);
+		resend_linear = findViewById(R.id.resend_linear);
 		Pin1 = findViewById(R.id.Pin1);
 		Pin2 = findViewById(R.id.Pin2);
 		Pin3 = findViewById(R.id.Pin3);
@@ -64,6 +66,7 @@ public class OTPVerificationActivity extends AppCompatActivity implements View.O
 		if (getIntent().getExtras() != null) {
 			MobileNumber = getIntent().getStringExtra("MobileNumber");
 			UserID = getIntent().getStringExtra("UserID");
+			reciveOtp = getIntent().getStringExtra("otp");
 			MobileNumberTxt.setText(MobileNumber);
 			
 		}
@@ -72,7 +75,7 @@ public class OTPVerificationActivity extends AppCompatActivity implements View.O
 	private void lintner() {
 		ResetPinBtn.setOnClickListener(this);
 		login_linear.setOnClickListener(this);
-		
+		resend_linear.setOnClickListener(this);
 		Pin1.addTextChangedListener(new GenericTextWatcher(Pin1));
 		Pin2.addTextChangedListener(new GenericTextWatcher(Pin2));
 		Pin3.addTextChangedListener(new GenericTextWatcher(Pin3));
@@ -93,8 +96,16 @@ public class OTPVerificationActivity extends AppCompatActivity implements View.O
 					Utility.ShowToast(OTPVerificationActivity.this,
 							getString(R.string.enter_valid_pin_number));
 					
-				}else {
-					RequestOTP(UserID,OTP);
+				}
+				else  if (!reciveOtp.equals(OTP)){
+					Utility.ShowToast(OTPVerificationActivity.this,
+							getString(R.string.enter_valid_pin_number));
+				}
+				else {
+					//RequestOTP(UserID,OTP);
+					Intent intent = new Intent(mContext, SetPinActivity.class);
+					intent.putExtra("UserID",UserID);
+					startActivity(intent);
 				}
 				
 				
@@ -104,10 +115,44 @@ public class OTPVerificationActivity extends AppCompatActivity implements View.O
 				Intent intent1 = new Intent(mContext, LoginActivity.class);
 				startActivity(intent1);
 				break;
+			case  R.id.resend_linear:
+				ResendOTP(MobileNumber);
+				break;
 		}
 		
 	}
-	
+	private void ResendOTP(String mobile) {
+		Call<VarifyOTPModel> call = apiInterface.OTPresend(mobile);
+		call.enqueue(new Callback<VarifyOTPModel>() {
+			@Override
+			public void onResponse(Call<VarifyOTPModel> call, Response<VarifyOTPModel> response) {
+				Log.e("TAG", "response 33: " + response.body().toString());
+
+				if (response.isSuccessful()) {
+
+					if (String.valueOf(response.body().getStatus()).equals("200")) {
+reciveOtp = String.valueOf(response.body().getData().getotp());
+//						Utility.ShowToast(OTPVerificationActivity.this, response.body().getMessage());
+//						Intent intent = new Intent(mContext, SetPinActivity.class);
+//						intent.putExtra("UserID",UserID);
+//						startActivity(intent);
+					}else {
+						Utility.ShowToast(mContext,response.body().getMessage());
+					}
+				} else {
+					Utility.ShowToast(mContext,response.body().getMessage());
+					Log.e("Error===>", response.errorBody().toString());
+				}
+			}
+
+			@Override
+			public void onFailure(Call<VarifyOTPModel> call, Throwable t) {
+				Toast.makeText(OTPVerificationActivity.this, t.toString(),
+						Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
+
+			}
+		});
+	}
 	private void RequestOTP(String UserID, String OTP) {
 		Call<VarifyOTPModel> call = apiInterface.OTPVerify(UserID, OTP);
 		call.enqueue(new Callback<VarifyOTPModel>() {

@@ -11,6 +11,8 @@
     <string name="create_account">CREATE ACCOUNT</string>
     <string name="already_have_an_account">Already Have an account?</string>
     <string name="log_in">Log In</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="Didn_received_OTPd">Didn\'t received OTP?</string>
     <string name="request_otp">Request OTP</string>
     <string name="reset_pin">Reset PIN?</string>
     <string name="sign_in">Sign in</string>

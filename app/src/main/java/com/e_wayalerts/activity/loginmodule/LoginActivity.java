@@ -2,6 +2,7 @@ package com.e_wayalerts.activity.loginmodule;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -41,12 +42,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 			Number10, Pin1, Pin2, Pin3, Pin4;
 	
 	ApiInterface apiInterface;
-	
+	String model = Build.MODEL;
+	int osver ;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-		
+		osver =  Build.VERSION.SDK_INT;
+		Log.e("TAG", "response 33: " + osver);
+
 		mContext = this;
 		Init();
 		listner();
@@ -144,11 +148,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 	}
 	
 	private void Login(String mobilenumber, String pinNumber) {
-		Call<LoginResponse> call = apiInterface.Login(mobilenumber, pinNumber);
+		String Language= Utility.getSharedPreferences(mContext,Constant.Language);
+		String FCmtoken= Utility.getSharedPreferences(mContext,Constant.FCmtoken);
+		Call<LoginResponse> call = apiInterface.Login(mobilenumber, pinNumber,Language,"android",osver,model,FCmtoken);
 		call.enqueue(new Callback<LoginResponse>() {
 			@Override
 			public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-				Log.e("TAG", "response 33: " + response.body().toString());
+				//Log.e("TAG", "response 33: " + response.body().toString());
 				
 				if (response.isSuccessful()) {
 					

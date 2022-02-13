@@ -2,6 +2,7 @@ package com.e_wayalerts.activity.loginmodule;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -16,6 +17,9 @@ import com.e_wayalerts.R;
 import com.e_wayalerts.Utility.Utility;
 import com.e_wayalerts.WebService.ApiClient;
 import com.e_wayalerts.WebService.ApiInterface;
+import com.e_wayalerts.WebService.Constant;
+import com.e_wayalerts.activity.MainActivity;
+import com.e_wayalerts.activity.loginmodule.Model.LoginResponse;
 import com.e_wayalerts.activity.loginmodule.Model.VarifyOTPModel;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,12 +39,13 @@ public class SetPinActivity extends AppCompatActivity implements View.OnClickLis
 			ConfirmPin4;
 	
 	ApiInterface apiInterface;
-	
+	String model = Build.MODEL;
+	int osver ;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_set_pin);
-		
+		osver =  Build.VERSION.SDK_INT;
 		mContext = this;
 		apiInterface = ApiClient.getClient().create(ApiInterface.class);
 		Init();
@@ -100,8 +105,8 @@ public class SetPinActivity extends AppCompatActivity implements View.OnClickLis
 				} else {
 					PinChange(UserID,ConfirmPin);
 				}
-				Intent intent = new Intent(mContext, LoginActivity.class);
-				startActivity(intent);
+				//Intent intent = new Intent(mContext, LoginActivity.class);
+				//startActivity(intent);
 				break;
 		}
 		
@@ -114,10 +119,12 @@ public class SetPinActivity extends AppCompatActivity implements View.OnClickLis
 	}
 	
 	private void PinChange(String UserID, String ConfirmPin) {
-		Call<VarifyOTPModel> call = apiInterface.ChangePin(UserID, ConfirmPin);
-		call.enqueue(new Callback<VarifyOTPModel>() {
+		String Language= Utility.getSharedPreferences(mContext,Constant.Language);
+		String FCmtoken= Utility.getSharedPreferences(mContext,Constant.FCmtoken);
+		Call<LoginResponse> call = apiInterface.ChangePin(UserID, ConfirmPin,Language,"android",osver,model,FCmtoken);
+		call.enqueue(new Callback<LoginResponse>() {
 			@Override
-			public void onResponse(Call<VarifyOTPModel> call, Response<VarifyOTPModel> response) {
+			public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
 				Log.e("TAG", "response 33: " + response.body().toString());
 				
 				if (response.isSuccessful()) {
@@ -126,7 +133,22 @@ public class SetPinActivity extends AppCompatActivity implements View.OnClickLis
 						
 						Utility.ShowToast(SetPinActivity.this,
 								response.body().getMessage());
-						Intent intent = new Intent(mContext, LoginActivity.class);
+						Utility.setSharedPreference(mContext,
+								Constant.User_id,String.valueOf(response.body().getData().getFldUid()));
+
+						Utility.setSharedPreference(mContext,
+								Constant.UserFirstName,response.body().getData().getFldFname());
+						Utility.setSharedPreference(mContext,
+								Constant.UserLastName,response.body().getData().getFldLname());
+						Utility.setSharedPreference(mContext,
+								Constant.UserMobile,response.body().getData().getFldMobile());
+						Utility.setSharedPreference(mContext,
+								Constant.Usertoken,response.body().getData().getUserToken());
+						Utility.setSharedPreference(mContext,
+								Constant.role_ID,response.body().getData().getrolid());
+						Utility.ShowToast(SetPinActivity.this, response.body().getMessage());
+
+						Intent intent = new Intent(mContext, MainActivity.class);
 						startActivity(intent);
 						finish();
 					} else {
@@ -139,7 +161,7 @@ public class SetPinActivity extends AppCompatActivity implements View.OnClickLis
 			}
 			
 			@Override
-			public void onFailure(Call<VarifyOTPModel> call, Throwable t) {
+			public void onFailure(Call<LoginResponse> call, Throwable t) {
 				Toast.makeText(SetPinActivity.this, t.toString(),
 						Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
 				

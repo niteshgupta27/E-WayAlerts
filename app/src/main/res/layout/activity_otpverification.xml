@@ -133,7 +133,8 @@
                                 android:layout_height="@dimen/_15sdp"
                                 android:src="@drawable/edit_icon"
                                 android:layout_marginStart="@dimen/_5sdp"
-                                android:layout_marginLeft="@dimen/_5sdp"/>
+                                android:layout_marginLeft="@dimen/_5sdp"
+                                android:visibility="gone"/>
                         </LinearLayout>
 
 
@@ -324,7 +325,46 @@
 
                         </LinearLayout>
                     </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/resend_linear"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/proxima_nova_alt_regular"
+                            android:gravity="center"
+                            android:text="@string/Didn_received_OTPd"
+                            android:textColor="@color/font_color"
+                            android:textSize="@dimen/_10sdp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:layout_marginLeft="@dimen/_2sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/proxima_nova_alt_bold"
+                                android:gravity="center"
+                                android:text="@string/resend_otp"
+                                android:textColor="@color/green"
+                                android:textSize="@dimen/_10sdp" />
+
+
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
 
             </RelativeLayout>

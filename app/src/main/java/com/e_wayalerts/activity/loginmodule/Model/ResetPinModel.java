@@ -57,7 +57,18 @@ public class ResetPinModel {
 		@SerializedName("mobile")
 		@Expose
 		private String mobile;
-		
+		@SerializedName("otp")
+		@Expose
+		private Integer otp;
+
+		public Integer getotp() {
+			return otp;
+		}
+
+		public void setotp(Integer userId) {
+			this.otp = userId;
+		}
+
 		public Integer getUserId() {
 			return userId;
 		}

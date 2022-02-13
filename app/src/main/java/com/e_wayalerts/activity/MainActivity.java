@@ -3,11 +3,17 @@ package com.e_wayalerts.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import com.e_wayalerts.R;
 import com.e_wayalerts.Utility.Utility;
+import com.e_wayalerts.WebService.ApiClient;
+import com.e_wayalerts.WebService.ApiInterface;
 import com.e_wayalerts.WebService.Constant;
 import com.e_wayalerts.activity.add_business.BusinessListFragment;
+import com.e_wayalerts.activity.add_business.businessModal.BusinessListResponse;
 import com.e_wayalerts.activity.add_staff.StaffListFragment;
 import com.e_wayalerts.activity.eway_bill.AddEwayBillFragment;
 import com.e_wayalerts.activity.eway_bill.EBillListFragment;
@@ -17,6 +23,9 @@ import com.e_wayalerts.activity.faq_contact.FAQFragment;
 import com.e_wayalerts.activity.faq_contact.FeedbackFragment;
 import com.e_wayalerts.activity.faq_contact.TermsConditionFragment;
 import com.e_wayalerts.activity.loginmodule.LoginActivity;
+import com.e_wayalerts.activity.loginmodule.Model.LoginResponse;
+import com.e_wayalerts.activity.loginmodule.SetPinActivity;
+import com.e_wayalerts.adaptor.BusinessAdaptor;
 import com.e_wayalerts.fragment.DashboardFragment;
 import com.e_wayalerts.fragment.PasswordFragment;
 import com.e_wayalerts.fragment.SettingFragment;
@@ -30,6 +39,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class MainActivity extends AppCompatActivity {
 
     SNavigationDrawer sNavigationDrawer;
@@ -38,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     public static Fragment fragment;
     Context mContext;
     public static  String token = null;
-
+    ApiInterface apiInterface;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
         }
         mContext =  this;
         token = Utility.getSharedPreferences(this, Constant.Usertoken);
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        checkuser();
         sNavigationDrawer = findViewById(R.id.navigationDrawer);
         List<MenuItem> menuItems = new ArrayList<>();
         menuItems.add(new MenuItem(getResources().getString(R.string.menu_dashboard),R.drawable.bg_building));
@@ -195,6 +210,41 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+
+    }
+    private void checkuser() {
+        String userid= Utility.getSharedPreferences(mContext,Constant.User_id);
+        Call<BusinessListResponse> call = apiInterface.BusinessList(userid,"1");
+        call.enqueue(new Callback<BusinessListResponse>() {
+            @Override
+            public void onResponse(Call<BusinessListResponse> call, Response<BusinessListResponse> response) {
+                Log.e("TAG", "response 33: " + String.valueOf(response.body()));
+
+                if (response.isSuccessful()) {
+
+                    if (String.valueOf(response.body().getStatus()).equals("200")) {
+                        if (response.body().getData().size()>0){
+
+                        }
+                        else{
+
+                        }
+
+
+                    }
+                } else {
+                    Log.e("Error===>", response.errorBody().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BusinessListResponse> call, Throwable t) {
+                Toast.makeText(mContext, t.toString(),
+                        Toast.LENGTH_SHORT).show(); // ALL NETWORK ERROR HERE
+
+            }
+        });
+
 
     }
 }

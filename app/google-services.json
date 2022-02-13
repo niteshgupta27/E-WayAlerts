@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "11496298245",
+    "project_id": "eway-alerts",
+    "storage_bucket": "eway-alerts.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:11496298245:android:d0d41478e15f96fb3c896c",
+        "android_client_info": {
+          "package_name": "com.e_wayalerts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "11496298245-0c14s21nujvlrlsr5bo6n2gcriie9jmq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.e_wayalerts",
+            "certificate_hash": "ea0a36a4d4d7ffa3937b8813ae0ca3dd89f46698"
+          }
+        },
+        {
+          "client_id": "11496298245-tttpaqdn390a7ha51mmojaa3ck8ru39c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSOvceTWmyKXLxFcs25u4B3y6ZVHiGiDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "11496298245-tttpaqdn390a7ha51mmojaa3ck8ru39c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

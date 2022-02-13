@@ -127,8 +127,11 @@ public class ResetPinActivity extends AppCompatActivity implements View.OnClickL
 						
 						
 						Intent intent = new Intent(mContext,OTPVerificationActivity.class);
-						intent.putExtra("UserID",String.valueOf(response.body().getData().getUserId()));
+						//intent.putExtra("UserID",String.valueOf(response.body().getData().getUserId()));
 						intent.putExtra("MobileNumber",mobilenumber);
+						intent.putExtra("UserID",String.valueOf(response.body().getData().getUserId()));
+						intent.putExtra("otp",String.valueOf(response.body().getData().getotp()));
+						intent.putExtra("IsFrom","resetpin");
 						startActivity(intent);
 					}else {
 						Utility.ShowToast(mContext,response.body().getMessage());

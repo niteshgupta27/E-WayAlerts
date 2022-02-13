@@ -276,7 +276,65 @@
                                 android:background="@android:color/darker_gray"
                                 android:layout_marginStart="@dimen/_5sdp"
                                 android:layout_marginEnd="@dimen/_5sdp"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
 
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_10sdp"
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:fontFamily="@font/proxima_nova_alt_regular"
+                                    android:text="@string/Email_Address"
+                                    android:textColor="@color/font_color"
+                                    android:textSize="@dimen/_12sdp" />
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/_10sdp"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical">
+
+                                        <EditText
+                                            android:id="@+id/Email_ext"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_gravity="center"
+                                            android:background="@android:color/transparent"
+                                            android:fontFamily="@font/proxima_nova_alt_regular"
+                                            android:gravity="center|start"
+                                            android:hint="@string/please_enter_email"
+                                            android:imeOptions="actionNext"
+                                            android:inputType="textPersonName"
+                                            android:maxLines="1"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/_12sdp"
+                                            tools:targetApi="lollipop"
+                                            android:padding="@dimen/_5sdp"/>
+
+
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/_1sdp"
+                                        android:background="@android:color/darker_gray"
+                                        android:layout_marginStart="@dimen/_5sdp"
+                                        android:layout_marginEnd="@dimen/_5sdp"/>
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

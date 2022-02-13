@@ -2,6 +2,7 @@ package com.e_wayalerts.activity.loginmodule;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -34,15 +35,16 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 	
 	LinearLayout LoginBtn;
 	
-	EditText FirstName_ext, LastName_ext, MobileNumber_ext, Pin1, Pin2, Pin3, Pin4;
+	EditText FirstName_ext, LastName_ext, MobileNumber_ext, Pin1, Pin2, Pin3, Pin4,email_ext;
 	
 	ApiInterface apiInterface;
-	
+	String model = Build.MODEL;
+	int osver ;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_signup);
-		
+		osver =  Build.VERSION.SDK_INT;
 		mContext = this;
 		apiInterface = ApiClient.getClient().create(ApiInterface.class);
 		Init();
@@ -59,6 +61,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 		Pin2 = findViewById(R.id.pin2);
 		Pin3 = findViewById(R.id.pin3);
 		Pin4 = findViewById(R.id.pin4);
+		email_ext = findViewById(R.id.Email_ext);
 	}
 	
 	private void listner() {
@@ -98,7 +101,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 				}  else {
 					Signup(FirstName_ext.getText().toString().trim(),
 							LastName_ext.getText().toString().trim(),
-							MobileNumber_ext.getText().toString().trim());
+							MobileNumber_ext.getText().toString().trim(),email_ext.getText().toString().trim());
 				}
 				
 				
@@ -107,8 +110,10 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 		
 	}
 	
-	private void Signup(String firstname, String lastname, String mobilenumber) {
-		Call<LoginResponse> call = apiInterface.Signup(firstname,lastname,mobilenumber);
+	private void Signup(String firstname, String lastname, String mobilenumber, String email) {
+		String Language= Utility.getSharedPreferences(mContext,Constant.Language);
+		String FCmtoken= Utility.getSharedPreferences(mContext,Constant.FCmtoken);
+		Call<LoginResponse> call = apiInterface.Signup(firstname,lastname,mobilenumber,Language,"android",osver,model,FCmtoken,email);
 		call.enqueue(new Callback<LoginResponse>() {
 			@Override
 			public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
@@ -122,6 +127,9 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 						
 						Intent intent = new Intent(mContext,OTPVerificationActivity.class);
 						intent.putExtra("MobileNumber",mobilenumber);
+						intent.putExtra("otp",response.body().getData().getotp());
+						intent.putExtra("UserID",String.valueOf(response.body().getData().getuser_id()));
+						intent.putExtra("IsFrom","Signup");
 						startActivity(intent);
 						finish();
 						

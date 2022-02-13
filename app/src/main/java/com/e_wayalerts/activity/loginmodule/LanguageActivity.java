@@ -43,6 +43,12 @@ public class LanguageActivity extends AppCompatActivity implements View.OnClickL
 		apiInterface = ApiClient.getClient().create(ApiInterface.class);
 		Init();
 		listner();
+		String Language= Utility.getSharedPreferences(mContext,Constant.Language);
+		if(Language.equals("")){
+			Utility.setSharedPreference(mContext,
+					Constant.Language,"1");
+		}
+
 	}
 	
 	private void Init() {
@@ -96,7 +102,8 @@ public class LanguageActivity extends AppCompatActivity implements View.OnClickL
 				EnglishTxt.setTextColor(getResources().getColor(R.color.white_color));
 				EnglishImgRelative.setVisibility(View.VISIBLE);
 				updateViews("en");
-				
+				Utility.setSharedPreference(mContext,
+						Constant.Language,"1");
 				HindiRelative.setBackgroundColor(getResources().getColor(R.color.light_white));
 				HindiTxt.setTextColor(getResources().getColor(R.color.black));
 				HindiImgRelative.setVisibility(View.GONE);
@@ -178,7 +185,8 @@ public class LanguageActivity extends AppCompatActivity implements View.OnClickL
 				PunjabiTxt.setTextColor(getResources().getColor(R.color.white_color));
 				PunjabiImgRelative.setVisibility(View.VISIBLE);
 				updateViews("pa");
-				
+				Utility.setSharedPreference(mContext,
+						Constant.Language,"2");
 				GujratiRelative.setBackgroundColor(getResources().getColor(R.color.light_white));
 				GujratiTxt.setTextColor(getResources().getColor(R.color.black));
 				GujratiImgRelative.setVisibility(View.GONE);
@@ -219,7 +227,8 @@ public class LanguageActivity extends AppCompatActivity implements View.OnClickL
 				GujratiTxt.setTextColor(getResources().getColor(R.color.white_color));
 				GujratiImgRelative.setVisibility(View.VISIBLE);
 				updateViews("gu");
-				
+				Utility.setSharedPreference(mContext,
+						Constant.Language,"3");
 				TamilRelative.setBackgroundColor(getResources().getColor(R.color.light_white));
 				TamilTxt.setTextColor(getResources().getColor(R.color.black));
 				TamilImgRelative.setVisibility(View.GONE);
@@ -259,8 +268,9 @@ public class LanguageActivity extends AppCompatActivity implements View.OnClickL
 				TamilRelative.setBackgroundColor(getResources().getColor(R.color.green));
 				TamilTxt.setTextColor(getResources().getColor(R.color.white_color));
 				TamilImgRelative.setVisibility(View.VISIBLE);
-				updateViews("gu");
-				
+				updateViews("tm");
+				Utility.setSharedPreference(mContext,
+						Constant.Language,"4");
 				TelguRelative.setBackgroundColor(getResources().getColor(R.color.light_white));
 				TelguTxt.setTextColor(getResources().getColor(R.color.black));
 				TelguImgRelative.setVisibility(View.GONE);
@@ -300,7 +310,8 @@ public class LanguageActivity extends AppCompatActivity implements View.OnClickL
 				TelguRelative.setBackgroundColor(getResources().getColor(R.color.green));
 				TelguTxt.setTextColor(getResources().getColor(R.color.white_color));
 				TelguImgRelative.setVisibility(View.VISIBLE);
-				
+				Utility.setSharedPreference(mContext,
+						Constant.Language,"5");
 				KanadaRelative.setBackgroundColor(getResources().getColor(R.color.light_white));
 				KanadaTxt.setTextColor(getResources().getColor(R.color.black));
 				KanadaImgRelative.setVisibility(View.GONE);
@@ -340,7 +351,8 @@ public class LanguageActivity extends AppCompatActivity implements View.OnClickL
 				KanadaRelative.setBackgroundColor(getResources().getColor(R.color.green));
 				KanadaTxt.setTextColor(getResources().getColor(R.color.white_color));
 				KanadaImgRelative.setVisibility(View.VISIBLE);
-				
+				Utility.setSharedPreference(mContext,
+						Constant.Language,"6");
 				MalyalamRelative.setBackgroundColor(getResources().getColor(R.color.light_white));
 				MalyalamTxt.setTextColor(getResources().getColor(R.color.black));
 				MalyalamImgRelative.setVisibility(View.GONE);
@@ -380,7 +392,8 @@ public class LanguageActivity extends AppCompatActivity implements View.OnClickL
 				MalyalamRelative.setBackgroundColor(getResources().getColor(R.color.green));
 				MalyalamTxt.setTextColor(getResources().getColor(R.color.white_color));
 				MalyalamImgRelative.setVisibility(View.VISIBLE);
-				
+				Utility.setSharedPreference(mContext,
+						Constant.Language,"7");
 				break;
 			
 			case R.id.continue_Btn:

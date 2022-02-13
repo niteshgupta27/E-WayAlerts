@@ -54,7 +54,18 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+        <service android:name=".FireBaseMessaging.CustomFireBaseMessasing"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <meta-data
+            android:name="firebase_crashlytics_collection_enabled"
+            android:value="true"
+            />
     </application>
 
 </manifest>
